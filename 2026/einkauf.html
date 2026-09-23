@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Einkaufsliste – Urlaub auf der Alm 2026</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../alm.css">
+</head>
+<body>
+
+<nav class="alm-nav" aria-label="Hauptnavigation">
+  <div class="nav-innen">
+    <a class="logo" href="../index.html">🏔️ Almurlaub</a>
+    <a class="nav-link" href="../index.html">Historie</a>
+    <a class="nav-link" href="../2027/index.html">Alm 2027</a>
+    <a class="nav-link aktiv" href="index.html">Alm 2026</a>
+    <a class="nav-link" href="../packliste.html">Packliste</a>
+    <a class="nav-link" href="../huettensuche.html">Hütten-Suche</a>
+    <a class="nav-link abmelden" href="../logout.php" title="Abmelden – zurück zur Bierparole">🍺 Abmelden</a>
+  </div>
+</nav>
+<div class="jahr-nav" aria-label="Alm 2026 Unterseiten">
+  <div class="jahr-nav-innen">
+    <span class="jahr-label">Alm 2026 · Archiv</span>
+    <a href="index.html">Übersicht</a>
+    <a href="einkauf.html" class="aktiv">🛒 Einkaufsliste</a>
+    <a href="abrechnung.html">💰 Abrechnung</a>
+    <a href="fotos.html">📸 Fotos</a>
+    <a href="bierrechner.html">🍺 Bierrechner</a>
+  </div>
+</div>
+
+<header class="seitenkopf">
+  <h1>Einkaufsliste 🛒</h1>
+  <div class="untertitel">Wer abhakt, hat's gekauft – für alle live sichtbar, damit nix doppelt im Wagerl landet.</div>
+</header>
+
+<main class="wrap">
+
+  <div class="wer-leiste">
+    <div class="links-teil">
+      <label for="ich">Ich bin:</label>
+      <select id="ich">
+        <option value="">– bitte wählen –</option>
+      </select>
+    </div>
+    <span class="sync-status" id="sync"><span class="punkt"></span>verbinde …</span>
+  </div>
+
+  <section>
+    <div class="karte">
+      <div class="fortschritt"><div id="balken"></div></div>
+      <div class="fortschritt-text" id="stand">–</div>
+      <div id="gruppen"><!-- wird per JS gefüllt --></div>
+
+      <div class="neu-zeile">
+        <input type="text" id="neu-menge" placeholder="Wievui? (z.B. 2 Pck)" style="max-width:150px">
+        <input type="text" id="neu-text" placeholder="Wos? (eigener Punkt)">
+        <button class="btn" id="neu-btn">+ Hinzufügen</button>
+      </div>
+    </div>
+
+    <div class="hinweis-band">
+      💡 <strong>So funktioniert's:</strong> Wähle oben deinen Namen, dann hak ab, was du eingekauft hast.
+      Alle anderen sehen es innerhalb weniger Sekunden – inklusive <em>wer</em> es besorgt hat.
+      Die Spalte „zuständig" zeigt die bewährte Aufteilung vom letzten Jahr.
+    </div>
+  </section>
+
+  <footer>
+    <span class="feuer">🔥</span>
+    Almurlaub-Einkaufsliste 2026 &middot; Lorenzer Hütte
+  </footer>
+</main>
+
+<script>
+(function(){
+  var NAMEN = ["Martl","Manu","Max","Alois","Robert","Bettina","Franz","Andi","Baule","Blaume"];
+
+  /* Katalog: [id, gruppe, menge, text, zweck, zuständig] – finale Liste 2026 (93 Positionen) */
+  var KATALOG = [
+    ["f1","Von Daheim mitnehmen","1","Motorsäge","","Andi"],
+    ["f2","Von Daheim mitnehmen","1","Kochtopf für Knedl","","Andi"],
+    ["f3","Von Daheim mitnehmen","2","Pfanne für Pfannkuchen","","Baule"],
+    ["f4","Von Daheim mitnehmen","1","Dutch Oven (ft12)","","Baule"],
+    ["f5","Von Daheim mitnehmen","1","Toast-Eisen","","Baule"],
+    ["f6","Von Daheim mitnehmen","3 große","Knödlbrot","Schweinsbraten","Manu"],
+    ["f7","Von Daheim mitnehmen","2","Gummiknedl","Schweinsbraten","Manu"],
+    ["f8","Von Daheim mitnehmen","6 kg","Bauernschwarzbrot","Frühstück, Wandern, Brotzeit, Grillen","Manu"],
+    ["f9","Von Daheim mitnehmen","3 Laib","Vollkornbrot","Frühstück, Wandern, Brotzeit, Grillen","Manu"],
+    ["f10","Von Daheim mitnehmen","20","Wiener/Knacker","Anreise","Franz"],
+    ["f11","Von Daheim mitnehmen","1","Senf für Brotzeit","Anreise","Franz"],
+    ["f12","Von Daheim mitnehmen","20","Brezen/Gebäck","Anreise","Franz"],
+    ["f13","Von Daheim mitnehmen","1","Pfeffer, Paprika, Gemüse- und Rinderbrühe, sonst. Gewürze, Penninger Essig","","Manu"],
+    ["f14","Von Daheim mitnehmen","1","Scharfe Soß (Teufels Gemecht!)","","Manu"],
+    ["f15","Von Daheim mitnehmen","2 Glas","Apfelmus","Schweinsbraten","Manu"],
+    ["f16","Von Daheim mitnehmen","1 Flasche","Heinz Ketchup","Grillen, Toast","Manu"],
+    ["f17","Von Daheim mitnehmen","3 Bund","Petersilie","Knedl, Schwammerl","Manu"],
+    ["f18","Von Daheim mitnehmen","2 Gläser","Tomatensoße","Spagetti",""],
+    ["f19","Von Daheim mitnehmen","1 Bund","Wurzelgemüse (für Soße)","Schweinsbraten","Manu"],
+    ["f20","Von Daheim mitnehmen","2","Kuchen","","Manu"],
+    ["f21","Von Daheim mitnehmen","500 g","Zaziki","Grillen","Manu"],
+    ["f22","Von Daheim mitnehmen","1 kg","Kartoffelsalat","Grillen","Manu"],
+    ["f23","Von Daheim mitnehmen","","Frittierfett und Thermometer","Kropfa","Manu"],
+    ["f24","Von Daheim mitnehmen","1 Pck","Rosinen","Kropfa","Manu"],
+    ["f25","Von Daheim mitnehmen","1","Bolognese Sauce","Lasagne","Manu"],
+    ["f26","Metzgerei","20 St","Wammerl (2× 10 vakuumiert, davon 1 eingefroren)","Grillen",""],
+    ["f27","Metzgerei","20 St","Nacken (2× 10 vakuumiert, davon 1 eingefroren)","Grillen",""],
+    ["f28","Metzgerei","4 Pck","Grillwürschtel (2× Nürnberger und 2× Kaskrainer) je eine Packung eingefroren","Grillen",""],
+    ["f29","Metzgerei","1 kg","Wurschtzeig","Frühstück",""],
+    ["f30","Metzgerei","1 kg","Brotzeitwiascht (zB Hauswürscht, Pfefferbeisser, etc.) zum Wandern","Wandern",""],
+    ["f31","Metzgerei","1 St","Speck für Brotzeit","Brotzeit",""],
+    ["f32","Metzgerei","300 g","Schinken (verpackt)","Toast",""],
+    ["f33","Metzgerei","2 kg","Nacken","Schweinsbraten",""],
+    ["f34","Metzgerei","2 kg","Wammerl (ohne Knochen)","Schweinsbraten",""],
+    ["f35","Metzgerei","1 kg","Knochen / Ripperl (für die Soße)","Schweinsbraten",""],
+    ["f36","Metzgerei","3 kg","Rinderbeinscheiben","Chili Con Carne",""],
+    ["f37","Milchprodukte","12 Liter","Haltbare Milch (1 Karton)","Frühstück",""],
+    ["f38","Milchprodukte","4 Pck","Butter","",""],
+    ["f39","Milchprodukte","8 Stück","Burrata/Mozarella","",""],
+    ["f40","Milchprodukte","2 Becher","Sauere Sahne","Chili Con Carne","Manu"],
+    ["f41","Milchprodukte","2 Becher","Naturjoghurt (1L)","Frühstück",""],
+    ["f42","Milchprodukte","12 Becherl","Fruchtjoghurts","Frühstück",""],
+    ["f43","Milchprodukte","2","Brotaufstriche (Frischkäse, Exquisa, Filadelfia, etc.)","Frühstück",""],
+    ["f44","Milchprodukte","4 Pck","Käse in Scheiben (Gauda)","Frühstück, Toast",""],
+    ["f45","Milchprodukte","4 Pck","Grillkäse (2× eingefroren)","Grillen",""],
+    ["f46","Milchprodukte","2 Pck","Parmesan","Spagetti",""],
+    ["f47","Milchprodukte","2 Pck","Bergkäse","Brotzeit",""],
+    ["f48","Milchprodukte","2 Pck","Gauda Mittelalt am Stück","Brotzeit",""],
+    ["f49","Sonstiges","3 kg","Weizenmehl (550)","Kropfa, Pfannkuchen, Fladenbrot",""],
+    ["f50","Sonstiges","1 kg","Zucker","",""],
+    ["f51","Sonstiges","1 Glas","Honig","","Andi"],
+    ["f52","Sonstiges","1 kg","Salz","",""],
+    ["f53","Sonstiges","2 Pck","Frischhefe","Kropfa, Fladenbrot",""],
+    ["f54","Sonstiges","2 Pck","Müsli (Schoko und Frucht)","Frühstück",""],
+    ["f55","Sonstiges","1 Glas","Nutella","Frühstück",""],
+    ["f56","Sonstiges","2 Gläser","Marmeladen","Frühstück","Manu"],
+    ["f57","Sonstiges","1 Glas","Pesto (rot)","Spagetti",""],
+    ["f58","Sonstiges","2 Glas","Pesto (grün)","Tomaten-Burrata, Spagetti",""],
+    ["f59","Sonstiges","2 Pck","Kaffeepulver (evtl. Illy)","Frühstück","Manu"],
+    ["f60","Sonstiges","1 Pck","Kaffeefilter","Frühstück","Manu"],
+    ["f61","Sonstiges","100","Eier","Frühstück, Schweinsbraten, Kropfa, Knedl, Pfannkuchen","Manu"],
+    ["f62","Sonstiges","1 kg","Spagetti (CECCO)","Spagetti","Baule"],
+    ["f63","Sonstiges","3 Pck","Müsliriegel","Wandern",""],
+    ["f64","Sonstiges","4 Pck","Gummibären","",""],
+    ["f65","Sonstiges","2 Flaschen","Grillsoßen (evtl. 1× Knoblauchsoße)","Grillen",""],
+    ["f66","Sonstiges","2 Pck","Sandwich Toast","Toast",""],
+    ["f67","Sonstiges","1 Flasche","Balsamico weiß","",""],
+    ["f68","Sonstiges","1 Flasche","Olivenöl","",""],
+    ["f69","Sonstiges","1 Flasche","Sonnenblumenöl","",""],
+    ["f70","Sonstiges","1 Tube","Tomatenmark","Chili Con Carne",""],
+    ["f71","Sonstiges","4 Dosen","Kidney Bohnen","Chili Con Carne",""],
+    ["f72","Sonstiges","4 Dosen (200 g)","Mais","Chili Con Carne",""],
+    ["f73","Sonstiges","4 Dosen","Ganze Eiertomaten","Chili Con Carne",""],
+    ["f74","Obst und Gemüse","2","Salat (gemischt)","",""],
+    ["f75","Obst und Gemüse","2 Sack","Zwiebel","",""],
+    ["f76","Obst und Gemüse","2 Sack","Knoblauch","",""],
+    ["f77","Obst und Gemüse","4 Stück","Paprikaschoten","Chili Con Carne",""],
+    ["f78","Obst und Gemüse","4 Pck","Maiskolben","Grillen",""],
+    ["f79","Obst und Gemüse","2,5 kg","Kartoffeln (mehlig)","",""],
+    ["f80","Obst und Gemüse","2 kg","Äpfel / Birnen","Frühstück",""],
+    ["f81","Obst und Gemüse","1 Bund","Bananen","Frühstück",""],
+    ["f82","Obst und Gemüse","1 Pck","Sonstiges Obst (Pfirsich, Aprikosen, etc.)","Frühstück",""],
+    ["f83","Obst und Gemüse","Ca. 1 kg","Tomaten (Ochsenherz, etc. aus dem Garten)","Frühstück, Tomaten-Burrata",""],
+    ["f84","Getränke","20 Kasten","Bier","",""],
+    ["f85","Getränke","5 Liter","Orangensaft","Frühstück",""],
+    ["f86","Getränke","5 Liter","Apfelsaft","Frühstück",""],
+    ["f87","Hütte","1 Pck","Küchenrolle","",""],
+    ["f88","Hütte","1 Pck","Klopapier deluxe!!","",""],
+    ["f89","Hütte","2 Pck","Ofenanzünder","",""],
+    ["f90","Hütte","1 Pck","Müllbeutel","",""],
+    ["f91","Hütte","1 Pck","Alufolie","",""],
+    ["f92","Hütte","1 Pck","Spülmittel","",""],
+    ["f93","Hütte","1 Pck","Spültücher, Geschirrtücher","",""]
+  ];
+  var GRUPPEN_REIHENFOLGE = ["Von Daheim mitnehmen","Metzgerei","Milchprodukte","Sonstiges","Obst und Gemüse","Getränke","Hütte","Eigene Punkte"];
+
+  var API = '../api.php?doc=einkauf2026';
+  var state = {};        // Server-Daten: {items:{id:{done,wer,ts}}, custom:{id:{menge,text}}}
+  var syncEl = document.getElementById('sync');
+
+  /* Namens-Auswahl */
+  var ichSel = document.getElementById('ich');
+  NAMEN.forEach(function(n){ var o=document.createElement('option'); o.value=o.textContent=n; ichSel.appendChild(o); });
+  ichSel.value = localStorage.getItem('alm-ich') || '';
+  ichSel.addEventListener('change', function(){ localStorage.setItem('alm-ich', ichSel.value); });
+
+  function esc(s){ var d=document.createElement('div'); d.textContent=s||''; return d.innerHTML; }
+
+  function alleItems(){
+    var custom = Object.keys(state.custom||{}).map(function(id){
+      var c = state.custom[id];
+      return [id, "Eigene Punkte", c.menge||"", c.text||"", "", ""];
+    });
+    return KATALOG.concat(custom);
+  }
+
+  function render(){
+    var items = alleItems();
+    var wrap = document.getElementById('gruppen');
+    wrap.innerHTML = '';
+    var erledigt = 0;
+    GRUPPEN_REIHENFOLGE.forEach(function(gr){
+      var inGr = items.filter(function(it){ return it[1]===gr; });
+      if (!inGr.length) return;
+      var grErledigt = inGr.filter(function(it){ return (state.items||{})[it[0]] && state.items[it[0]].done; }).length;
+      var div = document.createElement('div');
+      div.className = 'ek-gruppe';
+      var h = document.createElement('h3');
+      h.innerHTML = esc(gr) + ' <span class="zaehler">'+grErledigt+' / '+inGr.length+'</span>';
+      div.appendChild(h);
+      var ul = document.createElement('ul');
+      ul.className = 'liste';
+      inGr.forEach(function(it){
+        var id=it[0], menge=it[2], text=it[3], zweck=it[4], wer=it[5];
+        var st = (state.items||{})[id] || {};
+        if (st.done) erledigt++;
+        var li = document.createElement('li');
+        li.className = 'ek-item' + (st.done ? ' erledigt' : '');
+        var checked = st.done ? ' checked' : '';
+        li.innerHTML =
+          '<input type="checkbox" id="'+id+'"'+checked+'>' +
+          '<label for="'+id+'"><span class="txt"><span class="menge">'+esc(menge)+'</span> '+esc(text)+'</span>' +
+          (zweck ? '<span class="zweck">'+esc(zweck)+'</span>' : '') +
+          (st.done && st.wer ? '<span class="gekauft-von">✓ erledigt von '+esc(st.wer)+'</span>' : '') +
+          '</label>' +
+          (wer ? '<span class="zustaendig">'+esc(wer)+'</span>' : '') +
+          (gr==='Eigene Punkte' ? '<button class="loeschen" data-del="'+id+'" title="Punkt löschen">✕</button>' : '');
+        ul.appendChild(li);
+      });
+      div.appendChild(ul);
+      wrap.appendChild(div);
+    });
+    var gesamt = items.length;
+    var pz = gesamt ? Math.round(erledigt/gesamt*100) : 0;
+    document.getElementById('balken').style.width = pz+'%';
+    document.getElementById('stand').textContent = pz+' % eingekauft ('+erledigt+' von '+gesamt+')';
+
+    wrap.querySelectorAll('input[type=checkbox]').forEach(function(box){
+      box.addEventListener('change', function(){
+        var wer = ichSel.value;
+        if (box.checked && !wer) {
+          alert('Bitte zuerst oben auswählen, wer du bist – damit die anderen wissen, wer eingekauft hat.');
+          box.checked = false;
+          return;
+        }
+        var set = {};
+        set['items.'+box.id] = box.checked ? {done:1, wer:wer, ts:Date.now()} : {done:0, wer:'', ts:Date.now()};
+        sende({set:set});
+      });
+    });
+    wrap.querySelectorAll('[data-del]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (!confirm('Diesen Punkt wirklich löschen?')) return;
+        var id = btn.getAttribute('data-del');
+        sende({unset:['custom.'+id, 'items.'+id]});
+      });
+    });
+  }
+
+  function setStatus(ok, text){
+    syncEl.className = 'sync-status' + (ok ? '' : ' offline');
+    syncEl.innerHTML = '<span class="punkt"></span>' + esc(text);
+  }
+
+  function anwenden(json){
+    state = json.data || {};
+    render();
+    var t = new Date();
+    setStatus(true, 'live · Stand ' + ('0'+t.getHours()).slice(-2)+':'+('0'+t.getMinutes()).slice(-2)+':'+('0'+t.getSeconds()).slice(-2));
+  }
+
+  function lade(){
+    fetch(API).then(function(r){ return r.json(); }).then(anwenden)
+      .catch(function(){ setStatus(false, 'offline – versuche erneut …'); });
+  }
+
+  function sende(body){
+    fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)})
+      .then(function(r){ return r.json(); }).then(anwenden)
+      .catch(function(){ setStatus(false, 'Speichern fehlgeschlagen – prüfe Verbindung'); lade(); });
+  }
+
+  /* Eigener Punkt */
+  document.getElementById('neu-btn').addEventListener('click', function(){
+    var m = document.getElementById('neu-menge').value.trim();
+    var t = document.getElementById('neu-text').value.trim();
+    if (!t) { alert('Bitte eintragen, wos fehlt.'); return; }
+    var id = 'c' + Date.now();
+    var set = {}; set['custom.'+id] = {menge:m, text:t};
+    sende({set:set});
+    document.getElementById('neu-menge').value = '';
+    document.getElementById('neu-text').value = '';
+  });
+
+  lade();
+  setInterval(lade, 4000);
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) lade(); });
+})();
+</script>
+<script src="../alm-nav.js" defer></script>
+</body>
+</html>

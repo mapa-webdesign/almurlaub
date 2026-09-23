@@ -1,0 +1,502 @@
+/* Almurlaub-Dashboard – gemeinsames Stylesheet für Unterseiten */
+:root{
+  --holz-dunkel:#3a2a1c; --holz:#5a4130; --holz-hell:#7a5c42; --holz-grau:#8a7a68;
+  --creme:#f4ecd9; --creme-dunkel:#e8dcc0;
+  --schwammerl:#d99a3c; --schwammerl-hell:#eab861;
+  --tanne:#3d5a3f; --tanne-hell:#5a7d5c;
+  --geranie:#b8452f; --nebel:#aebbc4; --tinte:#2e2318;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Bitter',Georgia,serif;color:var(--tinte);min-height:100vh;
+  background:
+    repeating-linear-gradient(90deg, rgba(0,0,0,.14) 0 2px, transparent 2px 138px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.02) 0 3px, transparent 3px 9px),
+    linear-gradient(180deg,#46331f 0%, #3a2a1c 40%, #33241a 100%);
+}
+:focus-visible{outline:3px solid var(--schwammerl);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:1060px;margin:0 auto;padding:0 18px 60px}
+
+/* ---------- Navigation ---------- */
+.alm-nav{
+  position:sticky;top:0;z-index:50;
+  background:linear-gradient(180deg,#2c2013,#241a10);
+  border-bottom:3px solid var(--schwammerl);
+  box-shadow:0 4px 14px rgba(0,0,0,.5);
+}
+.alm-nav .nav-innen{
+  max-width:1060px;margin:0 auto;padding:0 14px;
+  display:flex;align-items:center;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+}
+.alm-nav .logo{
+  font-family:'Caveat',cursive;font-size:1.35rem;font-weight:700;color:var(--schwammerl-hell);
+  text-decoration:none;padding:12px 10px 10px;white-space:nowrap;
+}
+.alm-nav a.nav-link{
+  color:var(--creme);text-decoration:none;font-size:.86rem;padding:14px 12px 12px;
+  white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;
+}
+.alm-nav a.nav-link:hover{color:var(--schwammerl-hell)}
+.alm-nav a.nav-link.aktiv{color:var(--schwammerl-hell);border-bottom-color:var(--schwammerl-hell)}
+
+/* ---------- Seitenkopf ---------- */
+.seitenkopf{text-align:center;padding:40px 16px 6px}
+.seitenkopf h1{
+  font-family:'Caveat',cursive;font-weight:700;font-size:clamp(2.4rem,6vw,3.6rem);
+  color:var(--creme);text-shadow:0 2px 0 rgba(0,0,0,.45);
+}
+.seitenkopf .untertitel{color:var(--schwammerl-hell);font-style:italic;margin-top:4px;font-size:clamp(.9rem,2.2vw,1.1rem)}
+
+/* ---------- Sektionen & Karten ---------- */
+section{margin-top:38px}
+.sek-titel{display:flex;align-items:center;gap:12px;margin-bottom:16px;color:var(--creme)}
+.sek-titel h2{font-family:'Caveat',cursive;font-size:1.9rem;font-weight:700}
+.sek-titel .linie{flex:1;height:2px;background:linear-gradient(90deg,rgba(244,236,217,.4),transparent)}
+.sek-titel .em{font-size:1.4rem}
+.karte{
+  background:linear-gradient(180deg,var(--creme),#efe4cb);
+  border-radius:14px;padding:20px 22px;
+  box-shadow:0 8px 22px rgba(0,0,0,.4);
+  border:1px solid rgba(0,0,0,.15);
+}
+.hinweis-band{
+  background:rgba(244,236,217,.08);border:1px solid rgba(244,236,217,.22);
+  border-radius:12px;padding:12px 16px;color:var(--creme);font-size:.88rem;line-height:1.5;margin-top:16px;
+}
+.hinweis-band strong{color:var(--schwammerl-hell)}
+
+/* ---------- Buttons & Inputs ---------- */
+.btn{
+  font-family:'Bitter',Georgia,serif;font-weight:600;font-size:.88rem;
+  background:var(--tanne);color:#fff;border:none;border-radius:8px;
+  padding:9px 16px;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.3);
+}
+.btn:hover{background:var(--tanne-hell)}
+.btn.sekundaer{background:var(--holz-grau)}
+.btn.gefahr{background:var(--geranie)}
+input[type=text],input[type=number],select{
+  font-family:'Bitter',Georgia,serif;font-size:.9rem;color:var(--tinte);
+  background:#fff;border:2px solid rgba(90,65,48,.4);border-radius:8px;padding:8px 10px;
+}
+input[type=text]:focus,input[type=number]:focus,select:focus{border-color:var(--schwammerl);outline:none}
+
+/* ---------- Checklisten ---------- */
+.liste{list-style:none}
+.liste li{display:flex;align-items:flex-start;gap:11px;padding:9px 4px;border-bottom:1px dashed rgba(90,65,48,.3)}
+.liste li:last-child{border-bottom:none}
+.liste input[type=checkbox]{
+  appearance:none;width:22px;height:22px;flex:none;margin-top:1px;
+  border:2px solid var(--holz);border-radius:5px;background:#fff;cursor:pointer;position:relative;
+}
+.liste input[type=checkbox]:checked{background:var(--tanne);border-color:var(--tanne)}
+.liste input[type=checkbox]:checked::after{
+  content:"✓";color:#fff;font-weight:800;position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;font-size:.95rem;
+}
+.liste label{cursor:pointer;font-size:.92rem;line-height:1.45;flex:1}
+.liste li.erledigt label .txt{text-decoration:line-through;color:var(--holz-grau)}
+
+/* ---------- Einkaufsliste ---------- */
+.wer-leiste{
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;
+  background:rgba(244,236,217,.08);border:1px solid rgba(244,236,217,.22);
+  border-radius:12px;padding:12px 16px;color:var(--creme);margin-top:18px;
+}
+.wer-leiste .links-teil{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.wer-leiste label{font-size:.9rem}
+.sync-status{font-size:.78rem;color:var(--nebel);font-style:italic}
+.sync-status .punkt{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--tanne-hell);margin-right:5px;vertical-align:baseline}
+.sync-status.offline .punkt{background:var(--geranie)}
+.ek-gruppe{margin-top:22px}
+.ek-gruppe h3{
+  font-family:'Caveat',cursive;font-size:1.6rem;color:var(--holz-dunkel);
+  border-bottom:2px solid var(--schwammerl);padding-bottom:4px;margin-bottom:4px;
+  display:flex;justify-content:space-between;align-items:baseline;
+}
+.ek-gruppe h3 .zaehler{font-family:'Bitter',Georgia,serif;font-size:.78rem;color:var(--holz);font-weight:400}
+.ek-item .menge{font-weight:800;color:var(--holz);white-space:nowrap}
+.ek-item .zweck{display:block;font-size:.75rem;color:var(--holz-grau);font-style:italic}
+.ek-item .zustaendig{font-size:.75rem;color:var(--tanne);font-weight:600;white-space:nowrap}
+.ek-item .gekauft-von{display:block;font-size:.76rem;color:var(--tanne);font-weight:600}
+.ek-item .loeschen{background:none;border:none;color:var(--geranie);cursor:pointer;font-size:1rem;padding:0 4px}
+.fortschritt{margin-top:16px;background:rgba(90,65,48,.18);border-radius:999px;height:14px;overflow:hidden}
+.fortschritt>div{height:100%;width:0;background:linear-gradient(90deg,var(--schwammerl),var(--schwammerl-hell));transition:width .3s;border-radius:999px}
+.fortschritt-text{font-size:.8rem;color:var(--holz);margin-top:6px;text-align:right;font-style:italic}
+.neu-zeile{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;padding-top:14px;border-top:2px solid rgba(90,65,48,.25)}
+.neu-zeile input[type=text]{flex:1;min-width:120px}
+
+/* ---------- Tabellen (Abrechnung) ---------- */
+.tabelle{width:100%;border-collapse:collapse;font-size:.88rem}
+.tabelle th{
+  text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--holz);padding:8px 8px;border-bottom:2px solid var(--schwammerl);
+}
+.tabelle td{padding:8px;border-bottom:1px dashed rgba(90,65,48,.3);vertical-align:middle}
+.tabelle tr:last-child td{border-bottom:none}
+.tabelle .zahl{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tabelle input{width:100%;min-width:70px}
+.tabelle input.betrag,.tabelle input.naechte{max-width:110px;text-align:right}
+.tabelle .loeschen{background:none;border:none;color:var(--geranie);cursor:pointer;font-size:1.05rem}
+.summen-band{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:16px}
+.summe{
+  background:rgba(61,90,63,.12);border:1px solid rgba(61,90,63,.3);border-radius:10px;
+  padding:12px 14px;text-align:center;
+}
+.summe .wert{font-size:1.3rem;font-weight:800;color:var(--tanne)}
+.summe .label{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--holz);margin-top:2px}
+.plus{color:#2c6b30;font-weight:800}
+.minus{color:var(--geranie);font-weight:800}
+.tab-scroll{overflow-x:auto}
+
+/* ---------- Historie / Timeline ---------- */
+.timeline{position:relative;margin-top:10px;padding-left:26px}
+.timeline::before{
+  content:"";position:absolute;left:8px;top:6px;bottom:6px;width:4px;border-radius:4px;
+  background:linear-gradient(180deg,var(--schwammerl),var(--holz-hell));
+}
+.jahr{position:relative;margin-bottom:14px}
+.jahr::before{
+  content:"";position:absolute;left:-24px;top:14px;width:14px;height:14px;border-radius:50%;
+  background:var(--creme);border:4px solid var(--schwammerl);box-shadow:0 2px 5px rgba(0,0,0,.4);
+}
+.jahr .j-karte{
+  background:linear-gradient(180deg,var(--creme),#efe4cb);border-radius:12px;
+  padding:12px 16px;box-shadow:0 6px 16px rgba(0,0,0,.4);
+  display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;
+}
+.jahr .j-zahl{font-family:'Caveat',cursive;font-size:1.6rem;font-weight:700;color:var(--holz-dunkel);min-width:64px}
+.jahr .j-huette{font-weight:800;font-size:1rem}
+.jahr .j-region{font-size:.8rem;color:var(--holz);font-style:italic}
+.jahr .j-extra{font-size:.78rem;color:var(--holz-grau);width:100%}
+.jahr.unbekannt .j-karte{opacity:.65;border:2px dashed var(--holz-grau)}
+.jahr.geplant::before{background:var(--schwammerl-hell);border-color:var(--geranie)}
+.jahr.geplant .j-karte{border:2px solid var(--schwammerl)}
+.bestenliste{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:640px){ .bestenliste{grid-template-columns:repeat(2,1fr)} }
+.besten-eintrag{display:flex;align-items:center;gap:12px;background:rgba(244,236,217,.08);border:1px solid rgba(244,236,217,.22);border-radius:10px;padding:10px 14px;color:var(--creme)}
+.besten-eintrag .medaille{font-size:1.4rem}
+.besten-eintrag .b-name{font-weight:800;flex:1}
+.besten-eintrag .b-anzahl{font-family:'Caveat',cursive;font-size:1.4rem;color:var(--schwammerl-hell)}
+
+/* ---------- Hütten-Kacheln (Übersicht) ---------- */
+.huetten-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:640px){ .huetten-grid{grid-template-columns:repeat(2,1fr)} }
+@media (min-width:1024px){ .huetten-grid{grid-template-columns:repeat(3,1fr)} }
+.h-kachel{
+  position:relative;display:flex;flex-direction:column;justify-content:flex-end;
+  min-height:230px;border-radius:14px;overflow:hidden;text-decoration:none;
+  box-shadow:0 10px 24px rgba(0,0,0,.5);
+  background:
+    linear-gradient(180deg, rgba(30,22,12,.05) 0%, rgba(30,22,12,.2) 45%, rgba(24,17,10,.88) 100%),
+    var(--kachel-foto, none),
+    repeating-linear-gradient(0deg, rgba(0,0,0,.08) 0 2px, transparent 2px 26px),
+    linear-gradient(160deg,#7a5c42,#5a4130 60%,#43301f);
+  background-size:cover, cover, auto, auto;
+  background-position:center, center 40%, 0 0, 0 0;
+  transition:transform .18s, box-shadow .18s;
+  border:1px solid rgba(0,0,0,.3);
+}
+a.h-kachel:hover,a.h-kachel:focus-visible{transform:translateY(-4px) scale(1.015);box-shadow:0 16px 34px rgba(0,0,0,.6)}
+.h-kachel .platz-emoji{
+  position:absolute;top:18px;left:0;right:0;text-align:center;font-size:3.2rem;opacity:.5;
+}
+.h-kachel .foto-folgt{
+  position:absolute;top:86px;left:0;right:0;text-align:center;
+  font-family:'Caveat',cursive;font-size:1.15rem;color:var(--creme-dunkel);opacity:.8;
+}
+.h-kachel .k-inhalt{position:relative;padding:14px 16px 14px;z-index:1}
+.h-kachel h3{
+  font-family:'Caveat',cursive;font-size:1.8rem;font-weight:700;color:var(--creme);
+  text-shadow:0 2px 8px rgba(0,0,0,.85);line-height:1.05;
+}
+.h-kachel .k-region{font-size:.78rem;color:var(--creme-dunkel);font-style:italic;text-shadow:0 1px 4px rgba(0,0,0,.9)}
+.h-kachel .k-jahre{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.h-kachel .k-jahre span{
+  font-size:.68rem;font-weight:600;color:var(--holz-dunkel);
+  background:var(--creme);border-radius:999px;padding:2px 8px;
+  box-shadow:0 1px 3px rgba(0,0,0,.5);
+}
+.h-kachel .k-jahre span.oft{background:var(--schwammerl-hell)}
+.h-kachel .k-link{
+  position:absolute;top:12px;right:12px;z-index:1;
+  background:rgba(244,236,217,.92);color:var(--tanne);
+  font-size:.72rem;font-weight:700;border-radius:999px;padding:4px 11px;
+  box-shadow:0 2px 6px rgba(0,0,0,.4);
+}
+.h-kachel .k-besuche{
+  position:absolute;top:12px;left:12px;z-index:1;
+  background:rgba(61,90,63,.92);color:#fff;
+  font-size:.72rem;font-weight:700;border-radius:999px;padding:4px 11px;
+  box-shadow:0 2px 6px rgba(0,0,0,.4);
+}
+
+footer{text-align:center;color:var(--nebel);font-size:.82rem;margin-top:56px;font-style:italic;padding-bottom:20px}
+footer .feuer{font-size:1.6rem;display:block;margin-bottom:8px}
+
+/* ---------- Entwurf-Kennzeichnung ---------- */
+.entwurf-chip{
+  display:inline-block;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  background:var(--geranie);color:#fff;border-radius:999px;padding:2px 7px;margin-left:4px;vertical-align:2px;
+}
+.entwurf-banner{
+  background:repeating-linear-gradient(-45deg, rgba(184,69,47,.18) 0 12px, rgba(184,69,47,.08) 12px 24px);
+  border:2px dashed var(--geranie);border-radius:12px;color:var(--creme);
+  padding:12px 16px;margin-top:18px;font-size:.9rem;line-height:1.5;
+}
+
+/* ---------- Packliste ---------- */
+.pack-gruppen{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:640px){ .pack-gruppen{grid-template-columns:repeat(2,1fr)} }
+.pack-gruppe h3{
+  font-family:'Caveat',cursive;font-size:1.45rem;color:var(--holz-dunkel);
+  border-bottom:2px solid var(--schwammerl);padding-bottom:4px;margin-bottom:6px;
+}
+
+.alm-nav a.nav-link.abmelden{margin-left:auto;color:var(--nebel);font-size:.78rem}
+.alm-nav a.nav-link.abmelden:hover{color:var(--schwammerl-hell)}
+
+/* ---------- Mobiles Burger-Menü ---------- */
+.nav-burger{
+  display:none;margin-left:auto;background:none;border:none;cursor:pointer;
+  font-size:1.5rem;line-height:1;color:var(--creme);padding:10px 12px;
+}
+.nav-burger:hover{color:var(--schwammerl-hell)}
+/* Jahres-Zeile mit Aufklapp-Pfeil (nur mobil sichtbar) */
+.nav-item-mit-sub{display:contents}
+.nav-sub-toggle{display:none;background:none;border:none;color:inherit;cursor:pointer;padding:0}
+@media (max-width:799px){
+  .nav-burger{display:block}
+  .alm-nav .nav-innen{flex-wrap:wrap;overflow:visible}
+  .alm-nav .logo{font-size:1.5rem;padding:14px 10px 12px}
+  .alm-nav a.nav-link{display:none}
+  .alm-nav.offen a.nav-link{
+    display:block;width:100%;order:10;
+    font-size:1.05rem;padding:14px 12px;margin:0;
+    border-bottom:1px solid rgba(244,236,217,.12);
+  }
+  .alm-nav.offen a.nav-link.aktiv{
+    color:var(--schwammerl-hell);
+    border-left:4px solid var(--schwammerl-hell);
+    background:rgba(217,154,60,.12);
+    border-bottom:1px solid rgba(244,236,217,.12);
+  }
+  .alm-nav.offen a.nav-link.abmelden{margin-left:0;color:var(--nebel);font-size:.9rem;border-bottom:none}
+  .alm-nav a.nav-link{margin-bottom:0;border-bottom-width:1px}
+  /* ---- Jahr-Navigation ins Burger-Menü integriert ---- */
+  .jahr-nav{display:none}                         /* eigenständige Leiste mobil ausblenden */
+  .alm-nav.offen .nav-item-mit-sub{
+    display:flex;align-items:center;width:100%;order:10;
+    border-bottom:1px solid rgba(244,236,217,.12);
+  }
+  .alm-nav.offen .nav-item-mit-sub a.nav-link{width:auto;flex:1;order:0;border-bottom:none}
+  .alm-nav.offen .nav-sub-toggle{
+    display:block;padding:14px 16px;font-size:.95rem;color:var(--nebel);
+    transition:transform .18s ease;
+  }
+  .alm-nav.offen .nav-sub-toggle:hover{color:var(--schwammerl-hell)}
+  .alm-nav.offen .nav-sub-toggle.auf{transform:rotate(180deg)}
+  .alm-nav.offen a.nav-link.nav-sub{display:none}
+  .alm-nav.offen a.nav-link.nav-sub.auf{
+    display:block;width:100%;order:10;margin:0;
+    font-size:1rem;padding:12px 12px 12px 27px;   /* eingerückt = Unterpunkt */
+    border-bottom:1px solid rgba(244,236,217,.12);
+    border-left:3px solid rgba(217,154,60,.3);     /* dezente Zugehörigkeits-Linie */
+  }
+  .alm-nav.offen a.nav-link.nav-sub.auf.aktiv{
+    color:var(--schwammerl-hell);
+    border-left:4px solid var(--schwammerl-hell);
+    background:rgba(217,154,60,.12);
+  }
+}
+@media (max-width:640px){
+  .wrap{padding-left:14px;padding-right:14px}
+  .karte{padding:16px 14px}
+  .seitenkopf{padding-top:28px}
+}
+
+/* ---------- Sprüche-Tafeln ---------- */
+.sprueche{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:640px){ .sprueche{grid-template-columns:repeat(2,1fr)} }
+.spruch-tafel{
+  position:relative;text-align:center;
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.07) 0 2px, transparent 2px 26px),
+    linear-gradient(180deg,#8a6a4a,#6e5138 55%,#5f452f);
+  border:4px solid #43301f;border-radius:12px;
+  padding:22px 18px 18px;
+  box-shadow:0 8px 20px rgba(0,0,0,.45), inset 0 2px 0 rgba(255,255,255,.15);
+  transform:rotate(var(--rot,0deg));transition:transform .18s;
+}
+.spruch-tafel:hover{transform:rotate(0) scale(1.03)}
+.sprueche .spruch-tafel:nth-child(4n+1){--rot:-1.2deg}
+.sprueche .spruch-tafel:nth-child(4n+2){--rot:1deg}
+.sprueche .spruch-tafel:nth-child(4n+3){--rot:.8deg}
+.sprueche .spruch-tafel:nth-child(4n+4){--rot:-1deg}
+.spruch-tafel::before,.spruch-tafel::after{
+  content:"";position:absolute;top:9px;width:9px;height:9px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#d8c8a8,#5b4630);box-shadow:0 1px 2px rgba(0,0,0,.6);
+}
+.spruch-tafel::before{left:11px}
+.spruch-tafel::after{right:11px}
+.spruch-tafel .zitat{
+  font-family:'Caveat',cursive;font-weight:700;font-size:clamp(1.5rem,4vw,1.9rem);
+  color:var(--creme);text-shadow:0 2px 0 rgba(0,0,0,.45);line-height:1.15;
+}
+
+/* ---------- Jahres-Unternavigation (z.B. Alm 2026) ---------- */
+.jahr-nav{
+  background:rgba(217,154,60,.14);
+  border-bottom:1px solid rgba(217,154,60,.4);
+}
+.jahr-nav-innen{
+  max-width:1060px;margin:0 auto;padding:0 14px;
+  display:flex;align-items:center;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+}
+.jahr-nav .jahr-label{
+  font-family:'Caveat',cursive;font-weight:700;font-size:1.1rem;color:var(--schwammerl-hell);
+  padding:8px 10px 7px;white-space:nowrap;
+}
+.jahr-nav a{
+  color:var(--creme);text-decoration:none;font-size:.8rem;padding:9px 11px 7px;
+  white-space:nowrap;border-bottom:2px solid transparent;
+}
+.jahr-nav a:hover{color:var(--schwammerl-hell)}
+.jahr-nav a.aktiv{color:var(--schwammerl-hell);border-bottom-color:var(--schwammerl-hell)}
+/* Klone der Jahr-Navigation (nur im mobilen Burger-Menü sichtbar) am Desktop ausblenden */
+.alm-nav a.nav-link.nav-sub{display:none}
+
+/* ---------- Hütten-Status-Karten (Hütten-Suche & Jahresseiten) ---------- */
+.huetten{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:640px){ .huetten{grid-template-columns:repeat(2,1fr)} }
+.huette{
+  background:linear-gradient(180deg,var(--creme),#efe4cb);
+  border-radius:14px;padding:18px 18px 16px;position:relative;
+  box-shadow:0 8px 22px rgba(0,0,0,.4);
+  border-top:6px solid var(--holz-grau);
+}
+.huette.status-angebot{border-top-color:var(--tanne)}
+.huette.status-abgesagt{border-top-color:var(--geranie)}
+.huette.status-offen{border-top-color:var(--schwammerl)}
+.huette.status-nein{border-top-color:var(--holz-grau)}
+.huette.top-kandidat{grid-column:1/-1;background:linear-gradient(180deg,#f7f0dd,#eee1c2)}
+.huette h3{font-size:1.15rem;font-weight:800;margin-bottom:2px}
+.huette .rolle{font-size:.78rem;color:var(--holz);font-style:italic;margin-bottom:10px}
+.badge{display:inline-block;font-size:.74rem;font-weight:600;letter-spacing:.05em;padding:4px 12px;border-radius:999px;color:#fff}
+.badge.angebot{background:var(--tanne)}
+.badge.abgesagt{background:var(--geranie)}
+.badge.offen{background:var(--schwammerl)}
+.badge.nein{background:var(--holz-grau)}
+.huette p{font-size:.86rem;margin-top:10px;color:#4a3a28;line-height:1.5}
+.huette a{color:var(--tanne);font-weight:600;text-decoration:none;border-bottom:1px dotted var(--tanne)}
+.huette a:hover{color:var(--tanne-hell)}
+.angebot-details{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px}
+@media (min-width:640px){ .angebot-details{grid-template-columns:repeat(3,1fr)} }
+.ang{background:rgba(61,90,63,.09);border:1px solid rgba(61,90,63,.25);border-radius:10px;padding:10px 12px;font-size:.82rem;line-height:1.45}
+.ang strong{display:block;font-size:.95rem;color:var(--tanne)}
+.warnung{
+  margin-top:14px;background:rgba(184,69,47,.1);border-left:4px solid var(--geranie);
+  border-radius:0 8px 8px 0;padding:10px 14px;font-size:.84rem;line-height:1.5;
+}
+.stand{color:var(--nebel);font-size:.78rem;margin-top:12px;font-style:italic;text-align:right}
+
+/* ---------- Such-Portale (Link-Karten) ---------- */
+.links{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:640px){ .links{grid-template-columns:repeat(2,1fr)} }
+@media (min-width:1024px){ .links{grid-template-columns:repeat(4,1fr)} }
+.link-karte{
+  display:block;background:linear-gradient(180deg,var(--creme),#efe4cb);
+  border-radius:12px;padding:16px 18px;text-decoration:none;color:var(--tinte);
+  box-shadow:0 6px 16px rgba(0,0,0,.35);border-left:5px solid var(--tanne);
+  transition:transform .15s, box-shadow .15s;
+}
+.link-karte:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.45)}
+.link-karte strong{display:block;font-size:1rem}
+.link-karte span{font-size:.8rem;color:var(--holz)}
+.link-karte .url{color:var(--tanne);font-size:.78rem;font-weight:600;display:block;margin-top:6px}
+
+/* ---------- Galerie (Masonry – natürliche Seitenverhältnisse) ---------- */
+.galerie{columns:2;column-gap:14px}
+@media (min-width:640px){ .galerie{columns:3} }
+@media (min-width:1024px){ .galerie{columns:4} }
+.polaroid{
+  position:relative;display:inline-block;width:100%;margin:0 0 14px;break-inside:avoid;
+  background:#fdfaf2;padding:8px 8px 10px;border-radius:4px;
+  box-shadow:0 6px 16px rgba(0,0,0,.45);
+  transform:rotate(var(--rot,0deg));
+  transition:transform .2s, box-shadow .2s;
+  cursor:pointer;border:none;text-align:center;font:inherit;
+}
+.polaroid:hover,.polaroid:focus-visible,.polaroid:focus-within{transform:rotate(0) scale(1.03);box-shadow:0 12px 26px rgba(0,0,0,.55)}
+.polaroid img{width:100%;height:auto;display:block;border-radius:2px}
+.polaroid figcaption{
+  font-family:'Caveat',cursive;font-size:1.1rem;color:#4a3a28;padding-top:6px;
+}
+.galerie .polaroid:nth-child(4n+1){--rot:-.8deg}
+.galerie .polaroid:nth-child(4n+2){--rot:.6deg}
+.galerie .polaroid:nth-child(4n+3){--rot:-.5deg}
+.galerie .polaroid:nth-child(4n+4){--rot:.8deg}
+@media (prefers-reduced-motion: reduce){
+  .polaroid{transform:none;transition:none}
+  .polaroid:hover{transform:none}
+}
+
+/* Lightbox */
+dialog.lightbox{
+  border:none;background:rgba(20,14,8,.92);width:100vw;height:100vh;max-width:100vw;max-height:100vh;
+  display:none;align-items:center;justify-content:center;padding:24px;
+}
+dialog.lightbox[open]{display:flex}
+dialog.lightbox img{max-width:min(92vw,1000px);max-height:82vh;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.8)}
+dialog.lightbox .lb-text{
+  position:absolute;bottom:26px;left:0;right:0;text-align:center;
+  font-family:'Caveat',cursive;font-size:1.6rem;color:var(--creme);
+}
+dialog.lightbox .lb-close{
+  position:absolute;top:14px;right:18px;background:none;border:none;color:var(--creme);
+  font-size:2.2rem;cursor:pointer;line-height:1;
+}
+dialog.lightbox .lb-pfeil{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(244,236,217,.15);border:none;color:var(--creme);
+  font-size:2.6rem;line-height:1;cursor:pointer;border-radius:50%;
+  width:54px;height:54px;display:flex;align-items:center;justify-content:center;
+}
+dialog.lightbox .lb-pfeil:hover{background:rgba(244,236,217,.3)}
+dialog.lightbox .lb-zurueck{left:14px}
+dialog.lightbox .lb-vor{right:14px}
+
+/* ---------- Foto-Upload (2026-Album) ---------- */
+.foto-upload{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.foto-upload input[type=text]{flex:1;min-width:140px}
+.foto-upload input[type=file]{flex:2;min-width:220px;color:var(--tinte);font-size:.85rem}
+.upload-status{margin-top:10px;font-size:.85rem;color:var(--holz);min-height:1.2em}
+.upload-status.fehler{color:var(--geranie)}
+.upload-status.erfolg{color:var(--tanne)}
+.polaroid .foto-oeffnen{
+  display:block;width:100%;background:none;border:none;padding:0;margin:0;
+  cursor:pointer;text-align:center;font:inherit;color:inherit;
+}
+.polaroid .foto-loeschen{
+  position:absolute;top:4px;right:4px;z-index:2;background:rgba(46,35,24,.75);color:#fff;
+  border:none;border-radius:50%;width:26px;height:26px;font-size:.9rem;line-height:1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .15s;
+}
+.polaroid:hover .foto-loeschen,.polaroid:focus-within .foto-loeschen{opacity:1}
+.polaroid .foto-loeschen:hover{background:var(--geranie)}
+.galerie-leer{color:var(--creme);font-style:italic;text-align:center;padding:30px 10px}
+
+/* ---------- Truppe ---------- */
+.truppe{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:640px){ .truppe{grid-template-columns:repeat(2,1fr)} }
+@media (min-width:1024px){ .truppe{grid-template-columns:repeat(4,1fr)} }
+.familie{
+  background:linear-gradient(180deg,var(--creme),#efe4cb);
+  border-radius:14px;padding:16px 18px;box-shadow:0 8px 22px rgba(0,0,0,.4);
+  border-top:6px solid var(--schwammerl);
+}
+.familie h3{font-family:'Caveat',cursive;font-size:1.5rem;color:var(--holz-dunkel)}
+.familie ul{list-style:none;margin-top:8px}
+.familie li{padding:5px 0;border-bottom:1px dashed rgba(90,65,48,.25);font-size:.92rem}
+.familie li:last-child{border-bottom:none}
+.familie li::before{content:"🥾";margin-right:8px;font-size:.85rem}

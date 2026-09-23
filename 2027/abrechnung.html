@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abrechnung – Urlaub auf der Alm 2027</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../alm.css">
+</head>
+<body>
+
+<nav class="alm-nav" aria-label="Hauptnavigation">
+  <div class="nav-innen">
+    <a class="logo" href="../index.html">🏔️ Almurlaub</a>
+    <a class="nav-link" href="../index.html">Historie</a>
+    <a class="nav-link aktiv" href="index.html">Alm 2027</a>
+    <a class="nav-link" href="../2026/index.html">Alm 2026</a>
+    <a class="nav-link" href="../packliste.html">Packliste</a>
+    <a class="nav-link" href="../huettensuche.html">Hütten-Suche</a>
+    <a class="nav-link abmelden" href="../logout.php" title="Abmelden – zurück zur Bierparole">🍺 Abmelden</a>
+  </div>
+</nav>
+<div class="jahr-nav" aria-label="Alm 2027 Unterseiten">
+  <div class="jahr-nav-innen">
+    <span class="jahr-label">Alm 2027</span>
+    <a href="index.html">Übersicht</a>
+    <a href="einkauf.html">🛒 Einkaufsliste</a>
+    <a href="abrechnung.html" class="aktiv">💰 Abrechnung</a>
+    <a href="fotos.html">📸 Fotos</a>
+    <a href="bierrechner.html">🍺 Bierrechner</a>
+  </div>
+</div>
+
+<header class="seitenkopf">
+  <h1>Abrechnung 💰</h1>
+  <div class="untertitel">Alle Ausgaben eintragen – die Bilanz rechnet sich von selbst. Gleiches Prinzip wie im 2025er-Sheet.</div>
+</header>
+
+<main class="wrap">
+
+  <div class="wer-leiste">
+    <div class="links-teil" style="font-size:.88rem">
+      <strong>So geht's:</strong>&nbsp;Ausgaben unten eintragen, Übernachtungen je Partei pflegen – fertig.
+    </div>
+    <span class="sync-status" id="sync"><span class="punkt"></span>verbinde …</span>
+  </div>
+
+  <section>
+    <div class="sek-titel"><span class="em">🧾</span><h2>Ausgaben</h2><div class="linie"></div></div>
+    <div class="karte">
+      <div class="tab-scroll">
+        <table class="tabelle" id="ausgaben-tabelle">
+          <thead>
+            <tr><th>Was</th><th>Wer hat gezahlt</th><th style="text-align:right">Betrag</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="neu-zeile">
+        <input type="text" id="a-text" placeholder="z.B. Einkaufen 1, Hoslbegga, Pfand (negativ) …">
+        <select id="a-partei"></select>
+        <input type="number" id="a-betrag" step="0.01" placeholder="€" style="max-width:110px">
+        <button class="btn" id="a-btn">+ Eintragen</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sek-titel"><span class="em">🛏️</span><h2>Übernachtungen &amp; Anzahlungen</h2><div class="linie"></div></div>
+    <div class="karte">
+      <div class="tab-scroll">
+        <table class="tabelle" id="parteien-tabelle">
+          <thead>
+            <tr><th>Partei</th><th style="text-align:right">Übernachtungen (alle Personen zusammen)</th><th style="text-align:right">Extra-Anzahlung €</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="neu-zeile">
+        <input type="text" id="p-name" placeholder="Neue Partei (z.B. Ott)">
+        <button class="btn sekundaer" id="p-btn">+ Partei hinzufügen</button>
+      </div>
+    </div>
+    <div class="hinweis-band">
+      💡 <strong>Übernachtungen zählen:</strong> Personen × Nächte. Beispiel: 4 Leute × 7 Nächte = 28.
+      Wer nur Mo–Mi dabei ist, zählt entsprechend weniger. <strong>Extra-Anzahlung</strong> = Geld, das jemand
+      zusätzlich zu seinen Ausgaben schon in die Kasse gegeben hat.
+    </div>
+  </section>
+
+  <section>
+    <div class="sek-titel"><span class="em">⚖️</span><h2>Bilanz</h2><div class="linie"></div></div>
+    <div class="summen-band" id="summen"></div>
+    <div class="karte" style="margin-top:14px">
+      <div class="tab-scroll">
+        <table class="tabelle" id="bilanz-tabelle">
+          <thead>
+            <tr><th>Partei</th><th class="zahl">Übern.</th><th class="zahl">Kosten</th><th class="zahl">Ausgaben</th><th class="zahl">Anzahlung</th><th class="zahl">Bilanz</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p style="font-size:.8rem;color:var(--holz);margin-top:12px;font-style:italic">
+        Kosten = Übernachtungen × Kosten je Übernachtung. Bilanz = Ausgaben + Anzahlung − Kosten.
+        <span class="minus">Rot = muss noch zahlen</span>, <span class="plus">grün = bekommt zurück</span>.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span class="feuer">🔥</span>
+    Almurlaub-Abrechnung &middot; live geteilt &middot; Vorlage: Hüttenurlaub 2025
+  </footer>
+</main>
+
+<script>
+(function(){
+  var API = '../api.php?doc=abrechnung2027';
+  var STANDARD_PARTEIEN = [
+    ["p1","Pappenberger"], ["p2","Bernecker"], ["p3","Billinger"], ["p4","Baule"], ["p5","Blaume"]
+  ];
+  var state = {};
+  var syncEl = document.getElementById('sync');
+
+  function esc(s){ var d=document.createElement('div'); d.textContent=(s==null?'':s); return d.innerHTML; }
+  function eur(n){ return (Math.round(n*100)/100).toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})+' €'; }
+  function num(v){ var n=parseFloat(String(v==null?'':v).replace(',','.')); return isNaN(n)?0:n; }
+
+  function parteien(){
+    var p = state.parteien || {};
+    return Object.keys(p).sort().map(function(id){ return {id:id, name:p[id].name||'?', naechte:num(p[id].naechte), anzahlung:num(p[id].anzahlung)}; });
+  }
+  function ausgaben(){
+    var a = state.ausgaben || {};
+    return Object.keys(a).sort().map(function(id){ return {id:id, text:a[id].text||'', partei:a[id].partei||'', betrag:num(a[id].betrag)}; });
+  }
+
+  function render(){
+    var ps = parteien(), as = ausgaben();
+    var pName = {}; ps.forEach(function(p){ pName[p.id]=p.name; });
+
+    /* Ausgaben-Tabelle */
+    var atb = document.querySelector('#ausgaben-tabelle tbody');
+    atb.innerHTML = '';
+    if (!as.length) atb.innerHTML = '<tr><td colspan="4" style="color:var(--holz-grau);font-style:italic">Noch keine Ausgaben eingetragen.</td></tr>';
+    as.forEach(function(a){
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td>'+esc(a.text)+'</td><td>'+esc(pName[a.partei]||'?')+'</td>' +
+        '<td class="zahl">'+eur(a.betrag)+'</td>' +
+        '<td><button class="loeschen" data-adel="'+a.id+'" title="Löschen">✕</button></td>';
+      atb.appendChild(tr);
+    });
+
+    /* Parteien-Tabelle */
+    var ptb = document.querySelector('#parteien-tabelle tbody');
+    ptb.innerHTML = '';
+    ps.forEach(function(p){
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td><input type="text" value="'+esc(p.name)+'" data-pfeld="name" data-pid="'+p.id+'"></td>' +
+        '<td class="zahl"><input type="number" class="naechte" min="0" step="1" value="'+(p.naechte||'')+'" data-pfeld="naechte" data-pid="'+p.id+'"></td>' +
+        '<td class="zahl"><input type="number" class="betrag" step="0.01" value="'+(p.anzahlung||'')+'" data-pfeld="anzahlung" data-pid="'+p.id+'"></td>' +
+        '<td><button class="loeschen" data-pdel="'+p.id+'" title="Partei löschen">✕</button></td>';
+      ptb.appendChild(tr);
+    });
+
+    /* Partei-Auswahl im Ausgaben-Formular */
+    var sel = document.getElementById('a-partei');
+    var alt = sel.value;
+    sel.innerHTML = '<option value="">– wer hat gezahlt? –</option>';
+    ps.forEach(function(p){ var o=document.createElement('option'); o.value=p.id; o.textContent=p.name; sel.appendChild(o); });
+    if (alt) sel.value = alt;
+
+    /* Bilanz */
+    var sumA = as.reduce(function(s,a){ return s+a.betrag; }, 0);
+    var sumN = ps.reduce(function(s,p){ return s+p.naechte; }, 0);
+    var satz = sumN > 0 ? sumA/sumN : 0;
+    document.getElementById('summen').innerHTML =
+      '<div class="summe"><div class="wert">'+eur(sumA)+'</div><div class="label">Ausgaben gesamt</div></div>' +
+      '<div class="summe"><div class="wert">'+sumN+'</div><div class="label">Übernachtungen gesamt</div></div>' +
+      '<div class="summe"><div class="wert">'+(sumN>0?eur(satz):'–')+'</div><div class="label">Kosten je Übernachtung</div></div>';
+
+    var btb = document.querySelector('#bilanz-tabelle tbody');
+    btb.innerHTML = '';
+    ps.forEach(function(p){
+      var gezahlt = as.filter(function(a){ return a.partei===p.id; }).reduce(function(s,a){ return s+a.betrag; }, 0);
+      var kosten = p.naechte * satz;
+      var bilanz = gezahlt + p.anzahlung - kosten;
+      var cls = bilanz < -0.005 ? 'minus' : (bilanz > 0.005 ? 'plus' : '');
+      var txt = bilanz < -0.005 ? eur(-bilanz)+' zahlen' : (bilanz > 0.005 ? eur(bilanz)+' zurück' : 'passt ✓');
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td><strong>'+esc(p.name)+'</strong></td>' +
+        '<td class="zahl">'+p.naechte+'</td>' +
+        '<td class="zahl">'+eur(kosten)+'</td>' +
+        '<td class="zahl">'+eur(gezahlt)+'</td>' +
+        '<td class="zahl">'+eur(p.anzahlung)+'</td>' +
+        '<td class="zahl '+cls+'">'+txt+'</td>';
+      btb.appendChild(tr);
+    });
+
+    verdrahten();
+  }
+
+  function verdrahten(){
+    document.querySelectorAll('[data-pfeld]').forEach(function(inp){
+      inp.addEventListener('change', function(){
+        var set = {};
+        set['parteien.'+inp.dataset.pid+'.'+inp.dataset.pfeld] = inp.value;
+        sende({set:set});
+      });
+    });
+    document.querySelectorAll('[data-pdel]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (!confirm('Partei wirklich löschen? Zugehörige Ausgaben bleiben, verlieren aber die Zuordnung.')) return;
+        sende({unset:['parteien.'+btn.dataset.pdel]});
+      });
+    });
+    document.querySelectorAll('[data-adel]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (!confirm('Diese Ausgabe löschen?')) return;
+        sende({unset:['ausgaben.'+btn.dataset.adel]});
+      });
+    });
+  }
+
+  function setStatus(ok, text){
+    syncEl.className = 'sync-status' + (ok ? '' : ' offline');
+    syncEl.innerHTML = '<span class="punkt"></span>' + esc(text);
+  }
+
+  var editingGuard = false;
+  function anwenden(json){
+    state = json.data || {};
+    if (!state.parteien || !Object.keys(state.parteien).length) {
+      /* Erststart: Standard-Parteien anlegen (feste IDs -> kein Duplikat bei Gleichzeitigkeit) */
+      var set = {};
+      STANDARD_PARTEIEN.forEach(function(p){ set['parteien.'+p[0]] = {name:p[1], naechte:'', anzahlung:''}; });
+      state.parteien = {};
+      STANDARD_PARTEIEN.forEach(function(p){ state.parteien[p[0]] = {name:p[1]}; });
+      fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({set:set})});
+    }
+    if (!editingGuard) render();
+    var t = new Date();
+    setStatus(true, 'live · Stand ' + ('0'+t.getHours()).slice(-2)+':'+('0'+t.getMinutes()).slice(-2)+':'+('0'+t.getSeconds()).slice(-2));
+  }
+
+  /* Während man in einem Feld tippt, nicht neu rendern (sonst springt der Cursor) */
+  document.addEventListener('focusin', function(e){ if (e.target.matches('input,select')) editingGuard = true; });
+  document.addEventListener('focusout', function(){ editingGuard = false; });
+
+  function lade(){
+    fetch(API).then(function(r){ return r.json(); }).then(anwenden)
+      .catch(function(){ setStatus(false, 'offline – versuche erneut …'); });
+  }
+  function sende(body){
+    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+      .then(function(r){ return r.json(); })
+      .then(function(j){ editingGuard=false; anwenden(j); })
+      .catch(function(){ setStatus(false,'Speichern fehlgeschlagen'); });
+  }
+
+  document.getElementById('a-btn').addEventListener('click', function(){
+    var t = document.getElementById('a-text').value.trim();
+    var p = document.getElementById('a-partei').value;
+    var b = num(document.getElementById('a-betrag').value);
+    if (!t || !p || !b) { alert('Bitte Beschreibung, Partei und Betrag angeben. (Pfand als negativen Betrag eintragen)'); return; }
+    var id = 'a' + Date.now();
+    var set = {}; set['ausgaben.'+id] = {text:t, partei:p, betrag:b};
+    sende({set:set});
+    document.getElementById('a-text').value = '';
+    document.getElementById('a-betrag').value = '';
+  });
+
+  document.getElementById('p-btn').addEventListener('click', function(){
+    var n = document.getElementById('p-name').value.trim();
+    if (!n) return;
+    var id = 'p' + Date.now();
+    var set = {}; set['parteien.'+id] = {name:n, naechte:'', anzahlung:''};
+    sende({set:set});
+    document.getElementById('p-name').value = '';
+  });
+
+  lade();
+  setInterval(lade, 5000);
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) lade(); });
+})();
+</script>
+<script src="../alm-nav.js" defer></script>
+</body>
+</html>

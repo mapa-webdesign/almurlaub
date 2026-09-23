@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urlaub auf der Alm 2026 – Hütten-Dashboard</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../alm.css">
+<style>
+  :root{
+    --holz-dunkel:#3a2a1c;
+    --holz:#5a4130;
+    --holz-hell:#7a5c42;
+    --holz-grau:#8a7a68;
+    --creme:#f4ecd9;
+    --creme-dunkel:#e8dcc0;
+    --schwammerl:#d99a3c;
+    --schwammerl-hell:#eab861;
+    --tanne:#3d5a3f;
+    --tanne-hell:#5a7d5c;
+    --geranie:#b8452f;
+    --nebel:#aebbc4;
+    --tinte:#2e2318;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Bitter',Georgia,serif;
+    color:var(--tinte);
+    background:
+      repeating-linear-gradient(90deg, rgba(0,0,0,.14) 0 2px, transparent 2px 138px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.02) 0 3px, transparent 3px 9px),
+      linear-gradient(180deg,#46331f 0%, #3a2a1c 40%, #33241a 100%);
+    min-height:100vh;
+  }
+  :focus-visible{outline:3px solid var(--schwammerl);outline-offset:3px;border-radius:4px}
+  .skip-link{position:absolute;top:-100%;left:1rem;background:var(--tanne);color:#fff;padding:.5rem 1rem;border-radius:0 0 6px 6px;z-index:9999;text-decoration:none}
+  .skip-link:focus{top:0}
+  .wrap{width:100%;max-width:1060px;margin:0 auto;padding:0 18px 60px}
+
+  /* ---------- Navigation ---------- */
+  .alm-nav{
+    position:sticky;top:0;z-index:50;
+    background:linear-gradient(180deg,#2c2013,#241a10);
+    border-bottom:3px solid var(--schwammerl);
+    box-shadow:0 4px 14px rgba(0,0,0,.5);
+  }
+  .alm-nav .nav-innen{
+    max-width:1060px;margin:0 auto;padding:0 14px;
+    display:flex;align-items:center;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  }
+  .alm-nav .logo{
+    font-family:'Caveat',cursive;font-size:1.35rem;font-weight:700;color:var(--schwammerl-hell);
+    text-decoration:none;padding:12px 10px 10px;white-space:nowrap;
+  }
+  .alm-nav a.nav-link{
+    color:var(--creme);text-decoration:none;font-size:.86rem;padding:14px 12px 12px;
+    white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;
+  }
+  .alm-nav a.nav-link:hover{color:var(--schwammerl-hell)}
+  .alm-nav a.nav-link.aktiv{color:var(--schwammerl-hell);border-bottom-color:var(--schwammerl-hell)}
+  .alm-nav a.nav-link.abmelden{margin-left:auto;color:var(--nebel);font-size:.78rem}
+  .alm-nav a.nav-link.abmelden:hover{color:var(--schwammerl-hell)}
+  .entwurf-chip{
+    display:inline-block;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+    background:var(--geranie);color:#fff;border-radius:999px;padding:2px 7px;margin-left:4px;vertical-align:2px;
+  }
+
+
+  /* ---------- Hero mit Panorama-Foto ---------- */
+  .hero{
+    position:relative;text-align:center;overflow:hidden;
+    background:url('../fotos/huetten/lorenzer.jpg') center 35%/cover no-repeat, var(--tanne);
+    padding:70px 16px 30px;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(30,22,12,.55) 0%, rgba(30,22,12,.25) 45%, rgba(51,36,26,.92) 100%);
+  }
+  .hero > *{position:relative;z-index:1}
+  h1{
+    font-family:'Caveat',cursive;font-weight:700;
+    font-size:clamp(2.8rem,7vw,4.6rem);
+    color:var(--creme);text-shadow:0 3px 12px rgba(0,0,0,.75);
+    letter-spacing:.5px;
+  }
+  .untertitel{
+    color:var(--creme);font-size:clamp(.95rem,2.2vw,1.2rem);
+    margin-top:6px;font-style:italic;text-shadow:0 2px 8px rgba(0,0,0,.8);
+  }
+  .antler{font-size:1.5rem;letter-spacing:.4em;color:var(--creme-dunkel);margin-top:12px;text-shadow:0 2px 6px rgba(0,0,0,.7)}
+
+  /* ---------- Countdown-Schild (schwebt über Hero-Kante) ---------- */
+  .schild-halter{display:flex;justify-content:center;margin:-90px auto 8px;position:relative;z-index:2;padding:0 18px;max-width:1060px}
+  .hero .platzhalter{height:120px}
+  .schild{
+    position:relative;
+    background:
+      repeating-linear-gradient(0deg, rgba(0,0,0,.07) 0 2px, transparent 2px 26px),
+      linear-gradient(180deg,#8a6a4a,#6e5138 55%,#5f452f);
+    border:5px solid #43301f;border-radius:14px;
+    padding:26px 30px 22px;
+    box-shadow:0 12px 30px rgba(0,0,0,.5), inset 0 2px 0 rgba(255,255,255,.15);
+    text-align:center;max-width:640px;width:100%;
+  }
+  .schild::before,.schild::after{
+    content:"";position:absolute;top:10px;width:10px;height:10px;border-radius:50%;
+    background:radial-gradient(circle at 35% 35%,#d8c8a8,#5b4630);box-shadow:0 1px 2px rgba(0,0,0,.6);
+  }
+  .schild::before{left:12px}
+  .schild::after{right:12px}
+  .schild h2{
+    font-family:'Caveat',cursive;font-size:1.7rem;font-weight:700;
+    color:var(--creme);text-shadow:0 1px 0 rgba(0,0,0,.5);margin-bottom:14px;
+  }
+  .cd{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+  .cd-box{
+    background:var(--creme);border-radius:10px;min-width:86px;padding:12px 8px 10px;flex:1 1 86px;max-width:130px;
+    box-shadow:inset 0 -4px 0 var(--creme-dunkel), 0 3px 8px rgba(0,0,0,.35);
+  }
+  .cd-zahl{font-size:clamp(1.9rem,6vw,2.9rem);font-weight:800;color:var(--holz-dunkel);line-height:1;font-variant-numeric:tabular-nums}
+  .cd-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--holz);margin-top:6px}
+  .cd-hinweis{color:var(--creme-dunkel);font-size:.85rem;margin-top:14px;font-style:italic}
+  .los{font-family:'Caveat',cursive;font-size:2.4rem;color:var(--schwammerl-hell)}
+
+  /* ---------- Eckdaten ---------- */
+  .eckdaten{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+    margin:30px 0 8px;
+  }
+  @media (min-width:640px){ .eckdaten{grid-template-columns:repeat(4,1fr)} }
+  .eck{
+    background:rgba(244,236,217,.08);border:1px solid rgba(244,236,217,.22);
+    border-radius:12px;padding:14px 12px;text-align:center;color:var(--creme);
+  }
+  .eck .icon{font-size:1.5rem}
+  .eck .wert{font-weight:800;font-size:1rem;margin-top:4px}
+  .eck .label{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--nebel);margin-top:2px}
+
+  /* ---------- Sektionen ---------- */
+  section{margin-top:44px}
+  .sek-titel{display:flex;align-items:center;gap:12px;margin-bottom:16px;color:var(--creme)}
+  .sek-titel h2{font-family:'Caveat',cursive;font-size:2rem;font-weight:700}
+  .sek-titel .linie{flex:1;height:2px;background:linear-gradient(90deg,rgba(244,236,217,.4),transparent)}
+  .sek-titel .em{font-size:1.5rem}
+  .karte{
+    background:linear-gradient(180deg,var(--creme),#efe4cb);
+    border-radius:14px;padding:20px 22px;
+    box-shadow:0 8px 22px rgba(0,0,0,.4);
+    border:1px solid rgba(0,0,0,.15);
+  }
+
+  /* ---------- Hütten ---------- */
+  .huetten{display:grid;grid-template-columns:1fr;gap:14px}
+  @media (min-width:640px){ .huetten{grid-template-columns:repeat(2,1fr)} }
+  .huette{
+    background:linear-gradient(180deg,var(--creme),#efe4cb);
+    border-radius:14px;padding:18px 18px 16px;position:relative;
+    box-shadow:0 8px 22px rgba(0,0,0,.4);
+    border-top:6px solid var(--holz-grau);
+  }
+  .huette.status-angebot{border-top-color:var(--tanne)}
+  .huette.status-abgesagt{border-top-color:var(--geranie)}
+  .huette.status-offen{border-top-color:var(--schwammerl)}
+  .huette.status-nein{border-top-color:var(--holz-grau)}
+  .huette.top-kandidat{grid-column:1/-1;background:linear-gradient(180deg,#f7f0dd,#eee1c2)}
+  .huette h3{font-size:1.15rem;font-weight:800;margin-bottom:2px}
+  .huette .rolle{font-size:.78rem;color:var(--holz);font-style:italic;margin-bottom:10px}
+  .badge{
+    display:inline-block;font-size:.74rem;font-weight:600;letter-spacing:.05em;
+    padding:4px 12px;border-radius:999px;color:#fff;
+  }
+  .badge.angebot{background:var(--tanne)}
+  .badge.abgesagt{background:var(--geranie)}
+  .badge.offen{background:var(--schwammerl)}
+  .badge.nein{background:var(--holz-grau)}
+  .huette p{font-size:.86rem;margin-top:10px;color:#4a3a28;line-height:1.5}
+  .huette a{color:var(--tanne);font-weight:600;text-decoration:none;border-bottom:1px dotted var(--tanne)}
+  .huette a:hover{color:var(--tanne-hell)}
+  .angebot-details{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px}
+  @media (min-width:640px){ .angebot-details{grid-template-columns:repeat(3,1fr)} }
+  .ang{background:rgba(61,90,63,.09);border:1px solid rgba(61,90,63,.25);border-radius:10px;padding:10px 12px;font-size:.82rem;line-height:1.45}
+  .ang strong{display:block;font-size:.95rem;color:var(--tanne)}
+  .warnung{
+    margin-top:14px;background:rgba(184,69,47,.1);border-left:4px solid var(--geranie);
+    border-radius:0 8px 8px 0;padding:10px 14px;font-size:.84rem;line-height:1.5;
+  }
+  .stand{color:var(--nebel);font-size:.78rem;margin-top:12px;font-style:italic;text-align:right}
+
+  /* ---------- Truppe ---------- */
+  .truppe{display:grid;grid-template-columns:1fr;gap:14px}
+  @media (min-width:640px){ .truppe{grid-template-columns:repeat(2,1fr)} }
+  @media (min-width:1024px){ .truppe{grid-template-columns:repeat(4,1fr)} }
+  .familie{
+    background:linear-gradient(180deg,var(--creme),#efe4cb);
+    border-radius:14px;padding:16px 18px;box-shadow:0 8px 22px rgba(0,0,0,.4);
+    border-top:6px solid var(--schwammerl);
+  }
+  .familie h3{font-family:'Caveat',cursive;font-size:1.5rem;color:var(--holz-dunkel)}
+  .familie ul{list-style:none;margin-top:8px}
+  .familie li{padding:5px 0;border-bottom:1px dashed rgba(90,65,48,.25);font-size:.92rem}
+  .familie li:last-child{border-bottom:none}
+  .familie li::before{content:"🥾";margin-right:8px;font-size:.85rem}
+
+  /* ---------- Listen (To-Dos & Packliste) ---------- */
+  .liste{list-style:none}
+  .liste li{
+    display:flex;align-items:flex-start;gap:11px;
+    padding:9px 4px;border-bottom:1px dashed rgba(90,65,48,.3);
+  }
+  .liste li:last-child{border-bottom:none}
+  .liste input[type=checkbox]{
+    appearance:none;width:21px;height:21px;flex:none;margin-top:1px;
+    border:2px solid var(--holz);border-radius:5px;background:#fff;cursor:pointer;position:relative;
+  }
+  .liste input[type=checkbox]:checked{background:var(--tanne);border-color:var(--tanne)}
+  .liste input[type=checkbox]:checked::after{
+    content:"✓";color:#fff;font-weight:800;position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;font-size:.9rem;
+  }
+  .liste label{cursor:pointer;font-size:.92rem;line-height:1.45}
+  .liste input:checked + label{text-decoration:line-through;color:var(--holz-grau)}
+  .liste .frist{display:block;font-size:.75rem;color:var(--geranie);font-style:italic}
+
+  .pack-gruppen{display:grid;grid-template-columns:1fr;gap:14px}
+  @media (min-width:640px){ .pack-gruppen{grid-template-columns:repeat(2,1fr)} }
+  .pack-gruppe h3{
+    font-family:'Caveat',cursive;font-size:1.45rem;color:var(--holz-dunkel);
+    border-bottom:2px solid var(--schwammerl);padding-bottom:4px;margin-bottom:6px;
+  }
+  .fortschritt{margin-top:16px;background:rgba(90,65,48,.18);border-radius:999px;height:14px;overflow:hidden}
+  .fortschritt div{height:100%;width:0;background:linear-gradient(90deg,var(--schwammerl),var(--schwammerl-hell));transition:width .3s;border-radius:999px}
+  .fortschritt-text{font-size:.8rem;color:var(--holz);margin-top:6px;text-align:right;font-style:italic}
+
+  footer{text-align:center;color:var(--nebel);font-size:.82rem;margin-top:56px;font-style:italic;padding-bottom:20px}
+  footer .feuer{font-size:1.6rem;display:block;margin-bottom:8px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<nav class="alm-nav" aria-label="Hauptnavigation">
+  <div class="nav-innen">
+    <a class="logo" href="../index.html">🏔️ Almurlaub</a>
+    <a class="nav-link" href="../index.html">Historie</a>
+    <a class="nav-link" href="../2027/index.html">Alm 2027</a>
+    <a class="nav-link aktiv" href="index.html">Alm 2026</a>
+    <a class="nav-link" href="../packliste.html">Packliste</a>
+    <a class="nav-link" href="../huettensuche.html">Hütten-Suche</a>
+    <a class="nav-link abmelden" href="../logout.php" title="Abmelden – zurück zur Bierparole">🍺 Abmelden</a>
+  </div>
+</nav>
+<div class="jahr-nav" aria-label="Alm 2026 Unterseiten">
+  <div class="jahr-nav-innen">
+    <span class="jahr-label">Alm 2026 · Archiv</span>
+    <a href="index.html" class="aktiv">Übersicht</a>
+    <a href="einkauf.html">🛒 Einkaufsliste</a>
+    <a href="abrechnung.html">💰 Abrechnung</a>
+    <a href="fotos.html">📸 Fotos</a>
+    <a href="bierrechner.html">🍺 Bierrechner</a>
+  </div>
+</div>
+
+<header class="hero" role="banner">
+  <h1>Urlaub auf der Alm 2026</h1>
+  <div class="untertitel">Selbstversorgerhütte &middot; drei Familien plus Anhang &middot; Berg, Knödel &amp; Eierschwammerl</div>
+  <div class="antler">⛰ 🍄 🔥 ⛰</div>
+  <div class="platzhalter"></div>
+</header>
+
+<main id="main" class="wrap" role="main">
+
+  <!-- Countdown -->
+  <div class="schild-halter">
+    <div class="schild">
+      <h2>Noch so lange bis zur Abfahrt am 25. Juli …</h2>
+      <div class="cd" id="countdown">
+        <div class="cd-box"><div class="cd-zahl" id="cd-tage">–</div><div class="cd-label">Tage</div></div>
+        <div class="cd-box"><div class="cd-zahl" id="cd-std">–</div><div class="cd-label">Stunden</div></div>
+        <div class="cd-box"><div class="cd-zahl" id="cd-min">–</div><div class="cd-label">Minuten</div></div>
+        <div class="cd-box"><div class="cd-zahl" id="cd-sek">–</div><div class="cd-label">Sekunden</div></div>
+      </div>
+      <div class="cd-hinweis">🎉 Es geht auf die <strong>Lorenzer Hütte</strong> – zum 12. Mal!</div>
+    </div>
+  </div>
+
+  <!-- Eckdaten -->
+  <div class="eckdaten">
+    <div class="eck"><div class="icon">📅</div><div class="wert">25.07. – 01.08.2026</div><div class="label">Zeitraum</div></div>
+    <div class="eck"><div class="icon">🏔️</div><div class="wert">Kärnten</div><div class="label">Region</div></div>
+    <div class="eck"><div class="icon">🏡</div><div class="wert">Lorenzer Hütte ✔</div><div class="label">Gebucht!</div></div>
+    <div class="eck"><div class="icon">👨‍👩‍👧‍👦</div><div class="wert">11 Personen</div><div class="label">Heuer dabei</div></div>
+  </div>
+
+  <!-- Hüttenstatus -->
+  <section id="huetten" aria-label="Hütten-Status">
+    <div class="sek-titel"><span class="em">🏚️</span><h2>Hütten-Status</h2><div class="linie"></div></div>
+    <div class="huetten">
+
+      <div class="huette status-angebot top-kandidat">
+        <h3>Lorenzer Hütte 🎉</h3>
+        <div class="rolle">Unser Stammhaus – Kärnten · zum 12. Mal!</div>
+        <span class="badge angebot">GEBUCHT für 25.07.–01.08.</span>
+        <p>Kurzfristig frei geworden und sofort zugeschlagen! <a href="https://www.bergwelten.com/t/b/23018" target="_blank" rel="noopener">Zur Hütten-Seite</a></p>
+        <div class="angebot-details">
+          <div class="ang"><strong>140 € / Nacht</strong>7 Nächte = 980 € für die Hütte</div>
+          <div class="ang"><strong>25.07. – 01.08.</strong>Anreise Samstag, Abreise Samstag</div>
+          <div class="ang"><strong>11 Leut'</strong>Pappenberger, Robert, Bettina, Franz, Andreas, Baule, Blaume &amp; Ott</div>
+        </div>
+      </div>
+
+      <div class="huette status-abgesagt">
+        <h3>Sonnalmhütte</h3>
+        <div class="rolle">Stubeck Sonnalm 57, 9853 Gmünd (Kärnten)</div>
+        <span class="badge abgesagt">Von uns abgesagt</span>
+        <p>Angebot A2026-00061 (2.177,60 €) lag vor – nachdem die Lorenzer Hütte frei wurde, haben wir dankend abgesagt. <a href="https://www.urlaubambauernhof.at/hoefe/sonnalmhuette" target="_blank" rel="noopener">Zur Hütten-Seite</a></p>
+      </div>
+
+      <div class="huette status-abgesagt">
+        <h3>Kreuzwirthütte</h3>
+        <div class="rolle">Ursprüngliche Buchung</div>
+        <span class="badge abgesagt">Doppelt vergeben – geplatzt</span>
+        <p>War fest gebucht für 25.07.–01.08. Am 10.07. kam die Nachricht: Die Hütte wurde doppelt vergeben. <a href="https://kreuzwirthuette.jimdofree.com" target="_blank" rel="noopener">Zur Hütten-Website</a></p>
+      </div>
+
+
+
+      <div class="huette status-nein">
+        <h3>Hoisen Hütte</h3>
+        <div class="rolle">Alternative</div>
+        <span class="badge nein">Nicht frei</span>
+        <p>Angefragt – im Zeitraum leider bereits belegt. <a href="https://hoisenhuette.at" target="_blank" rel="noopener">Zur Hütten-Website</a> (wird gerade überarbeitet)</p>
+      </div>
+
+      <div class="huette status-nein">
+        <h3>Obere Roner Kasa</h3>
+        <div class="rolle">Alternative</div>
+        <span class="badge nein">Nicht frei</span>
+        <p>Angefragt – im Zeitraum leider bereits belegt. <a href="https://www.urlaubambauernhof.at/de/hoefe/ronerkasa" target="_blank" rel="noopener">Zur Hütten-Seite</a></p>
+      </div>
+
+      <div class="huette status-nein">
+        <h3>Kreuzerhütte</h3>
+        <div class="rolle">Alternative</div>
+        <span class="badge nein">Nicht frei – Absage 11.07.</span>
+        <p>25.07.–01.08. bereits vermietet, erst ab September wieder frei. <a href="https://www.kreuzer-almhaus.at" target="_blank" rel="noopener">Zur Hütten-Website</a> · <a href="mailto:kreuzer-almhaus@gmx.at">kreuzer-almhaus@gmx.at</a></p>
+      </div>
+    </div>
+    <div class="stand">Stand: 12.07.2026 – GEBUCHT! 🍺</div>
+  </section>
+
+  <!-- Truppe -->
+  <section id="truppe" aria-label="Die Truppe">
+    <div class="sek-titel"><span class="em">🥾</span><h2>Heuer dabei – 11 Leut'</h2><div class="linie"></div></div>
+    <div class="truppe">
+      <div class="familie">
+        <h3>Familie Pappenberger</h3>
+        <ul><li>Martl</li><li>Manu</li><li>Max</li><li>Alois</li></ul>
+      </div>
+      <div class="familie">
+        <h3>Familie Bernecker</h3>
+        <ul><li>Robert</li><li>Bettina</li></ul>
+      </div>
+      <div class="familie">
+        <h3>Familie Billinger</h3>
+        <ul><li>Franz</li><li>Andreas</li></ul>
+      </div>
+      <div class="familie">
+        <h3>Und außerdem</h3>
+        <ul><li>Da Baule</li><li>Da Blaume</li><li>Da Ott</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- To-Dos -->
+  <section id="todos" aria-label="Nächste Schritte">
+    <div class="sek-titel"><span class="em">📝</span><h2>Nächste Schritte</h2><div class="linie"></div></div>
+    <div class="karte">
+      <ul class="liste" data-live="todos">
+        <li><input type="checkbox" id="td10"><label for="td10"><strong>Familien informieren: Es geht auf die Lorenzer Hütte! 🎉</strong></label></li>
+        <li><input type="checkbox" id="td9"><label for="td9"><strong>Zahlungsmodalitäten mit der Lorenzer Hütte klären</strong> (Anzahlung? 980 € gesamt)</label></li>
+        <li><input type="checkbox" id="td3"><label for="td3">Alle <strong>Familien über die Absage</strong> der Kreuzwirthütte informieren</label></li>
+        <li><input type="checkbox" id="td4"><label for="td4"><strong>Anzahlung / Buchungsbestätigung</strong> der Kreuzwirthütte klären (Rückerstattung?)</label></li>
+        <li><input type="checkbox" id="td8"><label for="td8"><strong>Einkaufsliste finalisieren</strong> (steht noch auf Entwurf)</label></li>
+      </ul>
+    </div>
+    <div class="hinweis-band" style="margin-top:10px;font-size:.8rem">
+      ✅ Diese Haken werden <strong>für alle geteilt</strong> gespeichert – einmal abgehakt, bei jedem sichtbar.
+    </div>
+  </section>
+
+  <!-- Galerie -->
+  <section id="galerie" aria-label="Impressionen">
+    <div class="sek-titel"><span class="em">📸</span><h2>So schaut's aus bei uns</h2><div class="linie"></div></div>
+    <div class="galerie">
+      <button class="polaroid" data-gross="../fotos/panorama.jpg" data-text="Zaun mit Aussicht"><img src="../fotos/panorama.jpg" alt="Alter Holzzaun vor grünem Bergtal" loading="lazy" width="1100" height="733"><figcaption>Zaun mit Aussicht</figcaption></button>
+      <button class="polaroid" data-gross="../fotos/huettentuer.jpg" data-text="Weidmannsheil!"><img src="../fotos/huettentuer.jpg" alt="Urige Hüttentür mit Hirschgeweih und Geranien" loading="lazy" width="825" height="1100"><figcaption>Weidmannsheil!</figcaption></button>
+      <button class="polaroid" data-gross="../fotos/schwammerl.jpg" data-text="Ausbeute des Tages"><img src="../fotos/schwammerl.jpg" alt="Sackerl voller frisch gesammelter Eierschwammerl" loading="lazy" width="825" height="1100"><figcaption>Ausbeute des Tages</figcaption></button>
+      <button class="polaroid" data-gross="../fotos/schwammerlpfanne.jpg" data-text="Schwammerl in der Pfanne"><img src="../fotos/schwammerlpfanne.jpg" alt="Gebratene Eierschwammerl mit Petersilie in der Pfanne" loading="lazy" width="1100" height="825"><figcaption>Schwammerl in der Pfanne</figcaption></button>
+      <button class="polaroid" data-gross="../fotos/schwammerlrahm.jpg" data-text="Schwammerlrahm & Knödel"><img src="../fotos/schwammerlrahm.jpg" alt="Eierschwammerl-Rahmsauce mit Semmelknödeln auf Holztisch" loading="lazy" width="1100" height="825"><figcaption>Schwammerlrahm &amp; Knödel</figcaption></button>
+      <button class="polaroid" data-gross="../fotos/knoedel.jpg" data-text="Knödel-Produktion"><img src="../fotos/knoedel.jpg" alt="Großer Topf voller Semmelknödel" loading="lazy" width="1100" height="825"><figcaption>Knödel-Produktion</figcaption></button>
+      <button class="polaroid" data-gross="../fotos/grillen.jpg" data-text="Grillen am Feuer"><img src="../fotos/grillen.jpg" alt="Mariniertes Grillfleisch auf dem Rost über der Feuerstelle" loading="lazy" width="825" height="1100"><figcaption>Grillen am Feuer</figcaption></button>
+      <button class="polaroid" data-gross="../fotos/braten.jpg" data-text="Braten aus dem Holzofen"><img src="../fotos/braten.jpg" alt="Schweinsbraten mit Kartoffeln in der Bratreine" loading="lazy" width="825" height="1100"><figcaption>Braten aus dem Holzofen</figcaption></button>
+      <button class="polaroid" data-gross="../fotos/ofenbrot.jpg" data-text="Frisch aus dem Ofen"><img src="../fotos/ofenbrot.jpg" alt="Zwei Kastenformen im Holzofen" loading="lazy" width="1100" height="825"><figcaption>Frisch aus dem Ofen</figcaption></button>
+      <button class="polaroid" data-gross="../fotos/herd.jpg" data-text="Die Hüttenküche"><img src="../fotos/herd.jpg" alt="Alter Holzherd in der Hüttenküche mit Blick zur Tür" loading="lazy" width="1100" height="825"><figcaption>Die Hüttenküche</figcaption></button>
+      <button class="polaroid" data-gross="../fotos/lagerfeuer.jpg" data-text="Lagerfeuer-Abende"><img src="../fotos/lagerfeuer.jpg" alt="Lagerfeuer bei Nacht" loading="lazy" width="825" height="1100"><figcaption>Lagerfeuer-Abende</figcaption></button>
+      <button class="polaroid" data-gross="../fotos/nebelmeer.jpg" data-text="Morgens überm Nebel"><img src="../fotos/nebelmeer.jpg" alt="Nebelmeer im Tal mit Berggipfeln" loading="lazy" width="1100" height="733"><figcaption>Morgens überm Nebel</figcaption></button>
+      <button class="polaroid" data-gross="../fotos/talblick.jpg" data-text="Gipfelblick ins Tal"><img src="../fotos/talblick.jpg" alt="Blick vom Berg hinunter ins grüne Tal" loading="lazy" width="1100" height="825"><figcaption>Gipfelblick ins Tal</figcaption></button>
+      <button class="polaroid" data-gross="../fotos/regenschirm.jpg" data-text="Auch Regen gehört dazu"><img src="../fotos/regenschirm.jpg" alt="Regennasse Hüttenterrasse mit Sonnenschirm" loading="lazy" width="1100" height="825"><figcaption>Auch Regen gehört dazu</figcaption></button>
+    </div>
+    <div class="hinweis-band" style="margin-top:10px">
+      📸 Das sind Eindrücke aus früheren Jahren. Eure eigenen Fotos vom heurigen Urlaub gehören ins <a href="fotos.html" style="color:var(--schwammerl-hell)">Foto-Album 2026 →</a>
+    </div>
+  </section>
+
+  <footer role="contentinfo">
+    <span class="feuer">🔥</span>
+    Almurlaub-Dashboard &middot; Stand 11.07.2026 &middot; Haken werden lokal im Browser gespeichert
+  </footer>
+</main>
+
+<dialog class="lightbox" id="lightbox" aria-label="Foto in groß">
+  <button class="lb-close" aria-label="Schließen">×</button>
+  <button class="lb-pfeil lb-zurueck" aria-label="Vorheriges Foto">‹</button>
+  <button class="lb-pfeil lb-vor" aria-label="Nächstes Foto">›</button>
+  <img src="" alt="">
+  <div class="lb-text"></div>
+</dialog>
+
+<script>
+(function(){
+  /* ---------- Countdown ---------- */
+  var ziel = new Date(2026, 6, 25, 0, 0, 0); // 25.07.2026, lokale Zeit
+  var elT = document.getElementById('cd-tage'),
+      elS = document.getElementById('cd-std'),
+      elM = document.getElementById('cd-min'),
+      elSek = document.getElementById('cd-sek');
+
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  function tick(){
+    var diff = ziel - new Date();
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML =
+        '<div class="los">Es geht los – ab auf die Alm! 🏔️🎉</div>';
+      clearInterval(timer);
+      return;
+    }
+    var s = Math.floor(diff / 1000);
+    elT.textContent = Math.floor(s / 86400);
+    elS.textContent = pad(Math.floor(s % 86400 / 3600));
+    elM.textContent = pad(Math.floor(s % 3600 / 60));
+    elSek.textContent = pad(s % 60);
+  }
+  var timer = setInterval(tick, 1000);
+  tick();
+
+  /* ---------- Checklisten mit localStorage ---------- */
+  var listen = document.querySelectorAll('.liste[data-speicher]');
+
+  function packStand(){
+    var alle = document.querySelectorAll('.pack-gruppen input[type=checkbox]');
+    var an = document.querySelectorAll('.pack-gruppen input[type=checkbox]:checked');
+    if (!alle.length) return;
+    var pz = Math.round(an.length / alle.length * 100);
+    var balken = document.getElementById('pack-balken');
+    var text = document.getElementById('pack-text');
+    if (balken) balken.style.width = pz + '%';
+    if (text) text.textContent = pz + ' % gepackt (' + an.length + ' von ' + alle.length + ')';
+  }
+
+  listen.forEach(function(liste){
+    var key = liste.getAttribute('data-speicher');
+    var gespeichert = {};
+    try { gespeichert = JSON.parse(localStorage.getItem(key) || '{}'); } catch(e){}
+    var boxen = liste.querySelectorAll('input[type=checkbox]');
+    boxen.forEach(function(box){
+      if (gespeichert[box.id]) box.checked = true;
+      box.addEventListener('change', function(){
+        var stand = {};
+        boxen.forEach(function(b){ if (b.checked) stand[b.id] = true; });
+        try { localStorage.setItem(key, JSON.stringify(stand)); } catch(e){}
+        packStand();
+      });
+    });
+  });
+  packStand();
+
+  /* ---------- Lightbox mit Vor/Zurück ---------- */
+  var lb = document.getElementById('lightbox');
+  var lbImg = lb.querySelector('img');
+  var lbText = lb.querySelector('.lb-text');
+  var polas = Array.prototype.slice.call(document.querySelectorAll('.polaroid'));
+  var lbIndex = 0;
+
+  function zeige(i){
+    lbIndex = (i + polas.length) % polas.length;
+    var p = polas[lbIndex];
+    lbImg.src = p.getAttribute('data-gross');
+    lbImg.alt = p.querySelector('img').alt;
+    lbText.textContent = p.getAttribute('data-text');
+  }
+  polas.forEach(function(p, i){
+    p.addEventListener('click', function(){
+      zeige(i);
+      if (lb.showModal) lb.showModal(); else lb.setAttribute('open','');
+    });
+  });
+  lb.querySelector('.lb-vor').addEventListener('click', function(e){ e.stopPropagation(); zeige(lbIndex+1); });
+  lb.querySelector('.lb-zurueck').addEventListener('click', function(e){ e.stopPropagation(); zeige(lbIndex-1); });
+  lb.addEventListener('click', function(e){
+    if (e.target === lb || e.target.classList.contains('lb-close')) {
+      if (lb.close) lb.close(); else lb.removeAttribute('open');
+      lbImg.src = '';
+    }
+  });
+  document.addEventListener('keydown', function(e){
+    if (!lb.open) return;
+    if (e.key === 'ArrowRight') zeige(lbIndex+1);
+    if (e.key === 'ArrowLeft') zeige(lbIndex-1);
+    if (e.key === 'Escape') { if (lb.close) lb.close(); lbImg.src=''; }
+  });
+
+  /* ---------- Live-To-Dos (geteilt über API, doc=todos) ---------- */
+  var todoListe = document.querySelector('.liste[data-live="todos"]');
+  if (todoListe) {
+    var TAPI = '../api.php?doc=todos';
+    var tBoxen = todoListe.querySelectorAll('input[type=checkbox]');
+    function tAnwenden(json){
+      var d = (json.data || {}).haken || {};
+      tBoxen.forEach(function(b){
+        if (document.activeElement !== b) b.checked = !!d[b.id];
+      });
+    }
+    function tLaden(){
+      fetch(TAPI).then(function(r){ return r.json(); }).then(tAnwenden).catch(function(){});
+    }
+    tBoxen.forEach(function(b){
+      b.addEventListener('change', function(){
+        var set = {}; set['haken.'+b.id] = b.checked;
+        fetch(TAPI, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({set:set})})
+          .then(function(r){ return r.json(); }).then(tAnwenden).catch(function(){});
+      });
+    });
+    tLaden();
+    setInterval(tLaden, 5000);
+  }
+})();
+</script>
+<script src="../alm-nav.js" defer></script>
+</body>
+</html>

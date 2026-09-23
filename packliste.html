@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Packliste – Urlaub auf der Alm</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="alm.css">
+</head>
+<body>
+
+<nav class="alm-nav" aria-label="Hauptnavigation">
+  <div class="nav-innen">
+    <a class="logo" href="index.html">🏔️ Almurlaub</a>
+    <a class="nav-link" href="index.html">Historie</a>
+    <a class="nav-link" href="2027/index.html">Alm 2027</a>
+    <a class="nav-link" href="2026/index.html">Alm 2026</a>
+    <a class="nav-link aktiv" href="packliste.html">Packliste</a>
+    <a class="nav-link" href="huettensuche.html">Hütten-Suche</a>
+    <a class="nav-link abmelden" href="logout.php" title="Abmelden – zurück zur Bierparole">🍺 Abmelden</a>
+  </div>
+</nav>
+
+<header class="seitenkopf">
+  <h1>Packliste 🎒</h1>
+  <div class="untertitel">Damit nix daheim bleibt – Haken werden lokal in deinem Browser gespeichert.</div>
+</header>
+
+<main class="wrap">
+  <section>
+    <div class="karte">
+      <div class="pack-gruppen">
+        <div class="pack-gruppe">
+          <h3>Kochen</h3>
+          <ul class="liste" data-speicher="alm-pack-kochen">
+            <li><input type="checkbox" id="pk1"><label for="pk1">Küchenmesser</label></li>
+            <li><input type="checkbox" id="pk2"><label for="pk2">Grillzange</label></li>
+            <li><input type="checkbox" id="pk3"><label for="pk3">Gewürze</label></li>
+            <li><input type="checkbox" id="pk4"><label for="pk4">Gaskocher</label></li>
+            <li><input type="checkbox" id="pk5"><label for="pk5">Knödlbrot</label></li>
+          </ul>
+        </div>
+        <div class="pack-gruppe">
+          <h3>Lagerfeuer</h3>
+          <ul class="liste" data-speicher="alm-pack-lagerfeuer">
+            <li><input type="checkbox" id="pf1"><label for="pf1">Messer</label></li>
+            <li><input type="checkbox" id="pf2"><label for="pf2">Öllampe</label></li>
+            <li><input type="checkbox" id="pf3"><label for="pf3">Lampenöl</label></li>
+            <li><input type="checkbox" id="pf4"><label for="pf4">Grillspieße</label></li>
+            <li><input type="checkbox" id="pf5"><label for="pf5">Dutch Oven</label></li>
+            <li><input type="checkbox" id="pf6"><label for="pf6">Unterstell-Rost</label></li>
+          </ul>
+        </div>
+        <div class="pack-gruppe">
+          <h3>Hütte</h3>
+          <ul class="liste" data-speicher="alm-pack-huette">
+            <li><input type="checkbox" id="ph1"><label for="ph1">Kärnten-Ordner</label></li>
+            <li><input type="checkbox" id="ph2"><label for="ph2">Stirnlampe</label></li>
+            <li><input type="checkbox" id="ph3"><label for="ph3">230V-Konverter</label></li>
+            <li><input type="checkbox" id="ph4"><label for="ph4">Apotheke</label></li>
+            <li><input type="checkbox" id="ph5"><label for="ph5">Gaslampe</label></li>
+            <li><input type="checkbox" id="ph6"><label for="ph6">Zeitschriften</label></li>
+            <li><input type="checkbox" id="ph7"><label for="ph7">Bierfilzel</label></li>
+            <li><input type="checkbox" id="ph8"><label for="ph8">Schmal</label></li>
+            <li><input type="checkbox" id="ph9"><label for="ph9">Karten &amp; Führer</label></li>
+            <li><input type="checkbox" id="ph10"><label for="ph10">iPad mit Kinder-TV</label></li>
+            <li><input type="checkbox" id="ph11"><label for="ph11">Spätzlesieb</label></li>
+            <li><input type="checkbox" id="ph12"><label for="ph12">Waage</label></li>
+            <li><input type="checkbox" id="ph13"><label for="ph13">Müllbeutel</label></li>
+            <li><input type="checkbox" id="ph14"><label for="ph14">Gefrierbeutel</label></li>
+            <li><input type="checkbox" id="ph15"><label for="ph15">Klippsal</label></li>
+            <li><input type="checkbox" id="ph16"><label for="ph16">BILLA-Karte</label></li>
+          </ul>
+        </div>
+        <div class="pack-gruppe">
+          <h3>Kleidung für …</h3>
+          <ul class="liste" data-speicher="alm-pack-kleidung">
+            <li><input type="checkbox" id="pl1"><label for="pl1">Hütte</label></li>
+            <li><input type="checkbox" id="pl2"><label for="pl2">Lagerfeuer</label></li>
+            <li><input type="checkbox" id="pl3"><label for="pl3">Bergsteigen</label></li>
+            <li><input type="checkbox" id="pl4"><label for="pl4">City</label></li>
+            <li><input type="checkbox" id="pl5"><label for="pl5">Baden</label></li>
+            <li><input type="checkbox" id="pl6"><label for="pl6">Leiberl zum Wandern</label></li>
+            <li><input type="checkbox" id="pl7"><label for="pl7">Haum</label></li>
+            <li><input type="checkbox" id="pl8"><label for="pl8">Handschuhe</label></li>
+            <li><input type="checkbox" id="pl9"><label for="pl9">Hut / Kappe</label></li>
+          </ul>
+        </div>
+        <div class="pack-gruppe">
+          <h3>Persönlich &amp; Vorbereitung</h3>
+          <ul class="liste" data-speicher="alm-pack-persoenlich">
+            <li><input type="checkbox" id="pp1"><label for="pp1">Kulturbeutel</label></li>
+            <li><input type="checkbox" id="pp2"><label for="pp2">Akkus laden</label></li>
+            <li><input type="checkbox" id="pp3"><label for="pp3">Gaskartuschen u. Lampenöl kaufen</label></li>
+          </ul>
+        </div>
+        <div class="pack-gruppe">
+          <h3>Kinderrucksack</h3>
+          <ul class="liste" data-speicher="alm-pack-kinder">
+            <li><input type="checkbox" id="pc1"><label for="pc1">Trinkflasche</label></li>
+            <li><input type="checkbox" id="pc2"><label for="pc2">Schokolade</label></li>
+            <li><input type="checkbox" id="pc3"><label for="pc3">Taschenlampe</label></li>
+            <li><input type="checkbox" id="pc4"><label for="pc4">Kindermesser</label></li>
+            <li><input type="checkbox" id="pc5"><label for="pc5">Mütze (kalt u. warm)</label></li>
+          </ul>
+        </div>
+        <div class="pack-gruppe">
+          <h3>1. Einkauf (vor Ort)</h3>
+          <ul class="liste" data-speicher="alm-pack-einkauf1">
+            <li><input type="checkbox" id="pe1"><label for="pe1">Spülmittel, -lappen, -schwamm</label></li>
+            <li><input type="checkbox" id="pe2"><label for="pe2">Anzünder &amp; Zündhölzer</label></li>
+            <li><input type="checkbox" id="pe3"><label for="pe3">Grillschalen</label></li>
+            <li><input type="checkbox" id="pe4"><label for="pe4">Klopapier &amp; Küchenrolle</label></li>
+            <li><input type="checkbox" id="pe5"><label for="pe5">Kasbreziner</label></li>
+            <li><input type="checkbox" id="pe6"><label for="pe6">Kartoffeln</label></li>
+            <li><input type="checkbox" id="pe7"><label for="pe7">Alufolie</label></li>
+          </ul>
+        </div>
+        <div class="pack-gruppe">
+          <h3>Großeinkauf</h3>
+          <ul class="liste">
+            <li style="border-bottom:none"><label style="cursor:default">🛒 Der komplette Lebensmittel-Einkauf hat eine eigene Seite mit Live-Abhaken für alle: <a href="2026/einkauf.html" style="color:var(--tanne);font-weight:700">Zur Einkaufsliste →</a></label></li>
+          </ul>
+        </div>
+      </div>
+      <div class="fortschritt"><div id="pack-balken"></div></div>
+      <div class="fortschritt-text" id="pack-text">0 % gepackt</div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="feuer">🔥</span>
+    Almurlaub-Packliste &middot; Vorlage: Notion
+  </footer>
+</main>
+
+<script>
+(function(){
+  var listen = document.querySelectorAll('.liste[data-speicher]');
+  function packStand(){
+    var alle = document.querySelectorAll('.pack-gruppen input[type=checkbox]');
+    var an = document.querySelectorAll('.pack-gruppen input[type=checkbox]:checked');
+    if (!alle.length) return;
+    var pz = Math.round(an.length / alle.length * 100);
+    var balken = document.getElementById('pack-balken');
+    var text = document.getElementById('pack-text');
+    if (balken) balken.style.width = pz + '%';
+    if (text) text.textContent = pz + ' % gepackt (' + an.length + ' von ' + alle.length + ')';
+  }
+  listen.forEach(function(liste){
+    var key = liste.getAttribute('data-speicher');
+    var gespeichert = {};
+    try { gespeichert = JSON.parse(localStorage.getItem(key) || '{}'); } catch(e){}
+    var boxen = liste.querySelectorAll('input[type=checkbox]');
+    boxen.forEach(function(box){
+      if (gespeichert[box.id]) box.checked = true;
+      box.addEventListener('change', function(){
+        var stand = {};
+        boxen.forEach(function(b){ if (b.checked) stand[b.id] = true; });
+        try { localStorage.setItem(key, JSON.stringify(stand)); } catch(e){}
+        packStand();
+      });
+    });
+  });
+  packStand();
+})();
+</script>
+<script src="alm-nav.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bierrechner – Urlaub auf der Alm 2027</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../alm.css">
+</head>
+<body>
+
+<nav class="alm-nav" aria-label="Hauptnavigation">
+  <div class="nav-innen">
+    <a class="logo" href="../index.html">🏔️ Almurlaub</a>
+    <a class="nav-link" href="../index.html">Historie</a>
+    <a class="nav-link aktiv" href="index.html">Alm 2027</a>
+    <a class="nav-link" href="../2026/index.html">Alm 2026</a>
+    <a class="nav-link" href="../packliste.html">Packliste</a>
+    <a class="nav-link" href="../huettensuche.html">Hütten-Suche</a>
+    <a class="nav-link abmelden" href="../logout.php" title="Abmelden – zurück zur Bierparole">🍺 Abmelden</a>
+  </div>
+</nav>
+<div class="jahr-nav" aria-label="Alm 2027 Unterseiten">
+  <div class="jahr-nav-innen">
+    <span class="jahr-label">Alm 2027</span>
+    <a href="index.html">Übersicht</a>
+    <a href="einkauf.html">🛒 Einkaufsliste</a>
+    <a href="abrechnung.html">💰 Abrechnung</a>
+    <a href="fotos.html">📸 Fotos</a>
+    <a href="bierrechner.html" class="aktiv">🍺 Bierrechner</a>
+  </div>
+</div>
+
+<header class="seitenkopf">
+  <h1>Bierrechner 🍻</h1>
+  <div class="untertitel">Wissenschaftlich vollkommen fundierte Bedarfsermittlung: Übernachtungen × Durst = die Wahrheit.</div>
+</header>
+
+<main class="wrap">
+
+  <div class="wer-leiste">
+    <div class="links-teil" style="font-size:.88rem">
+      <strong>So geht's:</strong>&nbsp;Für jede Person Übernachtungen und Biere pro Tag eintragen – der Rest rechnet sich von selbst.
+    </div>
+    <span class="sync-status" id="sync"><span class="punkt"></span>verbinde …</span>
+  </div>
+
+  <section>
+    <div class="sek-titel"><span class="em">🍺</span><h2>Wer trinkt wie viel?</h2><div class="linie"></div></div>
+    <div class="karte">
+      <div class="tab-scroll">
+        <table class="tabelle" id="bier-tabelle">
+          <thead>
+            <tr><th>Person</th><th style="text-align:right">Übernachtungen</th><th style="text-align:right">🍺 Biere / Tag</th><th style="text-align:right">= Biere gesamt</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sek-titel"><span class="em">📦</span><h2>Ergebnis</h2><div class="linie"></div></div>
+    <div class="summen-band" id="summen"></div>
+    <div class="hinweis-band" id="urteil" style="margin-top:14px"></div>
+  </section>
+
+  <footer>
+    <span class="feuer">🔥</span>
+    Almurlaub-Bierrechner 2027 &middot; 1 Kasten = 20 Bier
+  </footer>
+</main>
+
+<script>
+(function(){
+  var API = '../api.php?doc=bier2027';
+  var PERSONEN = [
+    ["p1","Martl"],["p2","Manu"],["p3","Max"],["p4","Alois"],
+    ["p5","Robert"],["p6","Bettina"],["p7","Franz"],["p8","Andi"],
+    ["p9","Baule"],["p10","Blaume"]
+  ];
+  var state = {};
+  var syncEl = document.getElementById('sync');
+  var editingGuard = false;
+
+  function num(v){ var n=parseFloat(String(v==null?'':v).replace(',','.')); return isNaN(n)?0:n; }
+  function esc(s){ var d=document.createElement('div'); d.textContent=(s==null?'':s); return d.innerHTML; }
+  function fmt(n){ return (Math.round(n*10)/10).toLocaleString('de-DE'); }
+
+  function personen(){
+    var p = state.personen || {};
+    return PERSONEN.map(function(pp){
+      var d = p[pp[0]] || {};
+      return {id:pp[0], name:pp[1], naechte:num(d.naechte), proTag:num(d.proTag)};
+    });
+  }
+
+  function render(){
+    var ps = personen();
+    var tb = document.querySelector('#bier-tabelle tbody');
+    tb.innerHTML = '';
+    var gesamt = 0;
+    ps.forEach(function(p){
+      var eigene = p.naechte * p.proTag;
+      gesamt += eigene;
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td><strong>'+esc(p.name)+'</strong></td>' +
+        '<td class="zahl"><input type="number" class="naechte" min="0" step="1" value="'+(p.naechte||'')+'" data-pfeld="naechte" data-pid="'+p.id+'"></td>' +
+        '<td class="zahl"><input type="number" class="protag" min="0" step="0.5" value="'+(p.proTag||'')+'" data-pfeld="proTag" data-pid="'+p.id+'"></td>' +
+        '<td class="zahl">'+fmt(eigene)+'</td>';
+      tb.appendChild(tr);
+    });
+
+    var kaesten = gesamt / 20;
+    var kaestenAuf = Math.ceil(kaesten);
+    document.getElementById('summen').innerHTML =
+      '<div class="summe"><div class="wert">'+fmt(gesamt)+'</div><div class="label">Biere gesamt</div></div>' +
+      '<div class="summe"><div class="wert">'+fmt(kaesten)+'</div><div class="label">Kästen (genau)</div></div>' +
+      '<div class="summe"><div class="wert">'+kaestenAuf+'</div><div class="label">Kästen zum Bestellen</div></div>';
+
+    var urteil = document.getElementById('urteil');
+    if (gesamt === 0) {
+      urteil.innerHTML = '🤔 Noch keine Angaben – trag oben ein, wer wie durstig ist.';
+    } else if (kaesten < 5) {
+      urteil.innerHTML = '😬 Das wird knapp mager für eine Almwoche. Lieber nochmal nachdenken!';
+    } else if (kaesten < 15) {
+      urteil.innerHTML = '👍 Solide Grundversorgung – passt schon.';
+    } else {
+      urteil.innerHTML = '🍻 Respekt! Da bleibt niemand auf dem Trockenen.';
+    }
+
+    verdrahten();
+  }
+
+  function verdrahten(){
+    document.querySelectorAll('[data-pfeld]').forEach(function(inp){
+      inp.addEventListener('change', function(){
+        var set = {};
+        set['personen.'+inp.dataset.pid+'.'+inp.dataset.pfeld] = inp.value;
+        sende({set:set});
+      });
+    });
+  }
+
+  function setStatus(ok, text){
+    syncEl.className = 'sync-status' + (ok ? '' : ' offline');
+    syncEl.innerHTML = '<span class="punkt"></span>' + esc(text);
+  }
+
+  function anwenden(json){
+    state = json.data || {};
+    if (!editingGuard) render();
+    var t = new Date();
+    setStatus(true, 'live · Stand ' + ('0'+t.getHours()).slice(-2)+':'+('0'+t.getMinutes()).slice(-2)+':'+('0'+t.getSeconds()).slice(-2));
+  }
+
+  /* Während man tippt, nicht neu rendern (sonst springt der Cursor) */
+  document.addEventListener('focusin', function(e){ if (e.target.matches('input')) editingGuard = true; });
+  document.addEventListener('focusout', function(){ editingGuard = false; });
+
+  function lade(){
+    fetch(API).then(function(r){ return r.json(); }).then(anwenden)
+      .catch(function(){ setStatus(false, 'offline – versuche erneut …'); });
+  }
+  function sende(body){
+    fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)})
+      .then(function(r){ return r.json(); })
+      .then(function(j){ editingGuard=false; anwenden(j); })
+      .catch(function(){ setStatus(false, 'Speichern fehlgeschlagen'); lade(); });
+  }
+
+  lade();
+  setInterval(lade, 4000);
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) lade(); });
+})();
+</script>
+<script src="../alm-nav.js" defer></script>
+</body>
+</html>

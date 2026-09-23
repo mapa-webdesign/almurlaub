@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Einkaufsliste – Urlaub auf der Alm 2027</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../alm.css">
+<style>
+  .ansicht-schalter{display:flex;background:rgba(58,42,28,.35);border-radius:12px;padding:4px;margin:0 0 16px}
+  .ansicht-schalter button{flex:1;font-family:'Bitter',Georgia,serif;font-size:.85rem;font-weight:700;padding:10px 8px;border:none;border-radius:9px;background:transparent;color:var(--nebel);cursor:pointer}
+  .ansicht-schalter button.aktiv{background:var(--schwammerl);color:#2e2318}
+  .personen-leiste{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+  .personen-leiste label{color:var(--nebel);font-size:.85rem}
+  .personen-leiste select{font-family:'Bitter',Georgia,serif;font-size:.9rem;padding:6px 10px;border-radius:8px;border:1px solid rgba(61,90,63,.4);background:var(--creme);color:var(--tinte)}
+  .personen-hinweis{color:var(--holz-grau);font-size:.76rem}
+  .ek-item .menge{font-weight:700;color:var(--tanne);white-space:nowrap}
+  .wofuer{display:block;font-size:.7rem;color:var(--holz-grau);margin-top:2px}
+  .wofuer .chip{display:inline-block;background:rgba(61,90,63,.16);border-radius:999px;padding:1px 7px;margin:2px 3px 0 0;font-size:.68rem;color:var(--tanne)}
+  .vorrat-note{display:block;font-size:.68rem;color:var(--holz-grau);font-style:italic;margin-top:1px}
+  .ek-item .wer-wrap{display:flex;align-items:center;gap:6px;margin-left:auto;flex:0 0 auto;padding-top:1px}
+  .wer-sel{font-family:'Bitter',Georgia,serif;font-size:.8rem;padding:5px 8px;border-radius:8px;border:1px solid rgba(61,90,63,.4);background:var(--creme);color:var(--tinte);cursor:pointer;max-width:116px}
+  .wer-sel:disabled{-webkit-appearance:none;appearance:none;background:rgba(61,90,63,.12);border-color:transparent;color:var(--tanne);font-weight:700;cursor:default;opacity:1}
+  .wer-lock{font-size:.85rem;line-height:1}
+  .rezept-kopf{display:inline-flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .rezept-portionen{font-size:.72rem;color:var(--holz-grau);font-weight:400}
+  .entwurf-chip{display:inline-block;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;background:var(--geranie);color:#fff;border-radius:999px;padding:2px 7px;vertical-align:2px}
+  @media (max-width:560px){.wer-sel{max-width:96px;font-size:.74rem;padding:4px 6px}.liste li{gap:8px}}
+</style>
+</head>
+<body>
+
+<nav class="alm-nav" aria-label="Hauptnavigation">
+  <div class="nav-innen">
+    <a class="logo" href="../index.html">🏔️ Almurlaub</a>
+    <a class="nav-link" href="../index.html">Historie</a>
+    <a class="nav-link aktiv" href="index.html">Alm 2027</a>
+    <a class="nav-link" href="../2026/index.html">Alm 2026</a>
+    <a class="nav-link" href="../packliste.html">Packliste</a>
+    <a class="nav-link" href="../huettensuche.html">Hütten-Suche</a>
+    <a class="nav-link abmelden" href="../logout.php" title="Abmelden – zurück zur Bierparole">🍺 Abmelden</a>
+  </div>
+</nav>
+<div class="jahr-nav" aria-label="Alm 2027 Unterseiten">
+  <div class="jahr-nav-innen">
+    <span class="jahr-label">Alm 2027</span>
+    <a href="index.html">Übersicht</a>
+    <a href="einkauf.html" class="aktiv">🛒 Einkaufsliste</a>
+    <a href="abrechnung.html">💰 Abrechnung</a>
+    <a href="fotos.html">📸 Fotos</a>
+    <a href="bierrechner.html">🍺 Bierrechner</a>
+  </div>
+</div>
+
+<header class="seitenkopf">
+  <h1>Einkaufsliste 🛒</h1>
+  <div class="untertitel">Zutaten je Gericht – zum Einkaufen alles zu einer Liste zusammengefasst. Wer abhakt, ist für alle sichtbar.</div>
+</header>
+
+<main class="wrap">
+  <div class="wer-leiste">
+    <div class="links-teil">
+      <label for="ich">Ich bin (optional):</label>
+      <select id="ich"><option value="">– bitte wählen –</option></select>
+    </div>
+    <span class="sync-status" id="sync"><span class="punkt"></span>verbinde …</span>
+  </div>
+
+  <section>
+    <div class="karte">
+      <div class="ansicht-schalter" role="tablist" aria-label="Ansicht wählen">
+        <button type="button" id="btn-kat" class="aktiv" role="tab" aria-selected="true">🛒 Nach Kategorie</button>
+        <button type="button" id="btn-rez" role="tab" aria-selected="false">🍳 Nach Rezept</button>
+      </div>
+      <div class="personen-leiste">
+        <label for="personen">Für wie viele?</label>
+        <select id="personen"></select>
+        <span class="personen-hinweis">Mengen rechnen sich automatisch um</span>
+      </div>
+      <div class="fortschritt"><div id="balken"></div></div>
+      <div class="fortschritt-text" id="stand">–</div>
+      <div id="ausgabe"></div>
+      <div class="neu-zeile">
+        <input type="text" id="neu-menge" placeholder="Wievui? (z.B. 2 Pck)" style="max-width:150px">
+        <input type="text" id="neu-text" placeholder="Wos? (eigener Punkt)">
+        <button class="btn" id="neu-btn">+ Hinzufügen</button>
+      </div>
+    </div>
+    <div class="hinweis-band">
+      💡 <strong>So läuft\'s:</strong> Jedes Gericht hat seine eigene Zutatenliste. Die <strong>Kategorie-Ansicht</strong>
+      fasst alles zusammen – gleiche Zutaten werden addiert, und du siehst, für welche Gerichte sie gebraucht werden.
+      Damit wird eingekauft. Die <strong>Rezept-Ansicht</strong> zeigt, was zu welchem Essen gehört.
+      Ein Haken gilt für die Zutat als Ganzes und ist in beiden Ansichten gesetzt.
+      Der Name lässt sich ändern, bis abgehakt ist – dann ist er fix (🔒).
+    </div>
+  </section>
+
+  <footer>
+    <span class="feuer">🔥</span>
+    Almurlaub-Einkaufsliste 2027 &middot; Zutaten je Gericht, zusammengefasst zum Einkaufen
+  </footer>
+</main>
+<script>
+(function(){
+  var NAMEN = ["Martl","Manu","Max","Alois","Franz","Andi","Baule","Blaume","Ott"];
+
+  /* ZUTATEN-KATALOG  id: {name, einheit, gruppe, fix?, wer?}
+     einheit "" = zaehlbare Sache; fix = feste Einkaufsmenge fuer Vorraete */
+  var KATALOG = {
+    rigatoni:          {name:"Rigatoni",                         einheit:"g",  gruppe:"Sonstiges"},
+    passierte_tomaten: {name:"Passierte Tomaten",                einheit:"g",  gruppe:"Sonstiges"},
+    eiertomaten:       {name:"Ganze Eiertomaten (Dose)",         einheit:"g",  gruppe:"Sonstiges"},
+    tomatenmark:       {name:"Tomatenmark",                      einheit:"g",  gruppe:"Sonstiges"},
+    kidneybohnen:      {name:"Kidney-Bohnen (Dosen)",            einheit:"",   gruppe:"Sonstiges"},
+    mais:              {name:"Mais (Dosen à 200 g)",             einheit:"",   gruppe:"Sonstiges"},
+    olivenoel:         {name:"Olivenöl",                         einheit:"ml", gruppe:"Sonstiges", fix:"1 Flasche"},
+    salz:              {name:"Salz",                             einheit:"TL", gruppe:"Sonstiges", fix:"1 kg"},
+    pfeffer:           {name:"Pfeffer, schwarz",                 einheit:"TL", gruppe:"Sonstiges", fix:"1 Pck"},
+    zucker:            {name:"Zucker",                           einheit:"TL", gruppe:"Sonstiges", fix:"1 kg"},
+    oregano:           {name:"Oregano, getrocknet",              einheit:"EL", gruppe:"Sonstiges", fix:"1 Pck"},
+    chiliflocken:      {name:"Chiliflocken",                     einheit:"TL", gruppe:"Sonstiges", fix:"1 Pck"},
+    hack:              {name:"Hackfleisch, gemischt",            einheit:"g",  gruppe:"Metzgerei"},
+    salsiccia:         {name:"Salsiccia / grobe Bratwürste",     einheit:"g",  gruppe:"Metzgerei"},
+    speck_wuerfel:     {name:"Speckwürfel (Pancetta)",           einheit:"g",  gruppe:"Metzgerei"},
+    rinderbein:        {name:"Rinderbeinscheiben",               einheit:"g",  gruppe:"Metzgerei"},
+    sahne:             {name:"Sahne",                            einheit:"ml", gruppe:"Milchprodukte"},
+    creme_fraiche:     {name:"Crème fraîche",                    einheit:"g",  gruppe:"Milchprodukte"},
+    saure_sahne:       {name:"Saure Sahne (Becher)",             einheit:"",   gruppe:"Milchprodukte"},
+    mozzarella:        {name:"Mozzarella-Kugeln (à 125 g)",      einheit:"",   gruppe:"Milchprodukte"},
+    parmesan:          {name:"Parmesan, gerieben",               einheit:"g",  gruppe:"Milchprodukte"},
+    reibekaese:        {name:"Reibekäse (Gouda / Bergkäse)",     einheit:"g",  gruppe:"Milchprodukte"},
+    zwiebeln:          {name:"Zwiebeln, groß",                   einheit:"",   gruppe:"Obst & Gemüse"},
+    knoblauch:         {name:"Knoblauchzehen",                   einheit:"",   gruppe:"Obst & Gemüse"},
+    paprika:           {name:"Paprikaschoten",                   einheit:"",   gruppe:"Obst & Gemüse"},
+    basilikum:         {name:"Basilikum, frisch (Bund)",         einheit:"",   gruppe:"Obst & Gemüse"},
+    rotwein:           {name:"Rotwein (zum Ablöschen)",          einheit:"ml", gruppe:"Getränke", fix:"1 Flasche"},
+    briketts:          {name:"Grillbriketts (Säcke)",            einheit:"",   gruppe:"Hütte"},
+    kuechenrolle:      {name:"Küchenrolle (Pck)",                einheit:"",   gruppe:"Hütte"},
+    klopapier:         {name:"Klopapier deluxe!! (Pck)",         einheit:"",   gruppe:"Hütte"},
+    ofenanzuender:     {name:"Ofenanzünder (Pck)",               einheit:"",   gruppe:"Hütte"},
+    muellbeutel:       {name:"Müllbeutel (Pck)",                 einheit:"",   gruppe:"Hütte"},
+    alufolie:          {name:"Alufolie (Pck)",                   einheit:"",   gruppe:"Hütte"},
+    spuelmittel:       {name:"Spülmittel (Pck)",                 einheit:"",   gruppe:"Hütte"},
+    spueltuecher:      {name:"Spültücher, Geschirrtücher (Pck)", einheit:"",   gruppe:"Hütte"},
+    dutch_oven:        {name:"Dutch Oven ft12",                  einheit:"",   gruppe:"Von daheim mitnehmen", wer:"Baule"},
+    knoedltopf:        {name:"Großer Kochtopf (Knedl / Nudeln)", einheit:"",   gruppe:"Von daheim mitnehmen", wer:"Andi"},
+    deckelheber:       {name:"Deckelheber + Kohlezange",         einheit:"",   gruppe:"Von daheim mitnehmen", wer:"Baule"},
+    pfannkuchenpfanne: {name:"Pfanne für Pfannkuchen",           einheit:"",   gruppe:"Von daheim mitnehmen", wer:"Baule"},
+    toasteisen:        {name:"Toast-Eisen",                      einheit:"",   gruppe:"Von daheim mitnehmen", wer:"Baule"},
+    motorsaege:        {name:"Motorsäge",                        einheit:"",   gruppe:"Von daheim mitnehmen", wer:"Andi"}
+  };
+
+  /* GERICHTE – neues Gericht: Block anhaengen, fehlende Zutaten oben eintragen */
+  var GERICHTE = [
+    { id:"rigatoni_porno", name:"Rigatoni al Porno", emoji:"🍝",
+      portionen:11, skaliert:true, notiz:"aus dem Dutch Oven",
+      zutaten:{ rigatoni:1200, olivenoel:45, speck_wuerfel:150, zwiebeln:3, knoblauch:6,
+        hack:1000, salsiccia:500, tomatenmark:150, rotwein:200, passierte_tomaten:1400,
+        zucker:1, oregano:2, chiliflocken:1, salz:2, pfeffer:1,
+        sahne:300, creme_fraiche:300, mozzarella:3, parmesan:150, reibekaese:300, basilikum:2 } },
+    { id:"chili", name:"Chili con Carne", emoji:"🌶️",
+      portionen:11, skaliert:true, entwurf:true, notiz:"Mengen aus der 2025er-Liste abgeleitet – bitte prüfen",
+      zutaten:{ rinderbein:3000, zwiebeln:4, knoblauch:6, olivenoel:40, tomatenmark:200,
+        eiertomaten:3200, kidneybohnen:4, mais:4, paprika:4, saure_sahne:2,
+        chiliflocken:2, salz:2, pfeffer:1 } },
+    { id:"grundbedarf", name:"Grundbedarf Hütte", emoji:"🏚️",
+      portionen:11, skaliert:false, notiz:"unabhängig von den Gerichten",
+      zutaten:{ briketts:3, kuechenrolle:1, klopapier:1, ofenanzuender:2,
+        muellbeutel:1, alufolie:1, spuelmittel:1, spueltuecher:1 } },
+    { id:"ausruestung", name:"Von daheim mitnehmen", emoji:"🎒",
+      portionen:11, skaliert:false, notiz:"kein Einkauf – wird eingepackt",
+      zutaten:{ dutch_oven:1, knoedltopf:1, deckelheber:1, pfannkuchenpfanne:2, toasteisen:1, motorsaege:1 } }
+  ];
+
+  var GRUPPEN = ["Von daheim mitnehmen","Metzgerei","Milchprodukte","Sonstiges","Obst & Gemüse","Getränke","Hütte","Eigene Punkte"];
+
+  var API='../api.php?doc=einkauf2027', state={items:{},custom:{}};
+  var ansicht = localStorage.getItem('alm-ek-ansicht') || 'kategorie';
+  var syncEl=document.getElementById('sync'), ausgabe=document.getElementById('ausgabe');
+
+  var ichSel=document.getElementById('ich');
+  NAMEN.forEach(function(n){var o=document.createElement('option');o.value=o.textContent=n;ichSel.appendChild(o);});
+  ichSel.value=localStorage.getItem('alm-ich')||'';
+  ichSel.addEventListener('change',function(){localStorage.setItem('alm-ich',ichSel.value);});
+
+  var personenSel=document.getElementById('personen');
+  for(var p=4;p<=24;p++){var o=document.createElement('option');o.value=String(p);o.textContent=String(p);personenSel.appendChild(o);}
+
+  function esc(s){var d=document.createElement('div');d.textContent=(s==null?'':s);return d.innerHTML;}
+  function personen(){return parseInt(state.personen,10)||11;}
+  function zustand(k){return (state.items||{})[k]||{};}
+
+  function runde(m,e){
+    if(e==='g'||e==='ml'){ if(m>=1000)return Math.round(m/50)*50; if(m>=200)return Math.round(m/10)*10;
+      if(m>=20)return Math.round(m/5)*5; return Math.max(1,Math.round(m)); }
+    if(e==='TL'||e==='EL')return Math.max(.5,Math.round(m*2)/2);
+    return Math.max(1,Math.ceil(m-1e-4));
+  }
+  function zeigeMenge(m,e){
+    var r=runde(m,e);
+    if(e==='g'&&r>=1000)return String(r/1000).replace('.',',')+' kg';
+    if(e==='ml'&&r>=1000)return String(r/1000).replace('.',',')+' l';
+    var t=String(Math.round(r*10)/10).replace('.',',');
+    return e? t+' '+e : t;
+  }
+  function zusammenfassen(){
+    var summe={}, anzahl=personen();
+    GERICHTE.forEach(function(g){
+      var mult=g.skaliert?(anzahl/g.portionen):1;
+      Object.keys(g.zutaten).forEach(function(z){
+        if(!KATALOG[z])return;
+        if(!summe[z])summe[z]={menge:0,gerichte:[]};
+        summe[z].menge+=g.zutaten[z]*mult;
+        if(summe[z].gerichte.indexOf(g.name)===-1)summe[z].gerichte.push(g.name);
+      });
+    });
+    return summe;
+  }
+  function optionen(name){
+    var bek=false, html='<option value="">– wer? –</option>';
+    NAMEN.forEach(function(n){ if(n===name)bek=true;
+      html+='<option'+(n===name?' selected':'')+'>'+esc(n)+'</option>'; });
+    if(name&&!bek)html='<option value="'+esc(name)+'" selected>'+esc(name)+'</option>'+html;
+    return html;
+  }
+  function zeile(key,mengeTxt,name,extra,vorschlag,loeschbar){
+    var st=zustand(key), done=!!st.done;
+    var wer=(st.wer!==undefined&&st.wer!==null)?st.wer:(vorschlag||'');
+    return '<li class="ek-item'+(done?' erledigt':'')+'">'+
+      '<input type="checkbox" data-key="'+esc(key)+'" id="cb-'+esc(key)+'"'+(done?' checked':'')+'>'+
+      '<label for="cb-'+esc(key)+'"><span class="txt"><span class="menge">'+esc(mengeTxt)+'</span> '+esc(name)+'</span>'+(extra||'')+'</label>'+
+      '<span class="wer-wrap">'+(done?'<span class="wer-lock" title="erledigt – Name gesperrt">🔒</span>':'')+
+      '<select class="wer-sel" data-key="'+esc(key)+'"'+(done?' disabled':'')+' aria-label="Wer besorgt das?">'+optionen(wer)+'</select></span>'+
+      (loeschbar?'<button class="loeschen" data-del="'+esc(key)+'" title="Punkt löschen">✕</button>':'')+'</li>';
+  }
+  function renderKategorie(summe,customs){
+    var pg={};
+    Object.keys(summe).forEach(function(z){var g=KATALOG[z].gruppe;(pg[g]=pg[g]||[]).push(z);});
+    customs.forEach(function(c){(pg['Eigene Punkte']=pg['Eigene Punkte']||[]).push('custom:'+c.id);});
+    var html='';
+    GRUPPEN.forEach(function(gr){
+      var ids=pg[gr]; if(!ids||!ids.length)return;
+      ids.sort(function(a,b){
+        var na=a.indexOf('custom:')===0?'zzz':KATALOG[a].name;
+        var nb=b.indexOf('custom:')===0?'zzz':KATALOG[b].name;
+        return na.localeCompare(nb,'de');});
+      var fertig=ids.filter(function(i){return zustand(i).done;}).length;
+      html+='<div class="ek-gruppe"><h3>'+esc(gr)+' <span class="zaehler">'+fertig+' / '+ids.length+'</span></h3><ul class="liste">';
+      ids.forEach(function(id){
+        if(id.indexOf('custom:')===0){
+          var c=customs.filter(function(x){return 'custom:'+x.id===id;})[0]||{};
+          html+=zeile(id,c.menge||'',c.text||'','','',true); return;
+        }
+        var k=KATALOG[id], s=summe[id];
+        var mt=k.fix?k.fix:zeigeMenge(s.menge,k.einheit);
+        var extra='<span class="wofuer">'+s.gerichte.map(function(n){return '<span class="chip">'+esc(n)+'</span>';}).join('')+'</span>';
+        if(k.fix)extra+='<span class="vorrat-note">Rezeptbedarf: '+esc(zeigeMenge(s.menge,k.einheit))+'</span>';
+        html+=zeile(id,mt,k.name,extra,k.wer);
+      });
+      html+='</ul></div>';
+    });
+    return html;
+  }
+  function renderRezept(customs){
+    var anzahl=personen(), html='';
+    GERICHTE.forEach(function(g){
+      var mult=g.skaliert?(anzahl/g.portionen):1;
+      var ids=Object.keys(g.zutaten).filter(function(z){return !!KATALOG[z];});
+      ids.sort(function(a,b){return KATALOG[a].name.localeCompare(KATALOG[b].name,'de');});
+      var fertig=ids.filter(function(z){return zustand(z).done;}).length;
+      html+='<div class="ek-gruppe"><h3><span class="rezept-kopf"><span>'+esc(g.emoji+' '+g.name)+'</span>'+
+        (g.entwurf?'<span class="entwurf-chip">Entwurf</span>':'')+
+        '<span class="rezept-portionen">'+(g.skaliert?('für '+anzahl+' Leut\''):'feste Menge')+
+        (g.notiz?' · '+esc(g.notiz):'')+'</span></span> <span class="zaehler">'+fertig+' / '+ids.length+'</span></h3><ul class="liste">';
+      ids.forEach(function(z){ var k=KATALOG[z];
+        html+=zeile(z,zeigeMenge(g.zutaten[z]*mult,k.einheit),k.name,'',k.wer); });
+      html+='</ul></div>';
+    });
+    if(customs.length){
+      var f=customs.filter(function(c){return zustand('custom:'+c.id).done;}).length;
+      html+='<div class="ek-gruppe"><h3>✍️ Eigene Punkte <span class="zaehler">'+f+' / '+customs.length+'</span></h3><ul class="liste">';
+      customs.forEach(function(c){html+=zeile('custom:'+c.id,c.menge||'',c.text||'','','',true);});
+      html+='</ul></div>';
+    }
+    return html;
+  }
+  function render(){
+    var summe=zusammenfassen();
+    var customs=Object.keys(state.custom||{}).map(function(id){
+      var c=state.custom[id]||{}; return {id:id,menge:c.menge,text:c.text};});
+    personenSel.value=String(personen());
+    var bk=document.getElementById('btn-kat'), br=document.getElementById('btn-rez');
+    bk.classList.toggle('aktiv',ansicht==='kategorie');
+    br.classList.toggle('aktiv',ansicht==='rezept');
+    bk.setAttribute('aria-selected',ansicht==='kategorie'?'true':'false');
+    br.setAttribute('aria-selected',ansicht==='rezept'?'true':'false');
+    ausgabe.innerHTML=(ansicht==='kategorie')?renderKategorie(summe,customs):renderRezept(customs);
+    var alle=Object.keys(summe).concat(customs.map(function(c){return 'custom:'+c.id;}));
+    var fertig=alle.filter(function(k){return zustand(k).done;}).length;
+    var pz=alle.length?Math.round(fertig/alle.length*100):0;
+    document.getElementById('balken').style.width=pz+'%';
+    document.getElementById('stand').textContent=pz+' % erledigt ('+fertig+' von '+alle.length+' Positionen)';
+    binde();
+  }
+  function binde(){
+    ausgabe.querySelectorAll('input[type=checkbox]').forEach(function(box){
+      box.addEventListener('change',function(){
+        var key=box.getAttribute('data-key');
+        var sel=ausgabe.querySelector('select.wer-sel[data-key="'+key+'"]');
+        var name=sel?sel.value:'';
+        if(box.checked){
+          if(!name)name=ichSel.value;
+          if(!name){alert('Bitte zuerst auswählen, wer das besorgt – dann wird der Name beim Abhaken gespeichert.');box.checked=false;return;}
+          var s={};s['items.'+key]={done:1,wer:name,ts:Date.now()};sende({set:s});
+        } else {
+          var n2=(sel?sel.value:'')||zustand(key).wer||'';
+          var s2={};s2['items.'+key]={done:0,wer:n2,ts:Date.now()};sende({set:s2});
+        }
+      });
+    });
+    ausgabe.querySelectorAll('select.wer-sel').forEach(function(sel){
+      sel.addEventListener('change',function(){
+        var key=sel.getAttribute('data-key');
+        if(zustand(key).done)return;
+        var s={};s['items.'+key]={done:0,wer:sel.value,ts:Date.now()};sende({set:s});
+      });
+    });
+    ausgabe.querySelectorAll('[data-del]').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        if(!confirm('Diesen Punkt wirklich löschen?'))return;
+        var key=btn.getAttribute('data-del');
+        sende({unset:['custom.'+key.replace('custom:',''),'items.'+key]});
+      });
+    });
+  }
+  function setStatus(ok,t){syncEl.className='sync-status'+(ok?'':' offline');syncEl.innerHTML='<span class="punkt"></span>'+esc(t);}
+  function anwenden(j){
+    var d=(j&&j.data&&typeof j.data==='object'&&!Array.isArray(j.data))?j.data:{};
+    state=d; if(!state.items)state.items={}; if(!state.custom)state.custom={};
+    render();
+    var t=new Date();
+    setStatus(true,'live · Stand '+('0'+t.getHours()).slice(-2)+':'+('0'+t.getMinutes()).slice(-2)+':'+('0'+t.getSeconds()).slice(-2));
+  }
+  function lade(){fetch(API).then(function(r){return r.json();}).then(anwenden)
+    .catch(function(){setStatus(false,'offline – versuche erneut …');});}
+  function sende(b){fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)})
+    .then(function(r){return r.json();}).then(anwenden)
+    .catch(function(){setStatus(false,'Speichern fehlgeschlagen – Verbindung prüfen');lade();});}
+
+  document.getElementById('btn-kat').addEventListener('click',function(){ansicht='kategorie';localStorage.setItem('alm-ek-ansicht',ansicht);render();});
+  document.getElementById('btn-rez').addEventListener('click',function(){ansicht='rezept';localStorage.setItem('alm-ek-ansicht',ansicht);render();});
+  personenSel.addEventListener('change',function(){sende({set:{personen:parseInt(personenSel.value,10)}});});
+  document.getElementById('neu-btn').addEventListener('click',function(){
+    var m=document.getElementById('neu-menge').value.trim();
+    var t=document.getElementById('neu-text').value.trim();
+    if(!t){alert('Bitte eintragen, wos fehlt.');return;}
+    var id='c'+Date.now(); var s={}; s['custom.'+id]={menge:m,text:t}; sende({set:s});
+    document.getElementById('neu-menge').value=''; document.getElementById('neu-text').value='';
+  });
+
+  lade();
+  setInterval(lade,4000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)lade();});
+})();
+</script>
+<script src="../alm-nav.js" defer></script>
+</body>
+</html>

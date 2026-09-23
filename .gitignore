@@ -1,0 +1,24 @@
+# --- Echte Zugangsdaten: niemals ins Repository ---
+config.php
+
+# --- Laufzeitdaten: werden vom Server geschrieben ---
+daten/
+daten-*.json
+
+# --- Hochgeladene Fotos ---
+# Während des Urlaubs bleiben sie außerhalb von Git.
+# Ist das Album fertig, kann es bewusst committet werden:
+#   git add -f fotos/2027
+fotos/*/
+!fotos/biere/
+
+# --- Sicherungen und Exporte ---
+export/
+*.zip
+_deploy-backup/
+
+# --- Kram ---
+.DS_Store
+Thumbs.db
+*.log
+*.bak

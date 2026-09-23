@@ -1,0 +1,43 @@
+# ============================================================
+#  Almurlaub – Zugangsschutz (Bierparole)
+#  Hinweis: Cookie-Wert MUSS mit config.php übereinstimmen.
+#  ------------------------------------------------------------
+#  Ohne gültiges Cookie landet jeder Aufruf auf login.php.
+#  Ausgenommen: login.php, logout.php und die Bier-Etiketten.
+# ============================================================
+
+Options -Indexes
+DirectoryIndex index.html index.php
+
+RewriteEngine On
+
+# --- Ausnahmen: diese Pfade sind immer erreichbar ---
+RewriteCond %{REQUEST_URI} ^/login\.php$ [NC,OR]
+RewriteCond %{REQUEST_URI} ^/logout\.php$ [NC,OR]
+RewriteCond %{REQUEST_URI} ^/fotos/biere/ [NC]
+RewriteRule ^ - [L]
+
+# --- Datendateien nie direkt ausliefern ---
+#     (daten-*.json, Notizen, Sicherungen – auch MIT Cookie gesperrt)
+RewriteRule \.(json|md|log|bak|sql|ini)$ - [F,L]
+RewriteRule ^_deploy-backup/ - [F,L]
+
+# --- Ohne Cookie zur Bierparole, Ziel merken ---
+RewriteCond %{HTTP_COOKIE} !almauth=yne3mitCz7saNq50Sdy1JcrWjJSX8419HKldriuZ
+RewriteRule ^(.*)$ /login.php?ziel=%{REQUEST_URI} [R=302,L,QSA]
+
+# --- Kein Zwischenspeichern (Live-Listen sollen aktuell sein) ---
+<IfModule mod_headers.c>
+  Header set Cache-Control "private, no-store"
+  Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>
+
+# --- Falls der Hoster NICHT schon http -> https umleitet,
+#     die nächsten vier Zeilen einkommentieren.
+#     Vorsicht: bei falsch gesetzten Proxy-Headern droht eine Endlosschleife.
+# RewriteCond %{HTTPS} !=on
+# RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+# RewriteCond %{REQUEST_URI} !^/login\.php$
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+ErrorDocument 403 "Kein Zutritt."
