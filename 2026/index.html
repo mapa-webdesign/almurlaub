@@ -524,10 +524,10 @@
     if (e.key === 'Escape') { if (lb.close) lb.close(); lbImg.src=''; }
   });
 
-  /* ---------- Live-To-Dos (geteilt über API, doc=todos) ---------- */
+  /* ---------- Live-To-Dos (geteilt über API, doc=todos2026) ---------- */
   var todoListe = document.querySelector('.liste[data-live="todos"]');
   if (todoListe) {
-    var TAPI = '../api.php?doc=todos';
+    var TAPI = '../api.php?doc=todos2026';
     var tBoxen = todoListe.querySelectorAll('input[type=checkbox]');
     function tAnwenden(json){
       var d = (json.data || {}).haken || {};
