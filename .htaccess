@@ -18,9 +18,10 @@ RewriteCond %{REQUEST_URI} ^/fotos/biere/ [NC]
 RewriteRule ^ - [L]
 
 # --- Datendateien nie direkt ausliefern ---
-#     (daten-*.json, Notizen, Sicherungen – auch MIT Cookie gesperrt)
+#     (daten-*.json, Notizen, Sicherungen, Git-Ordner – auch MIT Cookie gesperrt)
 RewriteRule \.(json|md|log|bak|sql|ini)$ - [F,L]
 RewriteRule ^_deploy-backup/ - [F,L]
+RewriteRule (^|/)\.git - [F,L]
 
 # --- Ohne Cookie zur Bierparole, Ziel merken ---
 RewriteCond %{HTTP_COOKIE} !almauth=yne3mitCz7saNq50Sdy1JcrWjJSX8419HKldriuZ

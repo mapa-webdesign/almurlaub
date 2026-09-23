@@ -35,20 +35,17 @@ geteilte Einkaufsliste, Abrechnung, Bierrechner, Fotogalerie.
 
 ---
 
-## 🔴 Offene Aufgaben (Stand 22.09.2026)
+## 🔴 Offene Aufgaben (Stand 23.09.2026)
 
-1. **GitHub-Repository anlegen** – privat. Inhalt dieses Pakets als
-   ersten Commit auf `main` pushen.
+1. ~~**GitHub-Repository anlegen**~~ – erledigt (`mapa-webdesign/almurlaub`, privat).
 2. **Hostinger einrichten:**
    - Subdomain `almurlaub.mapa-ai.de` anlegen
    - Git-Deploy verbinden: Repo, Branch `main`, Zielverzeichnis der Subdomain
    - Webhook für automatischen Pull eintragen
 3. **Auf dem Server einmalig:**
-   ```bash
-   cp config.example.php config.php   # bzw. vorbereitete Datei hochladen
-   mkdir -p daten fotos && chmod 775 daten fotos
-   ```
-   Der Cookie-Wert in `config.php` muss mit dem in `.htaccess` übereinstimmen.
+   - ~~`config.php` anlegen~~ – liegt bereits auf dem Server.
+   - `mkdir -p daten fotos && chmod 775 daten fotos`
+   - Prüfen: Cookie-Wert in `config.php` muss mit dem in `.htaccess` übereinstimmen.
 4. **Prüfen:** Login, Einkaufsliste 2027 (Haken setzen, zweites Gerät
    gegenchecken), Abrechnung, Bierrechner, Foto-Upload, `export.php`.
 5. **Danach:** regelmäßige Sicherung einrichten – `export.php` wöchentlich

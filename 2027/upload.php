@@ -3,12 +3,9 @@
  * upload.php – Foto-Upload für den Jahresbereich der Almurlaub-Website
  * -------------------------------------------------------------------
  * WICHTIG: Das Jahr wird automatisch aus dem Ordnernamen abgeleitet.
- * Liegt die Datei in /2027/, speichert sie nach /fotos/2027/.
+ * Liegt die Datei in /2027/, speichert sie nach <fotos_dir>/2027/
+ * (fotos_dir aus config.php, Standard: /fotos).
  * Dieselbe Datei kann also unverändert in jeden Jahresordner kopiert werden.
- *
- * ⚠️ NUR in Jahresordner legen, deren Foto-Ordner noch leer ist (z.B. 2027).
- *    NICHT die bestehende 2026-Version überschreiben – die verwaltet ihren
- *    Bestand in einem anderen Format, die Liste dort wäre sonst leer.
  *
  * Schnittstelle (von fotos.html erwartet):
  *   GET                              -> {"fotos":[{id,datei,von,zeit}, ...]}
@@ -26,8 +23,10 @@ header('X-Robots-Tag: noindex, nofollow');
 // ---------------------------------------------------------------
 //  Konfiguration
 // ---------------------------------------------------------------
+$cfgDatei   = __DIR__ . '/../config.php';
+$cfg        = is_file($cfgDatei) ? (require $cfgDatei) : [];
 $JAHR       = basename(__DIR__);                 // <- leitet z.B. "2027" ab
-$FOTO_DIR   = __DIR__ . '/../fotos/' . $JAHR;    // Zielordner für die Bilder
+$FOTO_DIR   = ($cfg['fotos_dir'] ?? __DIR__ . '/../fotos') . '/' . $JAHR;   // Zielordner für die Bilder
 $INDEX      = $FOTO_DIR . '/_index.json';        // Verzeichnis der Fotos
 $MAX_BYTES  = 12 * 1024 * 1024;                  // 12 MB je Foto
 $ERLAUBT    = [                                  // MIME-Typ => Dateiendung
