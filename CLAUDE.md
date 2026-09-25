@@ -35,22 +35,25 @@ geteilte Einkaufsliste, Abrechnung, Bierrechner, Fotogalerie.
 
 ---
 
-## 🔴 Offene Aufgaben (Stand 23.09.2026)
+## 🔴 Offene Aufgaben (Stand 25.09.2026)
 
-1. ~~**GitHub-Repository anlegen**~~ – erledigt (`mapa-webdesign/almurlaub`, privat).
-2. **Hostinger einrichten:**
-   - Subdomain `almurlaub.mapa-ai.de` anlegen
-   - Git-Deploy verbinden: Repo, Branch `main`, Zielverzeichnis der Subdomain
-   - Webhook für automatischen Pull eintragen
-3. **Auf dem Server einmalig:**
-   - ~~`config.php` anlegen~~ – liegt bereits auf dem Server.
-   - `mkdir -p daten fotos && chmod 775 daten fotos`
-   - Prüfen: Cookie-Wert in `config.php` muss mit dem in `.htaccess` übereinstimmen.
-4. **Prüfen:** Login, Einkaufsliste 2027 (Haken setzen, zweites Gerät
-   gegenchecken), Abrechnung, Bierrechner, Foto-Upload, `export.php`.
-5. **Danach:** regelmäßige Sicherung einrichten – `export.php` wöchentlich
-   abrufen und wegspeichern (z. B. Aufgabe auf Martins Mac). Hostingers
-   eigene Backups kommen dazu.
+**Erledigt:** GitHub-Repo (privat) · Hostinger-Subdomain + Git-Deploy mit
+Webhook · DNS bei **Cloudflare** (`A almurlaub → 88.222.222.193`, *DNS only*)
+· Let's-Encrypt-SSL + HTTPS-Umleitung · `config.php` auf dem Server ·
+Login mit Parole geprüft · `.git/` und `.md` liefern 403.
+
+1. **Noch prüfen:** Einkaufsliste 2027 (Haken setzen, zweites Gerät
+   gegenchecken → bestätigt, dass `daten/` beschreibbar ist), Foto-Upload.
+2. **Fehlende Gestaltungsbilder** (mit `fotos/` verloren, Seiten zeigen
+   stattdessen die Hintergrundfarbe): `fotos/panorama, braten, grillen, herd,
+   huettentuer, knoedel, lagerfeuer, nebelmeer, ofenbrot, regenschirm,
+   schwammerl, schwammerlpfanne, schwammerlrahm, talblick` und
+   `fotos/huetten/bodeneralm, hoisen, lorenzer, mahrhuette, paulmahd,
+   rettenstein, ronerkasa, wallnerkasa` (alle `.jpg`). Beim Einchecken die
+   `.gitignore` anpassen – `fotos/*/` schließt sonst `huetten/` aus.
+3. **Regelmäßige Sicherung:** `export.php` wöchentlich abrufen und
+   wegspeichern (z. B. Aufgabe auf Martins Mac). Hostingers eigene Backups
+   kommen dazu.
 
 ### Inhaltlich noch offen
 - **Truppe 2027** steht nicht fest (2026 waren es 11 Leut').
