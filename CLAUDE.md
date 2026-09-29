@@ -51,9 +51,9 @@ Login mit Parole geprüft · `.git/` und `.md` liefern 403.
    `fotos/huetten/bodeneralm, hoisen, lorenzer, mahrhuette, paulmahd,
    rettenstein, ronerkasa, wallnerkasa` (alle `.jpg`). Beim Einchecken die
    `.gitignore` anpassen – `fotos/*/` schließt sonst `huetten/` aus.
-3. **Regelmäßige Sicherung:** `export.php` wöchentlich abrufen und
-   wegspeichern (z. B. Aufgabe auf Martins Mac). Hostingers eigene Backups
-   kommen dazu.
+3. **Regelmäßige Sicherung:** Skript liegt in `werkzeuge/backup/`
+   (sonntags 20 Uhr, launchd, Cookie im Schlüsselbund). Auf Martins Mac
+   einmalig `./install.sh` ausführen – noch offen.
 
 ### Inhaltlich noch offen
 - **Truppe 2027** steht nicht fest (2026 waren es 11 Leut').
@@ -91,6 +91,7 @@ Login mit Parole geprüft · `.git/` und `.md` liefern 403.
 ├─ .htaccess             Zugangsschutz, Sperren, Cache
 ├─ 2026/                 Archiv    ┐ index, einkauf, abrechnung,
 ├─ 2027/                 aktuell   ┘ fotos, bierrechner, upload.php
+├─ werkzeuge/backup/     Wöchentliche Sicherung von export.php auf dem Mac
 ├─ config.example.php
 └─ .gitignore
 ```
