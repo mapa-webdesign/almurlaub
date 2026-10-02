@@ -241,6 +241,19 @@
   footer{text-align:center;color:var(--nebel);font-size:.82rem;margin-top:56px;font-style:italic;padding-bottom:20px}
   footer .feuer{font-size:1.6rem;display:block;margin-bottom:8px}
 </style>
+<style>
+  .angebote{font-size:.86rem}
+  .angebote th,.angebote td{padding:8px 6px;vertical-align:top}
+  .angebote tbody th{text-align:left;text-transform:none;letter-spacing:0;font-size:.92rem;font-weight:700;white-space:nowrap;border-bottom:1px dashed rgba(90,65,48,.3)}
+  .angebote tbody tr:last-child th{border-bottom:none}
+  .angebote tbody th a{color:var(--holz-dunkel);text-decoration:none}
+  .angebote tbody th a:hover{color:var(--tanne);text-decoration:underline}
+  .angebote td.frei{white-space:nowrap;font-weight:600;color:var(--tanne)}
+  .angebote .quelle{display:block;font-weight:400;font-size:.72rem;color:var(--holz)}
+  .angebote td.zahl{white-space:nowrap}
+  .angebote-fuss{font-size:.8rem;color:var(--holz);margin-top:10px}
+  .angebote-fuss a{color:var(--tanne)}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -260,7 +273,6 @@
   <div class="jahr-nav-innen">
     <span class="jahr-label">Alm 2027</span>
     <a href="index.html" class="aktiv">Übersicht</a>
-    <a href="abstimmung.html">🗳️ Abstimmung</a>
     <a href="einkauf.html">🛒 Einkaufsliste</a>
     <a href="abrechnung.html">💰 Abrechnung</a>
     <a href="fotos.html">📸 Fotos</a>
@@ -299,10 +311,26 @@
     <div class="eck"><div class="icon">👨‍👩‍👧‍👦</div><div class="wert">12 Leut'</div><div class="label">Truppe steht</div></div>
   </div>
 
-  <section aria-label="Abstimmung">
-    <div class="karte" style="text-align:center">
-      <p style="margin-bottom:10px"><strong>Wo geht's hin – und wann?</strong> Hütten-Favorit und Termine stimmen wir gemeinsam ab.</p>
-      <a class="btn" href="abstimmung.html">🗳️ Zur Abstimmung</a>
+  <!-- Übersicht der angefragten Hütten (statisch gepflegt) -->
+  <section id="angebote" aria-label="Angefragte Hütten">
+    <div class="sek-titel"><span class="em">📋</span><h2>Angefragte Hütten – wann frei?</h2><div class="linie"></div></div>
+    <div class="karte"><div class="tab-scroll">
+      <table class="tabelle angebote">
+        <thead><tr><th>Hütte</th><th>Frei</th><th>Ort</th><th>Preis 12 P. / Woche</th><th class="zahl">Plätze / Zimmer</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><a href="https://www.huettenpartner.com/huetten/gasteinertal/dor_sbg.html" target="_blank" rel="noopener">Huberalm ↗</a></th><td class="frei">Sa 07.–14.08.<br>Sa 21.–28.08.<span class="quelle">laut Kalender</span></td><td>Dorfgastein · Sbg</td><td>Preis anfragen</td><td class="zahl">14 / 5</td></tr>
+          <tr><th scope="row"><a href="https://www.airbnb.de/rooms/1175192828385082031" target="_blank" rel="noopener">Preimes Kasa ↗</a></th><td class="frei">Sa 14.–21.08.<span class="quelle">bestätigt</span></td><td>Mörtschach · Ktn</td><td>≈ 2.348 €</td><td class="zahl">12 / 5</td></tr>
+          <tr><th scope="row"><a href="https://www.huettenland.com/huette/1580/Hofer-Huette-in-den-Nockbergen/" target="_blank" rel="noopener">Hofer Hütte ↗</a></th><td class="frei">Fr 13.–20.08.<span class="quelle">Angebot</span></td><td>Gmünd · Ktn</td><td>1.980 € (für 10)</td><td class="zahl">12* / 5</td></tr>
+          <tr><th scope="row"><a href="https://www.huettenpartner.com/huetten/lachtal/rei_stm.html" target="_blank" rel="noopener">Reifhütte ↗</a></th><td class="frei">Sa 07.–14.08.<br>Sa 21.–28.08.<span class="quelle">laut Kalender</span></td><td>Lachtal · Stmk</td><td>≈ 1.725 € + Strom</td><td class="zahl">10+2 / 4</td></tr>
+          <tr><th scope="row"><a href="https://www.huettenpartner.com/huetten/abtenau/jos_sbg.html" target="_blank" rel="noopener">Scharfetter Hütte ↗</a></th><td class="frei">Sa 07.–14.08.<br>Sa 21.–28.08.<span class="quelle">laut Kalender</span></td><td>Postalm · Sbg</td><td>≈ 1.650 € + Strom</td><td class="zahl">10+2 / 4</td></tr>
+          <tr><th scope="row"><a href="https://www.urlaubambauernhof.at/de/hoefe/ronerkasa" target="_blank" rel="noopener">Obere Roner Kasa ↗</a></th><td class="frei">28.08.–18.09.<span class="quelle">laut Dani</span></td><td>Mörtschach · Ktn</td><td>Preis anfragen</td><td class="zahl">10 / 4</td></tr>
+          <tr><th scope="row"><a href="https://www.urlaubambauernhof.at/de/hoefe/kalserhuette" target="_blank" rel="noopener">Kalserhütte ↗</a></th><td class="frei">?<span class="quelle">Anfrage läuft</span></td><td>Oberdrauburg · Ktn</td><td>ab 1.120 € + NK</td><td class="zahl">10 / 4</td></tr>
+          <tr><th scope="row"><a href="https://www.larerhuette.at/" target="_blank" rel="noopener">Larer Hütte ↗</a></th><td class="frei">?<span class="quelle">Anfrage läuft</span></td><td>Lessach · Sbg</td><td>ab 700 € + NK</td><td class="zahl">10 / 4</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="angebote-fuss">Preise inkl. Ortstaxe und Endreinigung, soweit bekannt · 12* = nur mit Matratzenlager · 10+2 = mit 2 Zusatzbetten ·
+      Details zu jeder Hütte in den Karten darunter, alle Kriterien im <a href="../huettenvergleich.html">Hütten-Vergleich</a>.</p>
     </div>
   </section>
 
