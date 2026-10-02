@@ -50,6 +50,12 @@ KOPF = ['12&nbsp;P.<br>5&nbsp;SZ','Allein-<br>lage','Lager-<br>feuer','Brun-<br>
 ZEICHEN = {'j':('✓','ok'),'n':('✗','nein'),'?':('?','offen')}
 
 def punkte(k): return k.count('j')
+def slug(name):
+    import re
+    t = name.lower().replace('ä','ae').replace('ö','oe').replace('ü','ue').replace('ß','ss')
+    return re.sub(r'[^a-z0-9]+','-',t).strip('-')
+_ids = [slug(r[1]) for r in H]
+assert len(_ids) == len(set(_ids)), 'doppelte Hütten-ID'
 def tsd(n): return f'{n:,}'.replace(',', '.')
 
 def zeile(r):
@@ -65,9 +71,12 @@ def zeile(r):
     z = lambda v: f'{v}' if v is not None else '<span class="leer">–</span>'
     h = f'{tsd(hoehe)} m' if hoehe else '<span class="leer">–</span>'
     kk = ''.join(f'<td class="k {ZEICHEN[x][1]}">{ZEICHEN[x][0]}</td>' for x in k)
-    return (f'<tr class="p{punkte(k)}"><th scope="row">{n}</th><td>{ortz}</td><td class="mitte">{karte}</td>'
+    wertung = ('<td class="wertung"><span class="sterne">'
+               + ''.join(f'<button type="button" class="stern" data-n="{i}" aria-label="{i} von 5">★</button>' for i in range(1,6))
+               + '</span><button type="button" class="raus-knopf" title="ausschließen">✕</button></td>')
+    return (f'<tr class="p{punkte(k)}" data-id="{slug(name)}" data-sigma="{punkte(k)}"><th scope="row"><span class="name">{n}</span><div class="grund"></div></th><td>{ortz}</td><td class="mitte">{karte}</td>'
             f'<td class="zahl">{h}</td><td class="zahl">{z(pl)}</td><td class="zahl">{z(sz)}</td>{kk}'
-            f'<td class="zahl punkte">{punkte(k)}</td><td>{html.escape(preis)}</td></tr>')
+            f'<td class="zahl punkte">{punkte(k)}</td><td>{html.escape(preis)}</td>{wertung}</tr>')
 
 def tabelle(gruppe, titel, em):
     rows = sorted([r for r in H if r[0]==gruppe], key=lambda r: -punkte(r[9]))
@@ -79,7 +88,7 @@ def tabelle(gruppe, titel, em):
       <table class="tabelle vergleich">
         <thead><tr><th>Hütte</th><th>Ort</th><th class="mitte">Karte</th><th class="zahl">Höhe</th>
           <th class="zahl">Plätze</th><th class="zahl">Zimmer</th>{kopf}<th class="zahl" title="erfüllte Kriterien">Σ</th>
-          <th>Preis/Woche</th></tr></thead>
+          <th>Preis/Woche</th><th class="mitte">Unsere Wertung</th></tr></thead>
         <tbody>{''.join(zeile(r) for r in rows)}</tbody>
       </table>
     </div></div>
@@ -116,7 +125,106 @@ kopf = kopf.replace('<link rel="stylesheet" href="alm.css">','''<link rel="style
     background:var(--tanne);text-decoration:none;font-size:.9rem;box-shadow:0 2px 0 rgba(0,0,0,.2)}
   .karte-knopf:hover{background:var(--tanne-hell)}
   .legende{font-size:.82rem;color:var(--holz);margin-top:12px}
+  .vergleich td.wertung{text-align:center}
+  .vergleich .stern,.vergleich .raus-knopf{background:none;border:0;cursor:pointer;font:inherit;padding:2px 1px;line-height:1}
+  .vergleich .stern{font-size:1.15rem;color:var(--creme-dunkel);-webkit-text-stroke:1px var(--holz-grau)}
+  .vergleich .stern.an{color:var(--schwammerl);-webkit-text-stroke:1px var(--holz)}
+  .vergleich .sterne:hover .stern{color:var(--schwammerl-hell)}
+  .vergleich .sterne .stern:hover~.stern{color:var(--creme-dunkel)}
+  .vergleich .raus-knopf{margin-left:8px;width:24px;height:24px;border-radius:50%;color:var(--geranie);
+    border:1.5px solid var(--geranie);font-weight:700;font-size:.8rem}
+  .vergleich .raus-knopf:hover{background:var(--geranie);color:var(--creme)}
+  .vergleich .grund{font-size:.74rem;font-weight:400;color:var(--geranie);white-space:normal;max-width:16em}
+  .vergleich tr.raus td:not(.wertung){opacity:.4}
+  .vergleich tr.raus .name,.vergleich tr.raus .name a{text-decoration:line-through;color:var(--holz-grau)}
+  .vergleich tr.raus td.wertung .sterne{visibility:hidden}
+  .vergleich tr.raus .raus-knopf{color:var(--tanne);border-color:var(--tanne)}
+  .vergleich tr.raus .raus-knopf:hover{background:var(--tanne);color:var(--creme)}
+  .ohne-raus .vergleich tr.raus{display:none}
+  .wertung-leiste{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;margin-top:12px;font-size:.88rem}
+  .wertung-leiste label{cursor:pointer}
 </style>''')
+
+SKRIPT = r'''<script>
+(function(){
+  var API = 'api.php?doc=huetten2027';
+  var state = {}, syncEl = document.getElementById('sync'), aus = document.getElementById('raus-aus');
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function eintrag(id){ return (state.h && state.h[id]) || {}; }
+
+  function render(){
+    document.querySelectorAll('table.vergleich tbody').forEach(function(tb){
+      var rows = Array.prototype.slice.call(tb.rows);
+      rows.forEach(function(tr, i){
+        if (tr.dataset.pos === undefined) tr.dataset.pos = i;
+        var e = eintrag(tr.dataset.id), n = +e.sterne || 0, raus = !!e.raus;
+        tr.classList.toggle('raus', raus);
+        tr.querySelectorAll('.stern').forEach(function(b){ b.classList.toggle('an', +b.dataset.n <= n); });
+        var k = tr.querySelector('.raus-knopf');
+        k.textContent = raus ? '↺' : '✕';
+        k.title = raus ? 'wieder reinnehmen' : 'ausschließen';
+        tr.querySelector('.grund').innerHTML = raus ? '✕ raus' + (e.grund ? ': ' + esc(e.grund) : '') : '';
+      });
+      rows.sort(function(a, b){
+        var ea = eintrag(a.dataset.id), eb = eintrag(b.dataset.id);
+        return (!!ea.raus - !!eb.raus) || ((+eb.sterne||0) - (+ea.sterne||0)) || (a.dataset.pos - b.dataset.pos);
+      }).forEach(function(tr){ tb.appendChild(tr); });
+    });
+  }
+
+  function setStatus(ok, text){
+    syncEl.className = 'sync-status' + (ok ? '' : ' offline');
+    syncEl.innerHTML = '<span class="punkt"></span>' + esc(text);
+  }
+  function anwenden(json){
+    var neu = JSON.stringify(json.data || {});
+    if (neu !== JSON.stringify(state)) { state = json.data || {}; render(); }
+    var t = new Date();
+    setStatus(true, 'live · Stand ' + ('0'+t.getHours()).slice(-2)+':'+('0'+t.getMinutes()).slice(-2)+':'+('0'+t.getSeconds()).slice(-2));
+  }
+  function lade(){
+    fetch(API).then(function(r){ return r.json(); }).then(anwenden)
+      .catch(function(){ setStatus(false, 'offline – versuche erneut …'); });
+  }
+  function sende(body){
+    fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)})
+      .then(function(r){ return r.json(); }).then(anwenden)
+      .catch(function(){ setStatus(false, 'Speichern fehlgeschlagen'); lade(); });
+  }
+
+  document.addEventListener('click', function(ev){
+    var b = ev.target.closest('.vergleich .stern, .vergleich .raus-knopf');
+    if (!b) return;
+    var tr = b.closest('tr'), id = tr.dataset.id, e = eintrag(id), p = 'h.' + id + '.';
+    var name = tr.querySelector('.name').textContent;
+    if (b.classList.contains('stern')) {
+      var n = +b.dataset.n, s = {};
+      if ((+e.sterne||0) === n) sende({unset: [p + 'sterne']});
+      else { s[p + 'sterne'] = n; sende({set: s}); }
+    } else if (e.raus) {
+      sende({unset: [p + 'raus', p + 'grund']});
+    } else {
+      var grund = prompt('Warum fliagt „' + name + '“ raus? (optional)', '');
+      if (grund === null) return;
+      var s2 = {}; s2[p + 'raus'] = 1;
+      if (grund.trim()) s2[p + 'grund'] = grund.trim().slice(0, 120);
+      sende({set: s2});
+    }
+  });
+
+  try { aus.checked = localStorage.getItem('huetten-raus-aus') === '1'; } catch(e) {}
+  function ausblenden(){ document.body.classList.toggle('ohne-raus', aus.checked); }
+  aus.addEventListener('change', function(){
+    ausblenden();
+    try { localStorage.setItem('huetten-raus-aus', aus.checked ? '1' : '0'); } catch(e) {}
+  });
+  ausblenden();
+
+  lade();
+  setInterval(lade, 4000);
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) lade(); });
+})();
+</script>'''
 
 body = f'''<header class="seitenkopf">
   <h1>Hütten-Vergleich ⚖️</h1>
@@ -139,6 +247,12 @@ body = f'''<header class="seitenkopf">
         Ktn = Kärnten, Sbg = Salzburg, Stmk = Steiermark, T = Tirol, OT = Osttirol</p>
     </div>
   </section>
+
+  <div class="wertung-leiste">
+    <span>⭐ Sterne vergeben, ✕ schließt eine Hütte aus (gilt für alle, live). Sortiert nach Wertung, dann Σ.</span>
+    <label><input type="checkbox" id="raus-aus"> Ausgeschlossene ausblenden</label>
+    <span class="sync-status" id="sync"><span class="punkt"></span>verbinde …</span>
+  </div>
 {tabelle('k','Aktuelle Kandidaten 2027','📨')}
 {tabelle('n','Neue Funde','🔎')}
 {tabelle('b','Schon dort oder angefragt','✅')}
@@ -155,6 +269,7 @@ body = f'''<header class="seitenkopf">
 </main>
 
 <script src="alm-nav.js" defer></script>
+{SKRIPT}
 </body>
 </html>
 '''

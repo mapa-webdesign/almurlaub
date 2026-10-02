@@ -83,7 +83,7 @@ Favicon · alle 22 Gestaltungs-/Hütten-Fotos · Backup-Skript geschrieben.
 ├─ index.html            Historie: Hütten seit 1999, Bestenliste, Sprüche-Wand
 ├─ packliste.html        Packliste (Haken nur lokal im Browser, kein Sync)
 ├─ huettensuche.html     Hütten-Status der laufenden Suche
-├─ huettenvergleich.html Alle Hütten gegen die Suchkriterien (Lage, ✓/✗/?) – erzeugt von
+├─ huettenvergleich.html Alle Hütten gegen die Suchkriterien (✓/✗/?) + Sterne/Ausschluss live – erzeugt von
 │                        werkzeuge/huettenvergleich.py (Daten dort pflegen, dann ausführen)
 ├─ login.php             Bierparole-Login (Daten aus config.php)
 ├─ logout.php            Abmelden
@@ -142,7 +142,9 @@ Punkt = eine Ebene tiefer. Teilbaum leeren: `{"set":{"items":{}}}`.
 Ablage in `daten/daten-<doc>.json`, Schreibzugriffe mit `flock` serialisiert.
 
 **Doc-Namen pro Jahr getrennt** – sonst teilen sich zwei Jahrgänge einen
-Datenstand: `einkauf2027`, `abrechnung2027`, `bier2027`, `todos2027`.
+Datenstand: `einkauf2027`, `abrechnung2027`, `bier2027`, `todos2027`, `huetten2027`
+(Sterne + Ausschluss im Hütten-Vergleich: `h.<id>.sterne|raus|grund`, id = Slug des
+Hüttennamens aus `werkzeuge/huettenvergleich.py` – Hütte umbenennen = Wertung weg).
 
 ### Einkaufsliste 2027 – Datenmodell im HTML
 ```
