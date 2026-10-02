@@ -203,8 +203,8 @@ Tonfall in Texten: freundlich, bairisch angehaucht („Wievui?", „Wos?",
 ## Urlaub 2026 (abgeschlossen)
 
 Lorenzer Hütte, Kleblach-Lind (Drautal, Kärnten) – **zum 12. Mal**, 25.07.–01.08.2026, 7 Nächte,
-140 €/Nacht = 980 €. Hütte (laut Martin): 1.700 m, 5 Zimmer, 11 Betten,
-Lagerfeuerstelle, WC und Dusche. **11 Leut':** Pappenberger (Martl, Manu, Max, Alois),
+140 €/Nacht = 980 €. Hütte (laut Martin): 1.700 m, 5 Zimmer, 11 Betten, Alleinlage,
+Lagerfeuerstelle, Brunnen, WC und Dusche – erfüllt 5/6 (nur 11 statt 12 Plätze). **11 Leut':** Pappenberger (Martl, Manu, Max, Alois),
 Robert, Bettina, Franz, Andreas (Andi), Da Baule, Da Blaume, Da Ott.
 **Abrechnung:** 1.915,10 € Ausgaben, 46 Übernachtungen, 41,63 €/Übernachtung.
 Bilanz: Pappe's +105,92 · Ott +187,57 · Franz +88,57 · Baule −183,43 ·
@@ -227,8 +227,8 @@ Platz für 12, min. 5 Schlafzimmer · Almhütte in Alleinlage ·
 Lagerfeuerstelle · Brunnen („Grand“) · fließend Wasser mit WC ·
 warme Dusche (Holzofen, Gas o. Ä.). Vergleich aller Hütten:
 `huettenvergleich.html` – Stand 02.10.: **keine erfüllt nachweislich alle 6**;
-5/6: Huberalm (Dusche ?, Feuerstelle laut Martin ✓), Hofer (12 P. nur mit
-Lager), Preimes (nur 10 P.), Thomannbauerhütte (Feuerstelle ?).
+5/6: Lorenzer (11 P.), Huberalm (Dusche ?, Feuerstelle laut Martin ✓), Hofer
+(12 P. nur mit Lager), Preimes (nur 10 P.), Thomannbauerhütte (Feuerstelle ?).
 
 **Wunschtermin:** Sa 07. – Sa 14.08.2027 (7 Nächte, KW 31/32; zuvor kurz
 14.–21.08. bzw. KW 36 im Gespräch – beides überholt).
