@@ -227,8 +227,8 @@ Platz für 12, min. 5 Schlafzimmer · Almhütte in Alleinlage ·
 Lagerfeuerstelle · Brunnen („Grand“) · fließend Wasser mit WC ·
 warme Dusche (Holzofen, Gas o. Ä.). Vergleich aller Hütten:
 `huettenvergleich.html` – **6/6: Huberalm** (Feuerstelle und warme Dusche laut
-Martin; 2027 in der Wunschwoche frei). 5/6: Lorenzer (11 P.), Hofer (12 P. nur mit Lager), Preimes (nur
-10 P.), Thomannbauerhütte (Feuerstelle ?).
+Martin; 2027 in der Wunschwoche frei) und **Preimes Kasa** (12 Betten laut Monika).
+5/6: Lorenzer (11 P.), Hofer (12 P. nur mit Lager), Thomannbauerhütte (Feuerstelle ?).
 
 **Wunschtermin:** Sa 07. – Sa 14.08.2027 (7 Nächte, KW 31/32; zuvor kurz
 14.–21.08. bzw. KW 36 im Gespräch – beides überholt).
@@ -252,7 +252,7 @@ setzen.
 - **Preimes Kasa** (Airbnb) – **Sa 14.–Sa 21.08. vom Gastgeber direkt
   bestätigt**; Wunschwoche 07.–14.08. nicht mehr frei, **Direktangebot 2.005 €** für 10 P.: 4 Pers. 100 €/Tag + 6 Pers.
   20 €/P./Tag + Müll 50 + Endreinigung 100 + Nächtigungstaxe 4,50 €/P./Tag
-  (für 12 P. ≈ 2.348 €; nur 10 Plätze). Airbnb wäre 2.150 € + Taxe.
+  **12 Betten** (Monika, WhatsApp) → für 12 P. ≈ 2.348 €. Airbnb wäre 2.150 € + Taxe.
 - Obere Roner Kasa (Suntinger) – **August 2027 belegt**; laut Dani (WhatsApp)
   nur 28.08.–18.09.2027 frei → für 2028 früh anfragen. Wird auch als „Almhütte
   PSD-00611“ auf kaernten-ferienwohnungen.com angeboten (= Roner Kasa).
