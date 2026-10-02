@@ -44,13 +44,10 @@ Login mit Parole geprüft · `.git/` und `.md` liefern 403.
 
 1. **Noch prüfen:** Einkaufsliste 2027 (Haken setzen, zweites Gerät
    gegenchecken → bestätigt, dass `daten/` beschreibbar ist), Foto-Upload.
-2. **Fehlende Gestaltungsbilder** (mit `fotos/` verloren, Seiten zeigen
-   stattdessen die Hintergrundfarbe): `fotos/panorama, braten, grillen, herd,
-   huettentuer, knoedel, lagerfeuer, nebelmeer, ofenbrot, regenschirm,
-   schwammerl, schwammerlpfanne, schwammerlrahm, talblick` und
-   `fotos/huetten/bodeneralm, hoisen, lorenzer, mahrhuette, paulmahd,
-   rettenstein, ronerkasa, wallnerkasa` (alle `.jpg`). Beim Einchecken die
-   `.gitignore` anpassen – `fotos/*/` schließt sonst `huetten/` aus.
+2. ~~**Gestaltungsfotos**~~ – alle 22 wiederhergestellt (Okt. 2026). Neue
+   Fotos vorher auf 1100 px verkleinern und EXIF/GPS entfernen (Pillow:
+   `ImageOps.exif_transpose`, ohne `exif=` speichern). `fotos/huetten/` ist
+   per `!fotos/huetten/` in der `.gitignore` freigegeben.
 3. **Regelmäßige Sicherung:** Skript liegt in `werkzeuge/backup/`
    (sonntags 20 Uhr, launchd, Cookie im Schlüsselbund). Auf Martins Mac
    einmalig `./install.sh` ausführen – noch offen.
@@ -91,12 +88,13 @@ Login mit Parole geprüft · `.git/` und `.md` liefern 403.
 ├─ .htaccess             Zugangsschutz, Sperren, Cache
 ├─ 2026/                 Archiv    ┐ index, einkauf, abrechnung,
 ├─ 2027/                 aktuell   ┘ fotos, bierrechner, upload.php
+├─ unterlagen/          Hüttenurlaub 2025 (Plan, Einkauf, Abrechnung), Rezepte – gesperrt
 ├─ werkzeuge/backup/     Wöchentliche Sicherung von export.php auf dem Mac
 ├─ config.example.php
 └─ .gitignore
 ```
 
-**Nicht im Repository:** `config.php`, `daten/`, `fotos/<jahr>/` – werden
+**Nicht im Repository:** `config.php`, `daten/`, `fotos/<jahr>/` (Uploads) – werden
 vom Server geschrieben und von einem Deploy nie angefasst.
 
 ---
