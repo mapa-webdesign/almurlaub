@@ -422,6 +422,18 @@ footer .feuer{font-size:1.6rem;display:block;margin-bottom:8px}
 .badge.abgesagt{background:var(--geranie)}
 .badge.offen{background:var(--schwammerl)}
 .badge.nein{background:var(--holz-grau)}
+/* Link-Knöpfe in den Hütten-Kacheln */
+.huette-knoepfe{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.huette-knopf{
+  display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;
+  background:var(--tanne);color:var(--creme) !important;text-decoration:none !important;
+  font-size:.82rem;font-weight:600;box-shadow:0 2px 0 rgba(0,0,0,.25);transition:background .15s,transform .15s;
+}
+.huette-knopf:hover{background:var(--tanne-hell);transform:translateY(-1px)}
+.huette-knopf:active{transform:translateY(1px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
+.huette-knopf.zweit{background:var(--holz-hell)}
+.huette-knopf.zweit:hover{background:var(--holz)}
+.huette-knopf::after{content:"↗";font-size:.75em;opacity:.8}
 .huette p{font-size:.86rem;margin-top:10px;color:#4a3a28;line-height:1.5}
 .huette a{color:var(--tanne);font-weight:600;text-decoration:none;border-bottom:1px dotted var(--tanne)}
 .huette a:hover{color:var(--tanne-hell)}
