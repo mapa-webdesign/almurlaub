@@ -12,6 +12,7 @@ H = [
   ('k','Kalserhütte','https://xn--kalserhtte-geb.at/','Oberdrauburg','Ktn',1800,'46.7613,12.9224',10,4,'nn??jj','ab 160 €/N.','Anfrage'),
   ('k','Larer Hütte','https://www.larerhuette.at/','Lessach','Sbg',1600,'',10,4,'n??jjj','ab 100 €/N.','Anfrage'),
   ('k','Hütte REI-STM','https://www.huettenpartner.com/huetten/lachtal/rei_stm.html','Lachtal','Stmk',1660,'47.2514,14.3529',12,4,'njj?jj','1.490 €','07.–14.08.'),  # Feuerstelle laut Gästebewertung 2022
+  ('k','Hütte JOS-SBG','https://www.huettenpartner.com/huetten/abtenau/jos_sbg.html','Postalm','Sbg',1170,'47.6357,13.4137',12,4,'nj?jjj','ab 1.250 €','07.–14.08.'),  # 10 P. + 2 Zusatzbetten; Preis Sommer für 10 P.
   # --- Neue Funde ---
   ('n','Thomannbauerhütte','https://www.urlaubambauernhof.at/de/hoefe/thomannbauerhuette','Gmünd','Ktn',1500,'46.8971,13.5948',14,5,'jj?jjj','Anfrage','Anfrage'),
   ('n','Almhütte Kuhgraben','https://www.huetten.com/de/huette/almhuette-kuhgraben-rt30204.html','Bad St. Leonhard','Ktn',1250,'46.9528,14.7119',12,5,'jj??jj','2.690 €','Anfrage'),
