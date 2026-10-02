@@ -244,8 +244,9 @@ setzen.
   1.575 Miete + 90 Endreinigung + 315 Kurtaxe = **1.980 €** (198 €/P.),
   inkl. Handtücher, Betriebskosten, Brennholz. Achtung: Fr–Fr.
 - **Preimes Kasa** (Airbnb) – **Sa 14.–Sa 21.08. vom Gastgeber direkt
-  bestätigt**; Wunschwoche 07.–14.08. nicht mehr frei, 10 Gäste: **2.150 €** (215 €/P.) laut Airbnb; Preis bei
-  Direktbuchung angefragt (evtl. günstiger), Kurtaxe noch ungeklärt.
+  bestätigt**; Wunschwoche 07.–14.08. nicht mehr frei, **Direktangebot 2.005 €** für 10 P.: 4 Pers. 100 €/Tag + 6 Pers.
+  20 €/P./Tag + Müll 50 + Endreinigung 100 + Nächtigungstaxe 4,50 €/P./Tag
+  (für 12 P. ≈ 2.348 €; nur 10 Plätze). Airbnb wäre 2.150 € + Taxe.
 - Obere Roner Kasa (Suntinger) – **August 2027 belegt**; laut Dani (WhatsApp)
   nur 28.08.–18.09.2027 frei → für 2028 früh anfragen. Wird auch als „Almhütte
   PSD-00611“ auf kaernten-ferienwohnungen.com angeboten (= Roner Kasa).
