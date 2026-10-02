@@ -259,7 +259,7 @@ setzen.
 - **Hofer Hütte** (Nockberge) – Angebot **Fr 13.–Fr 20.08.**, 10 Erw.:
   1.575 Miete + 90 Endreinigung + 315 Kurtaxe = **1.980 €** (198 €/P.),
   inkl. Handtücher, Betriebskosten, Brennholz. Achtung: Fr–Fr.
-- **Hütte REI-STM** (Lachtal bei Oberwölz, Stmk., Hüttenpartner) – laut Kalender
+- **Reifhütte** (Lachtal bei Oberwölz, Stmk.; Hüttenpartner-Code **REI-STM**, Karte maps.app.goo.gl/FLoSD9deTLdpAjVU6) – laut Kalender
   **Sa 07.–14.08.2027 frei**, **1.490 € für 12 P.** + Ortstaxe 2,80 €/P./Nacht + Strom
   0,40 €/kWh (≈ 1.725 € + Strom). 1.660 m, Alleinlage, Fischteich, Lagerfeuerplatz
   (Gästebewertung), Boiler. **Nur 4 Zimmer** (3 DZ + 4-Bett, 2 Zusatzbetten) → 4/6, Brunnen ?.
@@ -275,7 +275,7 @@ setzen.
   (Dani, WhatsApp) → Spätsommer-Option, in der Termin-Umfrage als 28.08.–04.09. und
   04.–11.09.; Preis noch anfragen. Wird auch als „Almhütte
   PSD-00611“ auf kaernten-ferienwohnungen.com angeboten (= Roner Kasa).
-- Hinweis für Suchen: **Hüttenpartner „DOR-SBG“ = Huberalm** (2024 dort), **„JOS-SBG“ = Scharfetter Hütte**,
+- Hinweis für Suchen: **Hüttenpartner „DOR-SBG“ = Huberalm** (2024 dort), **„JOS-SBG“ = Scharfetter Hütte**, **„REI-STM“ = Reifhütte**,
   **„Almhütte PSD-00611“ = Obere Roner Kasa** – Portale nennen Hütten oft
   nur per Code, vor dem Vorschlagen gegen die Historie prüfen.
 - **Kalserhütte** (Oberdrauburg, Drautal) – **Anfrage läuft** (Martin): bis 10 P., ab
