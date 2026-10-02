@@ -14,7 +14,7 @@ H = [
   ('k','Reifhütte','https://www.huettenpartner.com/huetten/lachtal/rei_stm.html','Lachtal','Stmk',1660,'47.2514,14.3529',12,4,'njj?jj','1.490 €','07.–14.08.'),  # Feuerstelle laut Gästebewertung 2022
   ('k','Scharfetter Hütte','https://www.huettenpartner.com/huetten/abtenau/jos_sbg.html','Postalm','Sbg',1170,'47.635604,13.413717',12,4,'nj?jjj','ab 1.250 €','07.–14.08.'),  # 10 P. + 2 Zusatzbetten; Preis Sommer für 10 P.
   ('k','Huberalm','https://www.huettenpartner.com/huetten/gasteinertal/dor_sbg.html','Dorfgastein','Sbg',1150,'47.2768,13.0659',14,5,'jjjjjj','auf Anfrage','–'),  # Feuerstelle + warme Dusche laut Martin
-  ('k','Obere Roner Kasa','https://www.urlaubambauernhof.at/de/hoefe/ronerkasa','Mörtschach','Ktn',1450,'46.9205,12.8983',10,4,'n?jjjj','–','28.08.–18.09.'),
+  ('k','Obere Roner Kasa','https://www.urlaubambauernhof.at/de/hoefe/ronerkasa','Mörtschach','Ktn',1450,'46.9205,12.8983',10,4,'n?jjjj','≈ 2.040 €','28.08.–18.09.'),
   # --- Neue Funde ---
   ('n','Thomannbauerhütte','https://www.urlaubambauernhof.at/de/hoefe/thomannbauerhuette','Gmünd','Ktn',1500,'46.8971,13.5948',14,5,'jj?jjj','Anfrage','Anfrage'),
   ('n','Almhütte Kuhgraben','https://www.huetten.com/de/huette/almhuette-kuhgraben-rt30204.html','Bad St. Leonhard','Ktn',1250,'46.9528,14.7119',12,5,'jj??jj','2.690 €','Anfrage'),

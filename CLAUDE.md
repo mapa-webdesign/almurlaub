@@ -269,7 +269,9 @@ setzen.
   20 €/P./Tag + Müll 50 + Endreinigung 100 + Nächtigungstaxe 4,50 €/P./Tag
   **12 Betten** (Monika, WhatsApp) → für 12 P. ≈ 2.348 €. Airbnb wäre 2.150 € + Taxe.
 - **Obere Roner Kasa** (Suntinger) – August belegt, aber **28.08.–18.09.2027 frei**
-  (Dani, WhatsApp) → Spätsommer-Option, Preis noch anfragen. Wird auch als „Almhütte
+  (Dani, WhatsApp) → Spätsommer-Option. **Preis/Nacht:** 100 € (Aug.) bzw. 80 € (Sept.) für 2 P.,
+  +20 € je weitere Person, + Endreinigung 80 €, Strom, Taxe → 12 P. im September 280 €/Nacht,
+  Woche 04.–11.09. ≈ 2.040 €, 28.08.–04.09. ≈ 2.120 € (+ Strom/Taxe). Wird auch als „Almhütte
   PSD-00611“ auf kaernten-ferienwohnungen.com angeboten (= Roner Kasa).
 - Hinweis für Suchen: **Hüttenpartner „DOR-SBG“ = Huberalm** (2024 dort), **„JOS-SBG“ = Scharfetter Hütte**, **„REI-STM“ = Reifhütte**,
   **„Almhütte PSD-00611“ = Obere Roner Kasa** – Portale nennen Hütten oft
