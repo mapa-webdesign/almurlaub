@@ -4,7 +4,7 @@
 # Reihenfolge: 12 P./5 SZ · Alleinlage · Lagerfeuer · Brunnen · WC · warme Dusche
 import html
 
-# (gruppe, name, url, ort, land, höhe, gps, plätze, zimmer, kriterien, preis/woche, august 2027)
+# (gruppe, name, url, ort, land, höhe, gps, plätze, zimmer, kriterien, preis/woche, belegung – wird nicht angezeigt)
 H = [
   # --- Aktuelle Kandidaten ---
   ('k','Hofer Hütte','https://www.huettenland.com/huette/1580/Hofer-Huette-in-den-Nockbergen/','Gmünd','Ktn',1750,'46.8686,13.5778',15,5,'?jjjjj','1.980 €','ab 13.08.'),
@@ -65,7 +65,7 @@ def zeile(r):
     kk = ''.join(f'<td class="k {ZEICHEN[x][1]}">{ZEICHEN[x][0]}</td>' for x in k)
     return (f'<tr class="p{punkte(k)}"><th scope="row">{n}</th><td>{ortz}</td><td class="mitte">{karte}</td>'
             f'<td class="zahl">{h}</td><td class="zahl">{z(pl)}</td><td class="zahl">{z(sz)}</td>{kk}'
-            f'<td class="zahl punkte">{punkte(k)}</td><td>{html.escape(preis)}</td><td>{html.escape(aug)}</td></tr>')
+            f'<td class="zahl punkte">{punkte(k)}</td><td>{html.escape(preis)}</td></tr>')
 
 def tabelle(gruppe, titel, em):
     rows = sorted([r for r in H if r[0]==gruppe], key=lambda r: -punkte(r[9]))
@@ -77,7 +77,7 @@ def tabelle(gruppe, titel, em):
       <table class="tabelle vergleich">
         <thead><tr><th>Hütte</th><th>Ort</th><th class="mitte">Karte</th><th class="zahl">Höhe</th>
           <th class="zahl">Plätze</th><th class="zahl">Zimmer</th>{kopf}<th class="zahl" title="erfüllte Kriterien">Σ</th>
-          <th>Preis/Woche</th><th>August</th></tr></thead>
+          <th>Preis/Woche</th></tr></thead>
         <tbody>{''.join(zeile(r) for r in rows)}</tbody>
       </table>
     </div></div>
@@ -142,7 +142,7 @@ body = f'''<header class="seitenkopf">
 {tabelle('b','Schon dort oder angefragt','✅')}
 
   <div class="hinweis-band">
-    ℹ️ Stand 02.10.2026, aus den Hütten-Seiten der Portale. Höhen gerundet, Preise und Belegung ohne Gewähr –
+    ℹ️ Stand 02.10.2026, aus den Hütten-Seiten der Portale. Höhen gerundet, Preise ohne Gewähr –
     im Detail wird vor der Anfrage nochmal geprüft. Wer mehr weiß: Martin Bescheid sagen.
   </div>
 
