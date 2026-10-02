@@ -59,7 +59,7 @@ Favicon · alle 22 Gestaltungs-/Hütten-Fotos · Backup-Skript geschrieben.
 - **Truppe 2027** steht nicht fest (2026 waren es 11 Leut').
 - **Hütte 2027** noch nicht entschieden – 2 Angebote da (Hofer, Preimes),
   Roner Kasa laut Portal voll (Direktanfrage läuft), Kreuzwirt ausgebucht
-  (2028 angefragt).
+  (2028 angefragt), Kalser- und Larer Hütte neu (je ca. 10 Plätze).
 - **Chili con Carne** in der Einkaufsliste 2027 ist als *Entwurf* markiert,
   Mengen aus der 2025er-Liste abgeleitet und ungeprüft.
 
@@ -227,7 +227,12 @@ setzen.
 - **Preimes Kasa** (Airbnb) – frei **Sa 14.–Sa 21.08.**, 10 Gäste:
   **2.150 €** (215 €/P.) laut Airbnb; Kurtaxe vor Ort ungeklärt.
 - Obere Roner Kasa (Suntinger) – laut urlaubambauernhof.at **2027 ausgebucht**;
-  Martin fragt direkt bei Dani per WhatsApp
+  Martin fragt direkt bei Dani per WhatsApp. Wird auch als „Almhütte
+  PSD-00611“ auf kaernten-ferienwohnungen.com angeboten (= Roner Kasa).
+- **Kalserhütte** (Oberdrauburg, Drautal) – neu, anfragen: bis 10 P., ab
+  160 €/Nacht + Nebenkosten; telefonisch +43 4710 2644 / +43 664 9054195
+- **Larer Hütte** (Lessach, Prebersee, Lungau) – neu, anfragen: ca. 10 P.,
+  ab 100 €/Nacht + Ortstaxe/Strom; annemarie.jesner@sbg.at
 - Kreuzwirthütte – **2027 ausgebucht**; Reservierungsanfrage für **2028** läuft
   (2026 doppelt vergeben → Zusage unbedingt schriftlich)
 
