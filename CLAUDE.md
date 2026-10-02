@@ -44,13 +44,13 @@ Login mit Parole geprüft · `.git/` und `.md` liefern 403.
 
 1. **Noch prüfen:** Einkaufsliste 2027 (Haken setzen, zweites Gerät
    gegenchecken → bestätigt, dass `daten/` beschreibbar ist), Foto-Upload.
-2. **Fehlende Gestaltungsbilder** (mit `fotos/` verloren, Seiten zeigen
-   stattdessen die Hintergrundfarbe): `fotos/panorama, braten, grillen, herd,
-   huettentuer, knoedel, lagerfeuer, nebelmeer, ofenbrot, regenschirm,
-   schwammerl, schwammerlpfanne, schwammerlrahm, talblick` und
-   `fotos/huetten/bodeneralm, hoisen, lorenzer, mahrhuette, paulmahd,
-   rettenstein, ronerkasa, wallnerkasa` (alle `.jpg`). Beim Einchecken die
-   `.gitignore` anpassen – `fotos/*/` schließt sonst `huetten/` aus.
+2. **Fehlende Hütten-Fotos** (mit `fotos/` verloren, Historie zeigt
+   stattdessen die Hintergrundfarbe): `fotos/huetten/bodeneralm, hoisen,
+   lorenzer, mahrhuette, paulmahd, rettenstein, ronerkasa, wallnerkasa`
+   (alle `.jpg`; `lorenzer` ist auch Kopfbild der Jahresseiten). Beim
+   Einchecken die `.gitignore` anpassen – `fotos/*/` schließt sonst
+   `huetten/` aus. Fotos vorher auf 1100 px verkleinern und EXIF/GPS
+   entfernen (Pillow: `ImageOps.exif_transpose`, ohne `exif=` speichern).
 3. **Regelmäßige Sicherung:** Skript liegt in `werkzeuge/backup/`
    (sonntags 20 Uhr, launchd, Cookie im Schlüsselbund). Auf Martins Mac
    einmalig `./install.sh` ausführen – noch offen.
