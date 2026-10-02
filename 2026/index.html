@@ -432,7 +432,7 @@
       <button class="polaroid" data-gross="../fotos/talblick.jpg" data-text="Gipfelblick ins Tal"><img src="../fotos/talblick.jpg" alt="Blick vom Berg hinunter ins grüne Tal" loading="lazy" width="1100" height="825"><figcaption>Gipfelblick ins Tal</figcaption></button>
       <button class="polaroid" data-gross="../fotos/regenschirm.jpg" data-text="Auch Regen gehört dazu"><img src="../fotos/regenschirm.jpg" alt="Regennasse Hüttenterrasse mit Sonnenschirm" loading="lazy" width="1100" height="825"><figcaption>Auch Regen gehört dazu</figcaption></button>
     </div>
-    <div class="hinweis-band" style="margin-top:10px">
+    <div class="hinweis-band" id="galerie-hinweis" style="margin-top:10px">
       📸 Das sind Eindrücke aus früheren Jahren. Eure eigenen Fotos vom heurigen Urlaub gehören ins <a href="fotos.html" style="color:var(--schwammerl-hell)">Foto-Album 2026 →</a>
     </div>
   </section>
@@ -514,7 +514,7 @@
   var lb = document.getElementById('lightbox');
   var lbImg = lb.querySelector('img');
   var lbText = lb.querySelector('.lb-text');
-  var polas = Array.prototype.slice.call(document.querySelectorAll('.polaroid'));
+  var polas = [];
   var lbIndex = 0;
 
   function zeige(i){
@@ -524,12 +524,33 @@
     lbImg.alt = p.querySelector('img').alt;
     lbText.textContent = p.getAttribute('data-text');
   }
-  polas.forEach(function(p, i){
-    p.addEventListener('click', function(){
-      zeige(i);
-      if (lb.showModal) lb.showModal(); else lb.setAttribute('open','');
-    });
+  document.addEventListener('click', function(e){
+    var p = e.target.closest('.galerie .polaroid');
+    if (!p) return;
+    polas = Array.prototype.slice.call(document.querySelectorAll('.galerie .polaroid'));
+    zeige(polas.indexOf(p));
+    if (lb.showModal) lb.showModal(); else lb.setAttribute('open','');
   });
+
+  /* ---------- Galerie: 10 zufällige Fotos aus dem Album, sobald welche hochgeladen sind ---------- */
+  (function(){
+    var gal = document.querySelector('#galerie .galerie'), hinweis = document.getElementById('galerie-hinweis');
+    if (!gal) return;
+    function e(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    fetch('upload.php').then(function(r){ return r.json(); }).then(function(d){
+      var f = (d && d.fotos || []).filter(function(x){ return x && x.datei; });
+      if (!f.length) return;
+      for (var i = f.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = f[i]; f[i] = f[j]; f[j] = t; }
+      gal.innerHTML = f.slice(0, 10).map(function(x){
+        var src = '../fotos/2026/' + encodeURIComponent(x.datei), von = 'von ' + (x.von || 'Unbekannt');
+        return '<button class="polaroid" data-gross="' + e(src) + '" data-text="' + e(von) + '">' +
+          '<img src="' + e(src) + '" alt="Foto aus dem Album 2026, ' + e(von) + '" decoding="async">' +
+          '<figcaption>' + e(von) + '</figcaption></button>';
+      }).join('');
+      if (hinweis) hinweis.innerHTML = '📸 ' + Math.min(10, f.length) + ' zufällige aus ' + f.length +
+        ' Fotos der Truppe – bei jedem Aufruf andere. Alle gibt\'s im <a href="fotos.html" style="color:var(--schwammerl-hell)">Foto-Album 2026 →</a>';
+    }).catch(function(){});
+  })();
   lb.querySelector('.lb-vor').addEventListener('click', function(e){ e.stopPropagation(); zeige(lbIndex+1); });
   lb.querySelector('.lb-zurueck').addEventListener('click', function(e){ e.stopPropagation(); zeige(lbIndex-1); });
   lb.addEventListener('click', function(e){
