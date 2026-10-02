@@ -202,7 +202,7 @@ Tonfall in Texten: freundlich, bairisch angehaucht („Wievui?", „Wos?",
 
 ## Urlaub 2026 (abgeschlossen)
 
-Lorenzer Hütte, Kärnten – **zum 12. Mal**, 25.07.–01.08.2026, 7 Nächte,
+Lorenzer Hütte, Kleblach-Lind (Drautal, Kärnten) – **zum 12. Mal**, 25.07.–01.08.2026, 7 Nächte,
 140 €/Nacht = 980 €. Hütte (laut Martin): 1.700 m, 5 Zimmer, 11 Betten,
 Lagerfeuerstelle, WC und Dusche. **11 Leut':** Pappenberger (Martl, Manu, Max, Alois),
 Robert, Bettina, Franz, Andreas (Andi), Da Baule, Da Blaume, Da Ott.
