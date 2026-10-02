@@ -319,3 +319,9 @@ vier Fünfteln füllen.
   Bilder bekommen 30 Tage `max-age` und CSS/JS `no-cache` (prüfen per
   304). Sonst lädt die Fotoseite bei jedem Aufruf alles neu. Galerien nur
   neu zeichnen, wenn sich die Liste wirklich geändert hat (`stand`).
+- **Bilder fallen am Handy sporadisch aus** (Server liefert sauber, Aussetzer
+  unterwegs). `alm-nav.js` fordert fehlgeschlagene Bilder bis zu 3× neu an (`?v=n`) –
+  nicht entfernen. Galerien als **Grid**, nicht `columns`: gedrehte Polaroids in
+  CSS-Spalten flackern in Safari (behoben Okt. 2026).
+- **Jahres-Index-Seiten** zeigen 10 zufällige Fotos aus `upload.php`, sobald im
+  Album welche sind; sonst die Gestaltungsfotos.
