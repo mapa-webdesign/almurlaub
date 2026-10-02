@@ -463,9 +463,13 @@ footer .feuer{font-size:1.6rem;display:block;margin-bottom:8px}
 .link-karte .url{color:var(--tanne);font-size:.78rem;font-weight:600;display:block;margin-top:6px}
 
 /* ---------- Galerie (Masonry – natürliche Seitenverhältnisse) ---------- */
-.galerie{columns:2;column-gap:14px}
-@media (min-width:640px){ .galerie{columns:3} }
-@media (min-width:1024px){ .galerie{columns:4} }
+/* Grid statt CSS-Spalten: gedrehte Polaroids in einem Spaltenlayout
+   flackern (v. a. Safari/iPhone) und springen beim Nachladen zwischen den Spalten */
+.galerie{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+@media (min-width:640px){ .galerie{grid-template-columns:repeat(3,minmax(0,1fr))} }
+@media (min-width:1024px){ .galerie{grid-template-columns:repeat(4,minmax(0,1fr))} }
+.galerie .polaroid{margin:0;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.galerie .polaroid img{aspect-ratio:4/3;object-fit:cover;object-position:center 35%;background:var(--creme-dunkel)}
 .polaroid{
   position:relative;display:inline-block;width:100%;margin:0 0 14px;break-inside:avoid;
   background:#fdfaf2;padding:8px 8px 10px;border-radius:4px;
