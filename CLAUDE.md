@@ -210,9 +210,14 @@ Mahrhütte 2× · Rest je 1×
 
 ## Urlaub 2027 (in Planung)
 
-**Termin:** Sa 14. – Sa 21.08.2027 (2. Augustwoche, 7 Nächte) – wie
+**Wunschtermin:** Sa 14. – Sa 21.08.2027 (2. Augustwoche, 7 Nächte) – wie
 gewohnt; die zwischenzeitlich anvisierte KW 36 (Sept.) ist vom Tisch.
-Countdown in `2027/index.html` (`var ziel`, Monat 0-basiert).
+**Flexibel:** Nicht jede Hütte ist genau in der Woche frei. Ist sie es
+nicht, werden andere Zeiträume (auch Fr–Fr o. Ä.) und andere Hütten
+geprüft. Bei jeder Hütte deshalb den tatsächlich angebotenen Zeitraum
+eintragen, nicht den Wunschtermin. Countdown in `2027/index.html`
+(`var ziel`, Monat 0-basiert) erst bei Buchung auf den echten Anreisetag
+setzen.
 
 **Hütten-Kandidaten** (Stand 02.10.2026):
 - **Hofer Hütte** (Nockberge) – Angebot **Fr 13.–Fr 20.08.**, 10 Erw.:
