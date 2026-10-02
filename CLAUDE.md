@@ -219,6 +219,11 @@ Bettina, Franz, Andreas, Baule, Blaume, Ott, Maddin. Schlafgruppen: die 4
 Pappe's zusammen, Robert + Bettina zusammen, die übrigen 6 beliebig gemischt.
 → Hütten mit 10 Betten brauchen 2 Zusatzbetten/Matratzen.
 
+**Suchkriterien** (Martin, Okt. 2026 – auch in `huettensuche.html`):
+Platz für 12, min. 5 Schlafzimmer · Almhütte in Alleinlage ·
+Lagerfeuerstelle · Brunnen („Grand“) · fließend Wasser mit WC ·
+warme Dusche (Holzofen, Gas o. Ä.).
+
 **Wunschtermin:** Sa 07. – Sa 14.08.2027 (7 Nächte, KW 31/32; zuvor kurz
 14.–21.08. bzw. KW 36 im Gespräch – beides überholt).
 **Flexibel:** Nicht jede Hütte ist genau in der Woche frei. Ist sie es
