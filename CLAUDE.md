@@ -90,6 +90,7 @@ Favicon · alle 22 Gestaltungs-/Hütten-Fotos · Backup-Skript geschrieben.
 ├─ export.php            Sicherung der Laufzeitdaten (ZIP bzw. tar.gz)
 ├─ alm.css               zentrales Stylesheet – ALLE Seiten
 ├─ alm-nav.js            Burger-Menü + Untermenü je Jahresbereich – ALLE Seiten
+├─ abrechnung-export.js  PDF/Drucken, CSV, JSON-Sicherung + Einspielen – Abrechnungsseiten
 ├─ .htaccess             Zugangsschutz, Sperren, Cache
 ├─ logo.svg              Logo (Bierdeckel-Rund) – auch Favicon; favicon.ico, apple-touch-icon.png
 ├─ fotos/                Gestaltungsfotos (*.jpg) + fotos/huetten/ – im Repo
@@ -163,6 +164,11 @@ data = { parteien:{id:{name,naechte,anzahlung}}, ausgaben:{id:{…}} }
 satz = Σ Ausgaben / Σ Übernachtungen
 Bilanz = eigene Ausgaben + Anzahlung − (Übernachtungen × satz)
 ```
+**Sichern & Teilen** (`abrechnung-export.js`, Daten über `window.almAbrechnung`):
+PDF über den Druckdialog (Druck-CSS in `alm.css`, greift nur auf Seiten mit
+`.druck-kopf`), CSV für Excel (`;`, Dezimalkomma, BOM), JSON-Sicherung
+`{typ, jahr, exportiert, daten:{parteien, ausgaben}}`; Einspielen ersetzt
+`parteien` und `ausgaben` für alle (mit Rückfrage, warnt bei falschem Jahr).
 
 ---
 
@@ -204,8 +210,9 @@ Mahrhütte 2× · Rest je 1×
 
 ## Urlaub 2027 (in Planung)
 
-**Termin:** Sa 04. – Sa 11.09.2027 (KW 36, 7 Nächte) – anvisiert, noch
-nicht bestätigt. Countdown läuft bereits.
+**Termin:** Sa 14. – Sa 21.08.2027 (2. Augustwoche, 7 Nächte) – wie
+gewohnt; die zwischenzeitlich anvisierte KW 36 (Sept.) ist vom Tisch.
+Countdown in `2027/index.html` (`var ziel`, Monat 0-basiert).
 
 **Hütten-Kandidaten** (alle noch unangefragt):
 Preimes Kasa (Airbnb) · Obere Roner Kasa (Suntinger) · Kreuzwirthütte
@@ -244,3 +251,6 @@ vier Fünfteln füllen.
   Paketen zu je 10 (`PAKET`).
 - **Handyfotos enthalten GPS-Koordinaten.** Vor dem Einchecken EXIF
   entfernen; Original-Uploads auf GitHub-Branches danach löschen lassen.
+- **`esc()` in den Seiten-Skripten muss auch `"` maskieren**, sobald der
+  Wert in einem HTML-Attribut landet (`value="…"`) – sonst bricht ein Name
+  wie `Baule "Da"` das Eingabefeld (behoben Okt. 2026).

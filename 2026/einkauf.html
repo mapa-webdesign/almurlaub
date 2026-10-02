@@ -192,7 +192,7 @@
   ichSel.value = localStorage.getItem('alm-ich') || '';
   ichSel.addEventListener('change', function(){ localStorage.setItem('alm-ich', ichSel.value); });
 
-  function esc(s){ var d=document.createElement('div'); d.textContent=s||''; return d.innerHTML; }
+  function esc(s){ var d=document.createElement('div'); d.textContent=s||''; return d.innerHTML.replace(/"/g,'&quot;'); }
 
   function alleItems(){
     var custom = Object.keys(state.custom||{}).map(function(id){

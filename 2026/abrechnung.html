@@ -43,6 +43,7 @@
 </header>
 
 <main class="wrap">
+  <div class="druck-kopf">Abrechnung Almurlaub 2026 <span id="druck-stand"></span></div>
 
   <div class="wer-leiste">
     <div class="links-teil" style="font-size:.88rem">
@@ -113,6 +114,24 @@
     </div>
   </section>
 
+  <section class="export-bereich">
+    <div class="sek-titel"><span class="em">📤</span><h2>Sichern &amp; Teilen</h2><div class="linie"></div></div>
+    <div class="karte">
+      <div class="export-leiste">
+        <button class="btn" id="x-pdf">📄 Als PDF / Drucken</button>
+        <button class="btn sekundaer" id="x-csv">📊 Tabelle für Excel</button>
+        <button class="btn sekundaer" id="x-json">💾 Sicherung herunterladen</button>
+        <label class="btn sekundaer" for="x-import">📂 Sicherung einspielen</label>
+        <input type="file" id="x-import" accept=".json,application/json" hidden>
+      </div>
+      <p class="export-hinweis">
+        <strong>PDF:</strong> im Druckdialog „Als PDF sichern“ wählen – am iPhone: Teilen → Drucken →
+        Vorschau mit zwei Fingern aufziehen → Teilen. <strong>Sicherung</strong> nach dem Urlaub
+        herunterladen und aufheben; einspielen ersetzt den Stand für alle.
+      </p>
+    </div>
+  </section>
+
   <footer>
     <span class="feuer">🔥</span>
     Almurlaub-Abrechnung &middot; live geteilt &middot; Vorlage: Hüttenurlaub 2025
@@ -128,7 +147,7 @@
   var state = {};
   var syncEl = document.getElementById('sync');
 
-  function esc(s){ var d=document.createElement('div'); d.textContent=(s==null?'':s); return d.innerHTML; }
+  function esc(s){ var d=document.createElement('div'); d.textContent=(s==null?'':s); return d.innerHTML.replace(/"/g,'&quot;'); }
   function eur(n){ return (Math.round(n*100)/100).toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})+' €'; }
   function num(v){ var n=parseFloat(String(v==null?'':v).replace(',','.')); return isNaN(n)?0:n; }
 
@@ -285,11 +304,19 @@
     document.getElementById('p-name').value = '';
   });
 
+  /* Für den Export (abrechnung-export.js) */
+  window.almAbrechnung = {
+    jahr: (API.match(/\d{4}/) || [''])[0],
+    daten: function(){ return state; },
+    parteien: parteien, ausgaben: ausgaben, sende: sende
+  };
+
   lade();
   setInterval(lade, 5000);
   document.addEventListener('visibilitychange', function(){ if (!document.hidden) lade(); });
 })();
 </script>
+<script src="../abrechnung-export.js"></script>
 <script src="../alm-nav.js" defer></script>
 </body>
 </html>
