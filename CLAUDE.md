@@ -227,7 +227,7 @@ Platz für 12, min. 5 Schlafzimmer · Almhütte in Alleinlage ·
 Lagerfeuerstelle · Brunnen („Grand“) · fließend Wasser mit WC ·
 warme Dusche (Holzofen, Gas o. Ä.). Vergleich aller Hütten:
 `huettenvergleich.html` – **6/6: Huberalm** (Feuerstelle und warme Dusche laut
-Martin). 5/6: Lorenzer (11 P.), Hofer (12 P. nur mit Lager), Preimes (nur
+Martin; 2027 in der Wunschwoche frei). 5/6: Lorenzer (11 P.), Hofer (12 P. nur mit Lager), Preimes (nur
 10 P.), Thomannbauerhütte (Feuerstelle ?).
 
 **Wunschtermin:** Sa 07. – Sa 14.08.2027 (7 Nächte, KW 31/32; zuvor kurz
@@ -240,6 +240,12 @@ eintragen, nicht den Wunschtermin. Countdown in `2027/index.html`
 setzen.
 
 **Hütten-Kandidaten** (Stand 02.10.2026):
+- **Huberalm** (Dorfgastein, Hüttenpartner **DOR-SBG**) – einzige mit **6/6**;
+  laut Hüttenpartner-Kalender **Sa 07.–Sa 14.08.2027 frei** (geprüft 02.10.2026).
+  Bis 14 P., 5 Zimmer, 1 DU/WC. Mietpreis nur auf Anfrage; vor Ort Endreinigung 100 €,
+  Ortstaxe 2,40 + Mobilitätsabgabe 0,50 €/P./Nacht, Sprit fürs Aggregat, Bettwäsche mitbringen.
+  **Anfrage über Hüttenpartner** (Formular bzw. info@huettenpartner.at, +43 2243 316 89).
+  Kalender prüfen: in `huetten/gasteinertal/dor_sbg.html` steht `var days = {Anreise:{Abreise:1}}`.
 - **Hofer Hütte** (Nockberge) – Angebot **Fr 13.–Fr 20.08.**, 10 Erw.:
   1.575 Miete + 90 Endreinigung + 315 Kurtaxe = **1.980 €** (198 €/P.),
   inkl. Handtücher, Betriebskosten, Brennholz. Achtung: Fr–Fr.
