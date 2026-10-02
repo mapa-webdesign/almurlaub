@@ -229,6 +229,9 @@ setzen.
 - Obere Roner Kasa (Suntinger) – laut urlaubambauernhof.at **2027 ausgebucht**;
   Martin fragt direkt bei Dani per WhatsApp. Wird auch als „Almhütte
   PSD-00611“ auf kaernten-ferienwohnungen.com angeboten (= Roner Kasa).
+- Hinweis für Suchen: **Hüttenpartner „DOR-SBG“ = Huberalm** (2024 dort),
+  **„Almhütte PSD-00611“ = Obere Roner Kasa** – Portale nennen Hütten oft
+  nur per Code, vor dem Vorschlagen gegen die Historie prüfen.
 - **Kalserhütte** (Oberdrauburg, Drautal) – neu, anfragen: bis 10 P., ab
   160 €/Nacht + Nebenkosten; telefonisch +43 4710 2644 / +43 664 9054195
 - **Larer Hütte** (Lessach, Prebersee, Lungau) – neu, anfragen: ca. 10 P.,
