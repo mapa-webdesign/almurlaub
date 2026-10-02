@@ -11,6 +11,7 @@ daten-*.json
 #   git add -f fotos/2027
 fotos/*/
 !fotos/biere/
+!fotos/huetten/
 
 # --- Sicherungen und Exporte ---
 export/
