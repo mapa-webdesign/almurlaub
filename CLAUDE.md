@@ -54,7 +54,6 @@ Favicon · alle 22 Gestaltungs-/Hütten-Fotos · Backup-Skript geschrieben.
 2. **Backup einrichten:** `git pull`, dann `werkzeuge/backup/install.sh`.
 
 ### Inhaltlich noch offen
-- **Truppe 2027** steht nicht fest (2026 waren es 11 Leut').
 - **Hütte 2027** noch nicht entschieden – 2 Angebote da (Hofer, Preimes),
   Roner Kasa erst ab 28.08. frei, Kreuzwirt ausgebucht
   (2028 angefragt), Kalser- und Larer Hütte angefragt (je ca. 10 Plätze).
@@ -214,6 +213,11 @@ Vermerk als Abschnitt „Abgerechnet“ statisch in `2026/abrechnung.html`.
 Mahrhütte 2× · Rest je 1×
 
 ## Urlaub 2027 (in Planung)
+
+**Truppe: 12 Leut'** – Pappenberger (Martl, Manu, Max, Alois), Robert &
+Bettina, Franz, Andreas, Baule, Blaume, Ott, Maddin. Schlafgruppen: die 4
+Pappe's zusammen, Robert + Bettina zusammen, die übrigen 6 beliebig gemischt.
+→ Hütten mit 10 Betten brauchen 2 Zusatzbetten/Matratzen.
 
 **Wunschtermin:** Sa 07. – Sa 14.08.2027 (7 Nächte, KW 31/32; zuvor kurz
 14.–21.08. bzw. KW 36 im Gespräch – beides überholt).
