@@ -149,11 +149,17 @@
       status.textContent = alle.length > PAKET
         ? 'Lädt hoch … ' + i + ' von ' + alle.length
         : 'Lädt hoch …';
+      var paket = alle.slice(i, i + PAKET);
+      i += PAKET;
+      sendePaket(paket, 0);
+    }
+    /* Ein Paket schicken; bei Verbindungsfehler bis zu 2× neu versuchen
+       (mobil und hinter dem Hoster-CDN reißt gelegentlich eine Anfrage ab) */
+    function sendePaket(paket, versuch){
       var fd = new FormData();
       fd.append('von', von);
       fd.append('aktion', 'upload');
-      alle.slice(i, i + PAKET).forEach(function(f){ fd.append('dateien[]', f); });
-      i += PAKET;
+      paket.forEach(function(f){ fd.append('dateien[]', f); });
       fetch(API, {method:'POST', body: fd}).then(function(r){ return r.json(); }).then(function(d){
         if (!d.ok) {
           status.textContent = 'Fehler: ' + (d.error || 'unbekannt') + (n ? ' (' + n + ' Fotos sind schon oben)' : '');
@@ -163,8 +169,9 @@
         n += (d.hochgeladen || []).length;
         uebersprungen += d.uebersprungen || 0;
         render((d.data || {}).fotos || []);
-        naechstesPaket();
+        setTimeout(naechstesPaket, 300);
       }).catch(function(){
+        if (versuch < 2) { setTimeout(function(){ sendePaket(paket, versuch + 1); }, 1500 * (versuch + 1)); return; }
         status.textContent = 'Fehler beim Hochladen – Verbindung prüfen.' + (n ? ' (' + n + ' Fotos sind schon oben)' : '');
         status.className = 'upload-status fehler';
       });
