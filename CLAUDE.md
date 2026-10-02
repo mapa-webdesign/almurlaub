@@ -215,7 +215,7 @@ Mahrhütte 2× · Rest je 1×
 ## Urlaub 2027 (in Planung)
 
 **Truppe: 12 Leut'** – Pappenberger (Martl, Manu, Max, Alois), Robert &
-Bettina, Franz, Andreas, Baule, Blaume, Ott, Maddin. Schlafgruppen: die 4
+Bettina, Billinger (Franz, Andreas, Maddin), Baule, Blaume, Ott. Schlafgruppen: die 4
 Pappe's zusammen, Robert + Bettina zusammen, die übrigen 6 beliebig gemischt.
 → Hütten mit 10 Betten brauchen 2 Zusatzbetten/Matratzen.
 
