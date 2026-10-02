@@ -42,6 +42,11 @@ body{
 .export-hinweis{font-size:.8rem;color:var(--holz);margin-top:12px;font-style:italic}
 .druck-kopf{display:none}
 
+/* ---------- Foto-Album: Bilder sanft einblenden statt aufploppen ---------- */
+.foto-oeffnen img{opacity:0;transition:opacity .35s ease}
+.foto-oeffnen img.da{opacity:1}
+@media (prefers-reduced-motion:reduce){.foto-oeffnen img{transition:none}}
+
 /* ---------- Druck / PDF (alle Seiten) ---------- */
 @media print{
   @page{margin:14mm}

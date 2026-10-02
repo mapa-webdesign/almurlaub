@@ -33,6 +33,15 @@ RewriteRule ^(.*)$ /login.php?ziel=%{REQUEST_URI} [R=302,L,QSA]
 <IfModule mod_headers.c>
   Header set Cache-Control "private, no-store"
   Header set X-Robots-Tag "noindex, nofollow"
+  # Bilder ändern sich nie (Uploads haben eindeutige Namen) → 30 Tage im
+  # Browser behalten, sonst lädt die Fotoseite bei jedem Aufruf alles neu
+  <FilesMatch "\.(jpe?g|png|webp|gif|svg|ico)$">
+    Header set Cache-Control "private, max-age=2592000"
+  </FilesMatch>
+  # CSS/JS dürfen zwischengespeichert, müssen aber geprüft werden (Deploys)
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "private, no-cache"
+  </FilesMatch>
 </IfModule>
 
 # --- Falls der Hoster NICHT schon http -> https umleitet,
