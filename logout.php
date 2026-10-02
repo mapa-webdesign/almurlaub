@@ -29,6 +29,9 @@ header('Content-Type: text/html; charset=utf-8');
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta http-equiv="refresh" content="3; url=login.php">
 <title>Abgemeldet – Urlaub auf der Alm</title>
 <meta name="robots" content="noindex">

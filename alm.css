@@ -32,7 +32,9 @@ body{
 .alm-nav .logo{
   font-family:'Caveat',cursive;font-size:1.35rem;font-weight:700;color:var(--schwammerl-hell);
   text-decoration:none;padding:12px 10px 10px;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:7px;
 }
+.alm-nav .logo img{width:30px;height:30px;flex:none}
 .alm-nav a.nav-link{
   color:var(--creme);text-decoration:none;font-size:.86rem;padding:14px 12px 12px;
   white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;
