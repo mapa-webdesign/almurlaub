@@ -57,7 +57,7 @@ Favicon · alle 22 Gestaltungs-/Hütten-Fotos · Backup-Skript geschrieben.
 - **Truppe 2027** steht nicht fest (2026 waren es 11 Leut').
 - **Hütte 2027** noch nicht entschieden – 2 Angebote da (Hofer, Preimes),
   Roner Kasa erst ab 28.08. frei, Kreuzwirt ausgebucht
-  (2028 angefragt), Kalser- und Larer Hütte neu (je ca. 10 Plätze).
+  (2028 angefragt), Kalser- und Larer Hütte angefragt (je ca. 10 Plätze).
 - **Chili con Carne** in der Einkaufsliste 2027 ist als *Entwurf* markiert,
   Mengen aus der 2025er-Liste abgeleitet und ungeprüft.
 
@@ -229,7 +229,7 @@ setzen.
   1.575 Miete + 90 Endreinigung + 315 Kurtaxe = **1.980 €** (198 €/P.),
   inkl. Handtücher, Betriebskosten, Brennholz. Achtung: Fr–Fr.
 - **Preimes Kasa** (Airbnb) – **Sa 14.–Sa 21.08. vom Gastgeber direkt
-  bestätigt**, 10 Gäste: **2.150 €** (215 €/P.) laut Airbnb; Preis bei
+  bestätigt**; Wunschwoche 07.–14.08. nicht mehr frei, 10 Gäste: **2.150 €** (215 €/P.) laut Airbnb; Preis bei
   Direktbuchung angefragt (evtl. günstiger), Kurtaxe noch ungeklärt.
 - Obere Roner Kasa (Suntinger) – **August 2027 belegt**; laut Dani (WhatsApp)
   nur 28.08.–18.09.2027 frei → für 2028 früh anfragen. Wird auch als „Almhütte
@@ -237,9 +237,9 @@ setzen.
 - Hinweis für Suchen: **Hüttenpartner „DOR-SBG“ = Huberalm** (2024 dort),
   **„Almhütte PSD-00611“ = Obere Roner Kasa** – Portale nennen Hütten oft
   nur per Code, vor dem Vorschlagen gegen die Historie prüfen.
-- **Kalserhütte** (Oberdrauburg, Drautal) – neu, anfragen: bis 10 P., ab
+- **Kalserhütte** (Oberdrauburg, Drautal) – **Anfrage läuft** (Martin): bis 10 P., ab
   160 €/Nacht + Nebenkosten; telefonisch +43 4710 2644 / +43 664 9054195
-- **Larer Hütte** (Lessach, Prebersee, Lungau) – neu, anfragen: ca. 10 P.,
+- **Larer Hütte** (Lessach, Prebersee, Lungau) – **Anfrage läuft** (Martin): ca. 10 P.,
   ab 100 €/Nacht + Ortstaxe/Strom; annemarie.jesner@sbg.at
 - Kreuzwirthütte – **2027 ausgebucht**; Reservierungsanfrage für **2028** läuft
   (2026 doppelt vergeben → Zusage unbedingt schriftlich)
