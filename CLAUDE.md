@@ -52,8 +52,6 @@ Favicon · alle 22 Gestaltungs-/Hütten-Fotos · Backup-Skript geschrieben.
    existiert), FTP-Daten aus der Notion-Seite „Urlaub auf der Alm“ löschen,
    Parole in `config.php` wechseln, falls noch die alte von 2026.
 2. **Backup einrichten:** `git pull`, dann `werkzeuge/backup/install.sh`.
-3. **Abrechnung 2026 nachtragen** (falls gewünscht) – Live-Daten sind
-   verloren, `daten-abrechnung2026.json` enthält nur die 5 leeren Parteien.
 
 ### Inhaltlich noch offen
 - **Truppe 2027** steht nicht fest (2026 waren es 11 Leut').
@@ -72,7 +70,8 @@ Favicon · alle 22 Gestaltungs-/Hütten-Fotos · Backup-Skript geschrieben.
 | Gestaltungs- und Hütten-Fotos (`fotos/*.jpg`, `fotos/huetten/`) | **wiederhergestellt** aus Martins Fundus (Okt. 2026), jetzt im Repo |
 | Fotoalbum 2026 (`fotos/2026/`, Uploads der Truppe) | weg – nur durch erneutes Hochladen |
 | Bier-Etiketten (`fotos/biere/`) | weg – von keiner Seite verwendet |
-| Live-Daten 2026 (Einkauf, To-Dos, Abrechnung) | weg – Abrechnung 2026 ist leer |
+| Live-Daten 2026 (Einkauf, To-Dos) | weg |
+| Abrechnung 2026 | **rekonstruiert** aus Martins Screenshot (Okt. 2026): Parteien, Nächte, Ausgaben-Summe je Partei – Einzelposten verloren. Kopie in `unterlagen/abrechnung-2026.{pdf,json}` |
 | `api.php` | **neu gebaut**, getestet |
 | `login.php`, `logout.php`, `.htaccess` | **neu gebaut**, getestet |
 | HTML-Seiten, CSS, JS | aus Sicherung vom 21.09.2026, vollständig |
@@ -97,7 +96,7 @@ Favicon · alle 22 Gestaltungs-/Hütten-Fotos · Backup-Skript geschrieben.
 ├─ fotos/                Gestaltungsfotos (*.jpg) + fotos/huetten/ – im Repo
 ├─ 2026/                 Archiv    ┐ index, einkauf, abrechnung,
 ├─ 2027/                 aktuell   ┘ fotos, bierrechner, upload.php
-├─ unterlagen/           Hüttenurlaub 2025 (Plan, Einkauf, Abrechnung), Rezepte – gesperrt
+├─ unterlagen/           Hüttenurlaub 2025 (PDF), Abrechnung 2026 (PDF+JSON), Rezepte – gesperrt
 ├─ werkzeuge/backup/     Wöchentliche Sicherung von export.php auf dem Mac
 ├─ config.example.php
 └─ .gitignore
@@ -205,6 +204,9 @@ Tonfall in Texten: freundlich, bairisch angehaucht („Wievui?", „Wos?",
 Lorenzer Hütte, Kärnten – **zum 12. Mal**, 25.07.–01.08.2026, 7 Nächte,
 140 €/Nacht = 980 €. **11 Leut':** Pappenberger (Martl, Manu, Max, Alois),
 Robert, Bettina, Franz, Andreas (Andi), Da Baule, Da Blaume, Da Ott.
+**Abrechnung:** 1.915,10 € Ausgaben, 46 Übernachtungen, 41,63 €/Übernachtung.
+Bilanz: Pappe's +105,92 · Ott +187,57 · Franz +88,57 · Baule −183,43 ·
+Blaume −198,63 (+ = bekommt zurück).
 
 **Bestenliste:** Lorenzer 12× · Obere Roner Kasa 7× · Hoisen 4× ·
 Mahrhütte 2× · Rest je 1×

@@ -1,0 +1,61 @@
+{
+  "typ": "almurlaub-abrechnung",
+  "jahr": "2026",
+  "exportiert": "2026-10-02T04:36:55.228Z",
+  "daten": {
+    "parteien": {
+      "p1": {
+        "name": "Pappe's",
+        "naechte": "21",
+        "anzahlung": ""
+      },
+      "p2": {
+        "name": "Ott",
+        "naechte": "7",
+        "anzahlung": ""
+      },
+      "p3": {
+        "name": "Franz",
+        "naechte": "7",
+        "anzahlung": ""
+      },
+      "p4": {
+        "name": "Baule",
+        "naechte": "7",
+        "anzahlung": ""
+      },
+      "p5": {
+        "name": "Blaume",
+        "naechte": "4",
+        "anzahlung": ""
+      }
+    },
+    "ausgaben": {
+      "a1": {
+        "text": "Summe aller Ausgaben (aus Screenshot rekonstruiert, Einzelposten verloren)",
+        "partei": "p1",
+        "betrag": 980.2
+      },
+      "a2": {
+        "text": "Summe aller Ausgaben (aus Screenshot rekonstruiert, Einzelposten verloren)",
+        "partei": "p2",
+        "betrag": 479
+      },
+      "a3": {
+        "text": "Summe aller Ausgaben (aus Screenshot rekonstruiert, Einzelposten verloren)",
+        "partei": "p3",
+        "betrag": 380
+      },
+      "a4": {
+        "text": "Summe aller Ausgaben (aus Screenshot rekonstruiert, Einzelposten verloren)",
+        "partei": "p4",
+        "betrag": 108
+      },
+      "a5": {
+        "text": "Summe aller Ausgaben (aus Screenshot rekonstruiert, Einzelposten verloren) (inkl. Pfand)",
+        "partei": "p5",
+        "betrag": -32.1
+      }
+    }
+  }
+}
