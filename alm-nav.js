@@ -4,6 +4,31 @@
    ("Alm 2026", "Alm 2027", …) als aufklappbare Unterpunkte ins Menü.
    Die Jahreszahl steht NICHT im Code – jeder Hauptpunkt der Form
    "Alm <Jahr>" bekommt automatisch sein eigenes Untermenü.            */
+/* Bilder, die beim ersten Anlauf nicht laden (auf dem Handy kommt das
+   vor – der Server liefert sie aber), bis zu 3× mit kurzer Pause neu
+   anfordern. Gilt für alle Seiten, auch für nachträglich eingefügte Fotos. */
+(function(){
+  var MAX = 3;
+  function nochmal(img){
+    var src = img.getAttribute('src');
+    if (!src || src.indexOf('data:') === 0) return;
+    var n = +(img.dataset.versuch || 0);
+    if (n >= MAX) return;
+    img.dataset.versuch = n + 1;
+    var basis = img.dataset.orig || (img.dataset.orig = src);
+    setTimeout(function(){
+      img.src = basis + (basis.indexOf('?') < 0 ? '?' : '&') + 'v=' + (n + 1);
+    }, 700 * (n + 1));
+  }
+  document.addEventListener('error', function(e){
+    if (e.target && e.target.tagName === 'IMG') nochmal(e.target);
+  }, true);
+  /* Fehler, die schon vor diesem Skript passiert sind (es lädt mit defer) */
+  Array.prototype.forEach.call(document.images, function(img){
+    if (img.complete && !img.naturalWidth && img.getAttribute('src')) nochmal(img);
+  });
+})();
+
 (function(){
   var nav = document.querySelector('.alm-nav');
   if (!nav) return;
