@@ -58,7 +58,8 @@ Favicon · alle 22 Gestaltungs-/Hütten-Fotos · Backup-Skript geschrieben.
 ### Inhaltlich noch offen
 - **Truppe 2027** steht nicht fest (2026 waren es 11 Leut').
 - **Hütte 2027** noch nicht entschieden – 2 Angebote da (Hofer, Preimes),
-  Roner Kasa noch offen, Kreuzwirt ausgebucht (2028 angefragt).
+  Roner Kasa laut Portal voll (Direktanfrage läuft), Kreuzwirt ausgebucht
+  (2028 angefragt).
 - **Chili con Carne** in der Einkaufsliste 2027 ist als *Entwurf* markiert,
   Mengen aus der 2025er-Liste abgeleitet und ungeprüft.
 
@@ -225,7 +226,8 @@ setzen.
   inkl. Handtücher, Betriebskosten, Brennholz. Achtung: Fr–Fr.
 - **Preimes Kasa** (Airbnb) – frei **Sa 14.–Sa 21.08.**, 10 Gäste:
   **2.150 €** (215 €/P.) laut Airbnb; Kurtaxe vor Ort ungeklärt.
-- Obere Roner Kasa (Suntinger) – noch anfragen
+- Obere Roner Kasa (Suntinger) – laut urlaubambauernhof.at **2027 ausgebucht**;
+  Martin fragt direkt bei Dani per WhatsApp
 - Kreuzwirthütte – **2027 ausgebucht**; Reservierungsanfrage für **2028** läuft
   (2026 doppelt vergeben → Zusage unbedingt schriftlich)
 
