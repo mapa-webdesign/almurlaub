@@ -253,6 +253,10 @@ setzen.
   **Sa 07.–14.08.2027 frei**, **1.490 € für 12 P.** + Ortstaxe 2,80 €/P./Nacht + Strom
   0,40 €/kWh (≈ 1.725 € + Strom). 1.660 m, Alleinlage, Fischteich, Lagerfeuerplatz
   (Gästebewertung), Boiler. **Nur 4 Zimmer** (3 DZ + 4-Bett, 2 Zusatzbetten) → 4/6, Brunnen ?.
+- **Hütte JOS-SBG** (Postalm, Abtenau/Strobl, Sbg., Hüttenpartner) – laut Kalender
+  **Sa 07.–14.08.2027 frei**; Sommerpreis 1.250 € für 10 P. (Augustwoche + 12 P. anfragen),
+  + Ortstaxe/Mobilität 3,50 €/P./Nacht, Gas, Holz, Strom, Maut. 1.170 m, Alleinlage
+  (Nachbarn 200 m), Brunnen, Gas-Warmwasser. **Bis 10 P. + 2 Zusatzbetten, 4 Zimmer** → 4/6, Feuerstelle ?.
 - **Preimes Kasa** (Airbnb) – **Sa 14.–Sa 21.08. vom Gastgeber direkt
   bestätigt**; Wunschwoche 07.–14.08. nicht mehr frei, **Direktangebot 2.005 €** für 10 P.: 4 Pers. 100 €/Tag + 6 Pers.
   20 €/P./Tag + Müll 50 + Endreinigung 100 + Nächtigungstaxe 4,50 €/P./Tag
