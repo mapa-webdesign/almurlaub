@@ -226,8 +226,9 @@ setzen.
 - **Hofer Hütte** (Nockberge) – Angebot **Fr 13.–Fr 20.08.**, 10 Erw.:
   1.575 Miete + 90 Endreinigung + 315 Kurtaxe = **1.980 €** (198 €/P.),
   inkl. Handtücher, Betriebskosten, Brennholz. Achtung: Fr–Fr.
-- **Preimes Kasa** (Airbnb) – frei **Sa 14.–Sa 21.08.**, 10 Gäste:
-  **2.150 €** (215 €/P.) laut Airbnb; Kurtaxe vor Ort ungeklärt.
+- **Preimes Kasa** (Airbnb) – **Sa 14.–Sa 21.08. vom Gastgeber direkt
+  bestätigt**, 10 Gäste: **2.150 €** (215 €/P.) laut Airbnb; Preis bei
+  Direktbuchung angefragt (evtl. günstiger), Kurtaxe noch ungeklärt.
 - Obere Roner Kasa (Suntinger) – laut urlaubambauernhof.at **2027 ausgebucht**;
   Martin fragt direkt bei Dani per WhatsApp. Wird auch als „Almhütte
   PSD-00611“ auf kaernten-ferienwohnungen.com angeboten (= Roner Kasa).
