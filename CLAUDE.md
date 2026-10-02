@@ -279,3 +279,7 @@ vier Fünfteln füllen.
 - **`esc()` in den Seiten-Skripten muss auch `"` maskieren**, sobald der
   Wert in einem HTML-Attribut landet (`value="…"`) – sonst bricht ein Name
   wie `Baule "Da"` das Eingabefeld (behoben Okt. 2026).
+- **Caching:** Die `.htaccess` setzt global `no-store` (Live-Listen), aber
+  Bilder bekommen 30 Tage `max-age` und CSS/JS `no-cache` (prüfen per
+  304). Sonst lädt die Fotoseite bei jedem Aufruf alles neu. Galerien nur
+  neu zeichnen, wenn sich die Liste wirklich geändert hat (`stand`).

@@ -94,7 +94,13 @@
     });
   }
 
+  var stand = null;   /* IDs des zuletzt gezeichneten Stands */
   function render(fotos){
+    /* Nur neu zeichnen, wenn sich die Fotoliste geändert hat –
+       sonst flackern alle Bilder bei jedem Nachladen */
+    var neu = fotos.map(function(f){ return f.id; }).join(',');
+    if (neu === stand) return;
+    stand = neu;
     fotosAktuell = fotos.slice();
     if (!fotosAktuell.length) {
       galerie.innerHTML = '';
@@ -108,7 +114,7 @@
       return '' +
         '<div class="polaroid">' +
           '<button class="foto-oeffnen" type="button" data-index="' + i + '" aria-label="Foto vergrößern, ' + text + '">' +
-            '<img src="' + src + '" alt="Hochgeladenes Foto, ' + text + '" loading="lazy">' +
+            '<img src="' + src + '" alt="Hochgeladenes Foto, ' + text + '" loading="lazy" decoding="async" onload="this.classList.add(\'da\')">' +
             '<figcaption>' + text + '</figcaption>' +
           '</button>' +
           '<button class="foto-loeschen" type="button" data-id="' + escapeHtml(f.id) + '" aria-label="Foto löschen" title="Foto löschen">✕</button>' +
@@ -235,7 +241,7 @@
   });
 
   laden();
-  setInterval(laden, 15000);
+  setInterval(function(){ if (!document.hidden) laden(); }, 15000);
 })();
 </script>
 <script src="../alm-nav.js" defer></script>
