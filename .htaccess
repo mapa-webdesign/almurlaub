@@ -22,6 +22,7 @@ RewriteRule ^ - [L]
 #     (daten-*.json, Notizen, Sicherungen, Git-Ordner – auch MIT Cookie gesperrt)
 RewriteRule \.(json|md|log|bak|sql|ini)$ - [F,L]
 RewriteRule ^_deploy-backup/ - [F,L]
+RewriteRule ^unterlagen/ - [F,L]
 RewriteRule (^|/)\.git - [F,L]
 
 # --- Ohne Cookie zur Bierparole, Ziel merken ---

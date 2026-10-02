@@ -88,6 +88,7 @@ Login mit Parole geprüft · `.git/` und `.md` liefern 403.
 ├─ .htaccess             Zugangsschutz, Sperren, Cache
 ├─ 2026/                 Archiv    ┐ index, einkauf, abrechnung,
 ├─ 2027/                 aktuell   ┘ fotos, bierrechner, upload.php
+├─ unterlagen/          Einkaufsliste 2025 (PDF), Rezepte – per .htaccess gesperrt
 ├─ werkzeuge/backup/     Wöchentliche Sicherung von export.php auf dem Mac
 ├─ config.example.php
 └─ .gitignore
