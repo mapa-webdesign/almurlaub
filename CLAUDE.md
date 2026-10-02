@@ -215,8 +215,8 @@ Mahrhütte 2× · Rest je 1×
 
 ## Urlaub 2027 (in Planung)
 
-**Wunschtermin:** Sa 14. – Sa 21.08.2027 (2. Augustwoche, 7 Nächte) – wie
-gewohnt; die zwischenzeitlich anvisierte KW 36 (Sept.) ist vom Tisch.
+**Wunschtermin:** Sa 07. – Sa 14.08.2027 (7 Nächte, KW 31/32; zuvor kurz
+14.–21.08. bzw. KW 36 im Gespräch – beides überholt).
 **Flexibel:** Nicht jede Hütte ist genau in der Woche frei. Ist sie es
 nicht, werden andere Zeiträume (auch Fr–Fr o. Ä.) und andere Hütten
 geprüft. Bei jeder Hütte deshalb den tatsächlich angebotenen Zeitraum
