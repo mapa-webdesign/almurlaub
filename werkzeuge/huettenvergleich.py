@@ -38,7 +38,7 @@ H = [
   ('b','Kreuzwirthütte','https://www.urlaubambauernhof.at/de/hoefe/kreuzwirthuette','Radenthein','Ktn',1500,'46.8462,13.7252',9,3,'n??jjj','–','belegt'),
   ('b','Sonnalmhütte','https://www.urlaubambauernhof.at/hoefe/sonnalmhuette','Gmünd','Ktn',1500,'46.9614,13.5419',11,4,'n?n?jj','–','–'),
   ('b','Bodener Alm','https://www.huettenland.com/huette/1302/Bodner-Almhuette-im-Kristeinertal/','Kristeinertal','OT',1500,'46.8157,12.5580',6,4,'n?njj?','–','–'),
-  ('b','Lorenzer Hütte','','–','Ktn',None,'',None,None,'??????','–','–'),
+  ('b','Lorenzer Hütte','','–','Ktn',1700,'',11,5,'n?j?jj','980 €','–'),  # laut Martin: 140 €/Nacht
   ('b','Hoisen Hütte','https://hoisenhuette.at/','Rennweg','Ktn',None,'',None,None,'??????','–','–'),
   ('b','Paulmahdhütte','https://www.paulmahdhuette.com','Rennweg','Ktn',None,'',None,None,'??????','–','–'),
   ('b','Rettensteinhütte','https://www.huettenzauber-tirol.at/huetten/rettensteinhuette','Aschau','T',None,'',None,None,'??????','–','–'),
