@@ -71,6 +71,9 @@ header('X-Robots-Tag: noindex, nofollow');
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Bierparole – Urlaub auf der Alm</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -92,6 +95,7 @@ header('X-Robots-Tag: noindex, nofollow');
     display:flex;align-items:center;justify-content:center;padding:24px 16px;
   }
   .kasten{width:100%;max-width:560px;text-align:center}
+  .logo{display:block;margin:0 auto 6px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
   h1{
     font-family:'Caveat',cursive;font-size:clamp(2.3rem,9vw,3.4rem);
     margin:0 0 4px;color:var(--creme);text-shadow:0 2px 6px rgba(0,0,0,.5);
@@ -138,7 +142,8 @@ header('X-Robots-Tag: noindex, nofollow');
 </head>
 <body>
   <main class="kasten">
-    <h1>🏔️ Urlaub auf der Alm</h1>
+    <img class="logo" src="logo.svg" alt="" width="110" height="110">
+    <h1>Urlaub auf der Alm</h1>
     <div class="spruch">Kein Zutritt für Schwachschwoaba</div>
 
     <div class="deckel-reihe" aria-hidden="true">
