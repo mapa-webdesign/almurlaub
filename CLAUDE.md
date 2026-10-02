@@ -58,7 +58,7 @@ Favicon · alle 22 Gestaltungs-/Hütten-Fotos · Backup-Skript geschrieben.
 ### Inhaltlich noch offen
 - **Truppe 2027** steht nicht fest (2026 waren es 11 Leut').
 - **Hütte 2027** noch nicht entschieden – 2 Angebote da (Hofer, Preimes),
-  Roner Kasa und Kreuzwirt noch offen.
+  Roner Kasa noch offen, Kreuzwirt ausgebucht (2028 angefragt).
 - **Chili con Carne** in der Einkaufsliste 2027 ist als *Entwurf* markiert,
   Mengen aus der 2025er-Liste abgeleitet und ungeprüft.
 
@@ -210,9 +210,14 @@ Mahrhütte 2× · Rest je 1×
 
 ## Urlaub 2027 (in Planung)
 
-**Termin:** Sa 14. – Sa 21.08.2027 (2. Augustwoche, 7 Nächte) – wie
+**Wunschtermin:** Sa 14. – Sa 21.08.2027 (2. Augustwoche, 7 Nächte) – wie
 gewohnt; die zwischenzeitlich anvisierte KW 36 (Sept.) ist vom Tisch.
-Countdown in `2027/index.html` (`var ziel`, Monat 0-basiert).
+**Flexibel:** Nicht jede Hütte ist genau in der Woche frei. Ist sie es
+nicht, werden andere Zeiträume (auch Fr–Fr o. Ä.) und andere Hütten
+geprüft. Bei jeder Hütte deshalb den tatsächlich angebotenen Zeitraum
+eintragen, nicht den Wunschtermin. Countdown in `2027/index.html`
+(`var ziel`, Monat 0-basiert) erst bei Buchung auf den echten Anreisetag
+setzen.
 
 **Hütten-Kandidaten** (Stand 02.10.2026):
 - **Hofer Hütte** (Nockberge) – Angebot **Fr 13.–Fr 20.08.**, 10 Erw.:
@@ -221,7 +226,8 @@ Countdown in `2027/index.html` (`var ziel`, Monat 0-basiert).
 - **Preimes Kasa** (Airbnb) – frei **Sa 14.–Sa 21.08.**, 10 Gäste:
   **2.150 €** (215 €/P.) laut Airbnb; Kurtaxe vor Ort ungeklärt.
 - Obere Roner Kasa (Suntinger) – noch anfragen
-- Kreuzwirthütte – noch anfragen (2026 doppelt vergeben → schriftlich bestätigen lassen)
+- Kreuzwirthütte – **2027 ausgebucht**; Reservierungsanfrage für **2028** läuft
+  (2026 doppelt vergeben → Zusage unbedingt schriftlich)
 
 **Rezept-Notiz:** „Rigatoni al Porno" (Dutch Oven ft12) ist für 11 Personen
 hinterlegt. Faustregeln zum Gegenrechnen bei Änderungen: Fleisch zu Tomaten
