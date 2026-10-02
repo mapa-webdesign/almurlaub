@@ -48,6 +48,7 @@
      Bei Änderungen bitte beides pflegen. */
   var SUBSEITEN = [
     ['index.html',       'Übersicht'],
+    ['abstimmung.html',  '🗳️ Abstimmung', ['2027']],   /* nur in den genannten Jahren */
     ['einkauf.html',     '🛒 Einkaufsliste'],
     ['abrechnung.html',  '💰 Abrechnung'],
     ['fotos.html',       '📸 Fotos'],
@@ -80,6 +81,7 @@
 
     var letzter = zeile, subs = [], hatAktiv = false;
     SUBSEITEN.forEach(function(seite){
+      if (seite[2] && seite[2].indexOf(almLink.textContent.trim().slice(-4)) < 0) return;
       var link = document.createElement('a');
       link.className = 'nav-link nav-sub';
       link.href = basis + seite[0];

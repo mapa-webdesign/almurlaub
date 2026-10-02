@@ -114,7 +114,8 @@ vom Server geschrieben und von einem Deploy nie angefasst.
 ## Navigation
 
 - **Hauptmenü:** Historie · Alm 2027 · Alm 2026 · Packliste · Hütten-Suche · Abmelden
-- **Untermenü je Jahr:** Übersicht · Einkaufsliste · Abrechnung · Fotos · Bierrechner
+- **Untermenü je Jahr:** Übersicht · (nur 2027: Abstimmung) · Einkaufsliste · Abrechnung · Fotos · Bierrechner
+  – in `SUBSEITEN` (alm-nav.js) schränkt ein 3. Eintrag `['2027']` eine Unterseite auf Jahre ein
 - ⚠️ **Das Nav-Markup steht in jeder Seite einzeln** (kein Include).
   Menüänderungen müssen in **allen** Seiten nachgezogen werden, und die
   relativen Pfade unterscheiden sich je Ordner:
@@ -145,10 +146,13 @@ Ablage in `daten/daten-<doc>.json`, Schreibzugriffe mit `flock` serialisiert.
 Datenstand: `einkauf2027`, `abrechnung2027`, `bier2027`, `todos2027`, `huetten2027`
 (Sterne + Ausschluss im Hütten-Vergleich: `h.<id>.sterne|raus|grund`, id = Slug des
 Hüttennamens aus `werkzeuge/huettenvergleich.py` – Hütte umbenennen = Wertung weg).
-Im selben Doc die **Favoriten-Wahl** auf `2027/index.html` (Abschnitt `#wahl`):
-`stimmen.<Name>` = Hütten-id, eine Stimme je Person; „Wer bist du?“ merkt sich der Browser
-(`localStorage alm-ich`). Die Tabelle dort ist statisch gepflegt – bei neuen Angeboten
-Zeile anpassen (gleiche id wie im Hütten-Vergleich).
+Im selben Doc die **Abstimmung** auf `2027/abstimmung.html`:
+- Favoriten-Wahl `#wahl`: `stimmen.<Name>` = Hütten-id, eine Stimme je Person.
+- Termin-Umfrage `#termine`: `termine.<Name>.<t1…t6>` = `j` kann · `v` wenn's sein muss · `n` nicht.
+  Spalte „Dabei“ der Hütten-Tabelle = bester Termin der Hütte (`data-t="t1 t4"`).
+- „Wer bist du?“ merkt sich der Browser (`localStorage alm-ich`). Beide Tabellen sind
+  statisch gepflegt – bei neuen Angeboten/Terminen Zeilen bzw. Spalten anpassen
+  (Hütten-id wie im Hütten-Vergleich; Termin-ids nie umnummerieren, sonst sind Antworten weg).
 
 ### Einkaufsliste 2027 – Datenmodell im HTML
 ```
@@ -267,8 +271,9 @@ setzen.
   bestätigt**; Wunschwoche 07.–14.08. nicht mehr frei, **Direktangebot 2.005 €** für 10 P.: 4 Pers. 100 €/Tag + 6 Pers.
   20 €/P./Tag + Müll 50 + Endreinigung 100 + Nächtigungstaxe 4,50 €/P./Tag
   **12 Betten** (Monika, WhatsApp) → für 12 P. ≈ 2.348 €. Airbnb wäre 2.150 € + Taxe.
-- Obere Roner Kasa (Suntinger) – **August 2027 belegt**; laut Dani (WhatsApp)
-  nur 28.08.–18.09.2027 frei → für 2028 früh anfragen. Wird auch als „Almhütte
+- **Obere Roner Kasa** (Suntinger) – August belegt, aber **28.08.–18.09.2027 frei**
+  (Dani, WhatsApp) → Spätsommer-Option, in der Termin-Umfrage als 28.08.–04.09. und
+  04.–11.09.; Preis noch anfragen. Wird auch als „Almhütte
   PSD-00611“ auf kaernten-ferienwohnungen.com angeboten (= Roner Kasa).
 - Hinweis für Suchen: **Hüttenpartner „DOR-SBG“ = Huberalm** (2024 dort),
   **„Almhütte PSD-00611“ = Obere Roner Kasa** – Portale nennen Hütten oft
