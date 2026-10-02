@@ -8,7 +8,7 @@ import html
 H = [
   # --- Aktuelle Kandidaten ---
   ('k','Hofer Hütte','https://www.huettenland.com/huette/1580/Hofer-Huette-in-den-Nockbergen/','Gmünd','Ktn',1750,'46.8686,13.5778',15,5,'?jjjjj','1.980 €','ab 13.08.'),
-  ('k','Preimes Kasa','https://www.airbnb.de/rooms/1175192828385082031','Mörtschach','Ktn',None,'46.927,12.874',10,5,'njjjjj','2.005 €','14.–21.08.'),
+  ('k','Preimes Kasa','https://www.airbnb.de/rooms/1175192828385082031','Mörtschach','Ktn',None,'46.927,12.874',12,5,'jjjjjj','2.348 €','14.–21.08.'),
   ('k','Kalserhütte','https://xn--kalserhtte-geb.at/','Oberdrauburg','Ktn',1800,'46.7613,12.9224',10,4,'nn??jj','ab 160 €/N.','Anfrage'),
   ('k','Larer Hütte','https://www.larerhuette.at/','Lessach','Sbg',1600,'',10,4,'n??jjj','ab 100 €/N.','Anfrage'),
   # --- Neue Funde ---
