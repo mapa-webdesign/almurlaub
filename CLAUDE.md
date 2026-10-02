@@ -226,9 +226,9 @@ Pappe's zusammen, Robert + Bettina zusammen, die übrigen 6 beliebig gemischt.
 Platz für 12, min. 5 Schlafzimmer · Almhütte in Alleinlage ·
 Lagerfeuerstelle · Brunnen („Grand“) · fließend Wasser mit WC ·
 warme Dusche (Holzofen, Gas o. Ä.). Vergleich aller Hütten:
-`huettenvergleich.html` – Stand 02.10.: **keine erfüllt nachweislich alle 6**;
-5/6: Lorenzer (11 P.), Huberalm (Dusche ?, Feuerstelle laut Martin ✓), Hofer
-(12 P. nur mit Lager), Preimes (nur 10 P.), Thomannbauerhütte (Feuerstelle ?).
+`huettenvergleich.html` – **6/6: Huberalm** (Feuerstelle und warme Dusche laut
+Martin). 5/6: Lorenzer (11 P.), Hofer (12 P. nur mit Lager), Preimes (nur
+10 P.), Thomannbauerhütte (Feuerstelle ?).
 
 **Wunschtermin:** Sa 07. – Sa 14.08.2027 (7 Nächte, KW 31/32; zuvor kurz
 14.–21.08. bzw. KW 36 im Gespräch – beides überholt).
