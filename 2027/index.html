@@ -241,6 +241,32 @@
   footer{text-align:center;color:var(--nebel);font-size:.82rem;margin-top:56px;font-style:italic;padding-bottom:20px}
   footer .feuer{font-size:1.6rem;display:block;margin-bottom:8px}
 </style>
+<style>
+  .wahl{font-size:.85rem}
+  .wahl th,.wahl td{white-space:nowrap;padding:8px 5px}
+  .wahl thead th{vertical-align:bottom;line-height:1.15}
+  .wahl tbody th{text-align:left;text-transform:none;letter-spacing:0;font-size:.92rem;font-weight:700;
+    border-bottom:1px dashed rgba(90,65,48,.3);position:sticky;left:0;background:var(--creme);z-index:1}
+  .wahl tbody tr:last-child th{border-bottom:none}
+  .wahl tr.meins th{background:linear-gradient(rgba(90,125,92,.12),rgba(90,125,92,.12)),var(--creme)}
+  .wahl td.stand{text-align:left;font-style:normal}
+  .wahl-fuss a{color:var(--tanne)}
+  .wahl .k{text-align:center;font-weight:700}
+  .wahl td.ok{color:var(--tanne)} .wahl td.nein{color:var(--geranie)} .wahl td.offen{color:var(--holz-grau);font-weight:400}
+  .wahl td.sigma{font-weight:800} .wahl td.s6{color:var(--tanne)}
+  .wahl td.stand{white-space:normal;min-width:8.5em;font-size:.78rem;color:var(--holz)}
+  .wahl td.stimmen{white-space:normal;min-width:9em}
+  .wahl .anzahl{font-weight:800;font-size:1.05rem;margin-left:6px;vertical-align:middle}
+  .wahl .wer{font-size:.74rem;color:var(--holz)}
+  .fav-knopf{background:var(--creme-dunkel);border:1.5px solid var(--holz-grau);border-radius:16px;cursor:pointer;font-size:1rem;padding:2px 10px}
+  .fav-knopf:hover{border-color:var(--tanne)}
+  .wahl tr.meins .fav-knopf{background:var(--tanne);border-color:var(--tanne)}
+  .wahl tr.fuehrt th::after{content:" 🏆"}
+  .wahl tr.meins{background:rgba(90,125,92,.12)}
+  .wahl-leiste{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin-bottom:12px;font-size:.88rem}
+  .wahl-leiste select{font:inherit;padding:4px 6px;border-radius:6px;border:1px solid var(--holz-grau);background:var(--creme)}
+  .wahl-fuss{font-size:.8rem;color:var(--holz);margin-top:10px}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -297,6 +323,50 @@
     <div class="eck"><div class="icon">🏡</div><div class="wert">4 Kandidaten</div><div class="label">Hütte in Auswahl</div></div>
     <div class="eck"><div class="icon">👨‍👩‍👧‍👦</div><div class="wert">12 Leut'</div><div class="label">Truppe steht</div></div>
   </div>
+
+  <!-- Favoriten-Wahl: Übersicht der angefragten Hütten + Abstimmung (live, doc=huetten2027, stimmen.<name>) -->
+  <section id="wahl" aria-label="Favoriten-Wahl">
+    <div class="sek-titel"><span class="em">🗳️</span><h2>Wo geht's hin? Favoriten-Wahl</h2><div class="linie"></div></div>
+    <div class="karte">
+      <div class="wahl-leiste">
+        <label>Wer bist du? <select id="wahl-ich"><option value="">– bitte wählen –</option><option>Martl</option><option>Manu</option><option>Max</option><option>Alois</option><option>Robert</option><option>Bettina</option><option>Franz</option><option>Andreas</option><option>Maddin</option><option>Baule</option><option>Blaume</option><option>Ott</option></select></label>
+        <span>Dann bei deinem Favoriten auf 👍 – jeder hat <strong>eine</strong> Stimme, umentscheiden geht jederzeit.</span>
+        <span class="sync-status" id="wahl-sync"><span class="punkt"></span>verbinde …</span>
+      </div>
+      <div class="tab-scroll">
+      <table class="tabelle wahl">
+        <thead><tr><th>Hütte</th><th>Stimmen</th><th>Termin</th><th class="k" title="Wunschwoche 07.–14.08.">Wunsch-<br>woche</th><th>Preis 12 P. / Woche</th>
+          <th class="zahl">pro Kopf</th><th class="zahl">Plätze</th><th class="zahl">Zimmer</th><th class="zahl" title="erfüllte Suchkriterien">Kriterien</th>
+          <th>Stand</th></tr></thead>
+        <tbody>
+          <tr data-id="huberalm"><th scope="row">Huberalm</th>
+            <td class="stimmen"><button type="button" class="fav-knopf">👍</button><span class="anzahl">0</span><div class="wer"></div></td><td>Sa 07.–14.08.</td><td class="k ok">✓</td><td>Miete ? + ≈ 344 € NK</td><td class="zahl">?</td>
+            <td class="zahl">14</td><td class="zahl">5</td><td class="zahl sigma s6">6/6</td><td class="stand">frei laut Kalender · Preis anfragen</td></tr>
+          <tr data-id="preimes-kasa"><th scope="row">Preimes Kasa</th>
+            <td class="stimmen"><button type="button" class="fav-knopf">👍</button><span class="anzahl">0</span><div class="wer"></div></td><td>Sa 14.–21.08.</td><td class="k nein">✗</td><td>≈ 2.348 €</td><td class="zahl">≈ 196 €</td>
+            <td class="zahl">12</td><td class="zahl">5</td><td class="zahl sigma s6">6/6</td><td class="stand">vom Gastgeber bestätigt</td></tr>
+          <tr data-id="hofer-huette"><th scope="row">Hofer Hütte</th>
+            <td class="stimmen"><button type="button" class="fav-knopf">👍</button><span class="anzahl">0</span><div class="wer"></div></td><td>Fr 13.–20.08.</td><td class="k nein">✗</td><td>1.980 € (für 10)</td><td class="zahl">≈ 198 €</td>
+            <td class="zahl">12 (mit Lager)</td><td class="zahl">5</td><td class="zahl sigma s5">5/6</td><td class="stand">Angebot da</td></tr>
+          <tr data-id="huette-rei-stm"><th scope="row">Hütte REI-STM</th>
+            <td class="stimmen"><button type="button" class="fav-knopf">👍</button><span class="anzahl">0</span><div class="wer"></div></td><td>Sa 07.–14.08.</td><td class="k ok">✓</td><td>≈ 1.725 € + Strom</td><td class="zahl">≈ 144 €</td>
+            <td class="zahl">10 + 2</td><td class="zahl">4</td><td class="zahl sigma s4">4/6</td><td class="stand">frei laut Kalender · noch nicht angefragt</td></tr>
+          <tr data-id="huette-jos-sbg"><th scope="row">Hütte JOS-SBG</th>
+            <td class="stimmen"><button type="button" class="fav-knopf">👍</button><span class="anzahl">0</span><div class="wer"></div></td><td>Sa 07.–14.08.</td><td class="k ok">✓</td><td>≈ 1.650 € + Strom</td><td class="zahl">≈ 138 €</td>
+            <td class="zahl">10 + 2</td><td class="zahl">4</td><td class="zahl sigma s4">4/6</td><td class="stand">frei laut Kalender · Preis 12 P. anfragen</td></tr>
+          <tr data-id="kalserhuette"><th scope="row">Kalserhütte</th>
+            <td class="stimmen"><button type="button" class="fav-knopf">👍</button><span class="anzahl">0</span><div class="wer"></div></td><td>?</td><td class="k offen">?</td><td>ab 1.120 € + NK</td><td class="zahl">ab ≈ 93 €</td>
+            <td class="zahl">10</td><td class="zahl">4</td><td class="zahl sigma s2">2/6</td><td class="stand">Anfrage läuft</td></tr>
+          <tr data-id="larer-huette"><th scope="row">Larer Hütte</th>
+            <td class="stimmen"><button type="button" class="fav-knopf">👍</button><span class="anzahl">0</span><div class="wer"></div></td><td>?</td><td class="k offen">?</td><td>ab 700 € + NK</td><td class="zahl">ab ≈ 58 €</td>
+            <td class="zahl">10</td><td class="zahl">4</td><td class="zahl sigma s3">3/6</td><td class="stand">Anfrage läuft</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="wahl-fuss">Preise inkl. Ortstaxe und Endreinigung, soweit bekannt; „+ Strom“ = nach Verbrauch. Kriterien siehe
+        <a href="../huettenvergleich.html">Hütten-Vergleich</a>. Details zu jeder Hütte in den Karten darunter.</p>
+    </div>
+  </section>
 
   <!-- Hüttenstatus -->
   <section id="huetten" aria-label="Hütten-Auswahl">
@@ -607,6 +677,59 @@
     tLaden();
     setInterval(tLaden, 5000);
   }
+})();
+</script>
+<script>
+/* ---------- Favoriten-Wahl (geteilt über API, doc=huetten2027, stimmen.<name> = hütten-id) ---------- */
+(function(){
+  var API = '../api.php?doc=huetten2027';
+  var ich = document.getElementById('wahl-ich'), syncEl = document.getElementById('wahl-sync');
+  var rows = document.querySelectorAll('table.wahl tbody tr'), stand = '';
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  try { ich.value = localStorage.getItem('alm-ich') || ''; } catch(e) {}
+  var stimmen = {};
+  function render(){
+    var zahl = {}, wer = {}, max = 0;
+    Object.keys(stimmen).forEach(function(n){ var id = stimmen[n]; zahl[id] = (zahl[id]||0)+1; (wer[id] = wer[id]||[]).push(n); });
+    Object.keys(zahl).forEach(function(id){ if (zahl[id] > max) max = zahl[id]; });
+    rows.forEach(function(tr){
+      var id = tr.dataset.id, z = zahl[id] || 0;
+      tr.querySelector('.anzahl').textContent = z;
+      tr.querySelector('.wer').innerHTML = (wer[id] || []).map(esc).join(', ');
+      tr.classList.toggle('meins', !!ich.value && stimmen[ich.value] === id);
+      tr.classList.toggle('fuehrt', max > 0 && z === max);
+      tr.querySelector('.fav-knopf').title = ich.value ? (stimmen[ich.value] === id ? 'Stimme zurücknehmen' : 'Mei Favorit!') : 'Erst oben auswählen, wer du bist';
+    });
+  }
+  function anwenden(json){
+    var neu = JSON.stringify((json.data || {}).stimmen || {});
+    if (neu !== stand) { stand = neu; stimmen = JSON.parse(neu); render(); }
+    var t = new Date();
+    syncEl.className = 'sync-status';
+    syncEl.innerHTML = '<span class="punkt"></span>live · Stand ' + ('0'+t.getHours()).slice(-2)+':'+('0'+t.getMinutes()).slice(-2)+':'+('0'+t.getSeconds()).slice(-2);
+  }
+  function fehler(text){ syncEl.className = 'sync-status offline'; syncEl.innerHTML = '<span class="punkt"></span>' + esc(text); }
+  function lade(){ fetch(API).then(function(r){ return r.json(); }).then(anwenden).catch(function(){ fehler('offline – versuche erneut …'); }); }
+  function sende(body){
+    fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)})
+      .then(function(r){ return r.json(); }).then(anwenden).catch(function(){ fehler('Speichern fehlgeschlagen'); lade(); });
+  }
+  ich.addEventListener('change', function(){
+    try { localStorage.setItem('alm-ich', ich.value); } catch(e) {}
+    render();
+  });
+  rows.forEach(function(tr){
+    tr.querySelector('.fav-knopf').addEventListener('click', function(){
+      if (!ich.value) { alert('Sag zerst, wer du bist – oben im Auswahlfeld.'); ich.focus(); return; }
+      var pfad = 'stimmen.' + ich.value;
+      if (stimmen[ich.value] === tr.dataset.id) sende({unset: [pfad]});
+      else { var s = {}; s[pfad] = tr.dataset.id; sende({set: s}); }
+    });
+  });
+  render();
+  lade();
+  setInterval(lade, 4000);
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) lade(); });
 })();
 </script>
 <script src="../alm-nav.js" defer></script>

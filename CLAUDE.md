@@ -145,6 +145,10 @@ Ablage in `daten/daten-<doc>.json`, Schreibzugriffe mit `flock` serialisiert.
 Datenstand: `einkauf2027`, `abrechnung2027`, `bier2027`, `todos2027`, `huetten2027`
 (Sterne + Ausschluss im Hütten-Vergleich: `h.<id>.sterne|raus|grund`, id = Slug des
 Hüttennamens aus `werkzeuge/huettenvergleich.py` – Hütte umbenennen = Wertung weg).
+Im selben Doc die **Favoriten-Wahl** auf `2027/index.html` (Abschnitt `#wahl`):
+`stimmen.<Name>` = Hütten-id, eine Stimme je Person; „Wer bist du?“ merkt sich der Browser
+(`localStorage alm-ich`). Die Tabelle dort ist statisch gepflegt – bei neuen Angeboten
+Zeile anpassen (gleiche id wie im Hütten-Vergleich).
 
 ### Einkaufsliste 2027 – Datenmodell im HTML
 ```
