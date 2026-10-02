@@ -241,34 +241,6 @@
   footer{text-align:center;color:var(--nebel);font-size:.82rem;margin-top:56px;font-style:italic;padding-bottom:20px}
   footer .feuer{font-size:1.6rem;display:block;margin-bottom:8px}
 </style>
-<style>
-  .wahl{font-size:.85rem}
-  .wahl th,.wahl td{white-space:nowrap;padding:8px 5px}
-  .wahl thead th{vertical-align:bottom;line-height:1.15}
-  .wahl tbody th{text-align:left;text-transform:none;letter-spacing:0;font-size:.92rem;font-weight:700;
-    border-bottom:1px dashed rgba(90,65,48,.3);position:sticky;left:0;background:var(--creme);z-index:1}
-  .wahl tbody tr:last-child th{border-bottom:none}
-  .wahl tbody th a{color:var(--holz-dunkel);text-decoration:none}
-  .wahl tbody th a:hover{color:var(--tanne);text-decoration:underline}
-  .wahl tr.meins th{background:linear-gradient(rgba(90,125,92,.12),rgba(90,125,92,.12)),var(--creme)}
-  .wahl td.stand{text-align:left;font-style:normal}
-  .wahl-fuss a{color:var(--tanne)}
-  .wahl .k{text-align:center;font-weight:700}
-  .wahl td.ok{color:var(--tanne)} .wahl td.nein{color:var(--geranie)} .wahl td.offen{color:var(--holz-grau);font-weight:400}
-  .wahl td.sigma{font-weight:800} .wahl td.s6{color:var(--tanne)}
-  .wahl td.stand{white-space:normal;min-width:8.5em;font-size:.78rem;color:var(--holz)}
-  .wahl td.stimmen{white-space:normal;min-width:9em}
-  .wahl .anzahl{font-weight:800;font-size:1.05rem;margin-left:6px;vertical-align:middle}
-  .wahl .wer{font-size:.74rem;color:var(--holz)}
-  .fav-knopf{background:var(--creme-dunkel);border:1.5px solid var(--holz-grau);border-radius:16px;cursor:pointer;font-size:1rem;padding:2px 10px}
-  .fav-knopf:hover{border-color:var(--tanne)}
-  .wahl tr.meins .fav-knopf{background:var(--tanne);border-color:var(--tanne)}
-  .wahl tr.fuehrt th::after{content:" 🏆"}
-  .wahl tr.meins{background:rgba(90,125,92,.12)}
-  .wahl-leiste{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin-bottom:12px;font-size:.88rem}
-  .wahl-leiste select{font:inherit;padding:4px 6px;border-radius:6px;border:1px solid var(--holz-grau);background:var(--creme)}
-  .wahl-fuss{font-size:.8rem;color:var(--holz);margin-top:10px}
-</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -288,6 +260,7 @@
   <div class="jahr-nav-innen">
     <span class="jahr-label">Alm 2027</span>
     <a href="index.html" class="aktiv">Übersicht</a>
+    <a href="abstimmung.html">🗳️ Abstimmung</a>
     <a href="einkauf.html">🛒 Einkaufsliste</a>
     <a href="abrechnung.html">💰 Abrechnung</a>
     <a href="fotos.html">📸 Fotos</a>
@@ -326,47 +299,10 @@
     <div class="eck"><div class="icon">👨‍👩‍👧‍👦</div><div class="wert">12 Leut'</div><div class="label">Truppe steht</div></div>
   </div>
 
-  <!-- Favoriten-Wahl: Übersicht der angefragten Hütten + Abstimmung (live, doc=huetten2027, stimmen.<name>) -->
-  <section id="wahl" aria-label="Favoriten-Wahl">
-    <div class="sek-titel"><span class="em">🗳️</span><h2>Wo geht's hin? Favoriten-Wahl</h2><div class="linie"></div></div>
-    <div class="karte">
-      <div class="wahl-leiste">
-        <label>Wer bist du? <select id="wahl-ich"><option value="">– bitte wählen –</option><option>Martl</option><option>Manu</option><option>Max</option><option>Alois</option><option>Robert</option><option>Bettina</option><option>Franz</option><option>Andreas</option><option>Maddin</option><option>Baule</option><option>Blaume</option><option>Ott</option></select></label>
-        <span>Dann bei deinem Favoriten auf 👍 – jeder hat <strong>eine</strong> Stimme, umentscheiden geht jederzeit.</span>
-        <span class="sync-status" id="wahl-sync"><span class="punkt"></span>verbinde …</span>
-      </div>
-      <div class="tab-scroll">
-      <table class="tabelle wahl">
-        <thead><tr><th>Hütte</th><th>Stimmen</th><th>Termin</th><th class="k" title="Wunschwoche 07.–14.08.">Wunsch-<br>woche</th><th>Preis 12 P. / Woche</th>
-          <th class="zahl">pro Kopf</th><th class="zahl">Plätze</th><th class="zahl">Zimmer</th><th class="zahl" title="erfüllte Suchkriterien">Kriterien</th>
-          <th>Stand</th></tr></thead>
-        <tbody>
-          <tr data-id="huberalm"><th scope="row"><a href="https://www.huettenpartner.com/huetten/gasteinertal/dor_sbg.html" target="_blank" rel="noopener">Huberalm ↗</a></th>
-            <td class="stimmen"><button type="button" class="fav-knopf">👍</button><span class="anzahl">0</span><div class="wer"></div></td><td>Sa 07.–14.08.</td><td class="k ok">✓</td><td>Miete ? + ≈ 344 € NK</td><td class="zahl">?</td>
-            <td class="zahl">14</td><td class="zahl">5</td><td class="zahl sigma s6">6/6</td><td class="stand">frei laut Kalender · Preis anfragen</td></tr>
-          <tr data-id="preimes-kasa"><th scope="row"><a href="https://www.airbnb.de/rooms/1175192828385082031" target="_blank" rel="noopener">Preimes Kasa ↗</a></th>
-            <td class="stimmen"><button type="button" class="fav-knopf">👍</button><span class="anzahl">0</span><div class="wer"></div></td><td>Sa 14.–21.08.</td><td class="k nein">✗</td><td>≈ 2.348 €</td><td class="zahl">≈ 196 €</td>
-            <td class="zahl">12</td><td class="zahl">5</td><td class="zahl sigma s6">6/6</td><td class="stand">vom Gastgeber bestätigt</td></tr>
-          <tr data-id="hofer-huette"><th scope="row"><a href="https://www.huettenland.com/huette/1580/Hofer-Huette-in-den-Nockbergen/" target="_blank" rel="noopener">Hofer Hütte ↗</a></th>
-            <td class="stimmen"><button type="button" class="fav-knopf">👍</button><span class="anzahl">0</span><div class="wer"></div></td><td>Fr 13.–20.08.</td><td class="k nein">✗</td><td>1.980 € (für 10)</td><td class="zahl">≈ 198 €</td>
-            <td class="zahl">12 (mit Lager)</td><td class="zahl">5</td><td class="zahl sigma s5">5/6</td><td class="stand">Angebot da</td></tr>
-          <tr data-id="huette-rei-stm"><th scope="row"><a href="https://www.huettenpartner.com/huetten/lachtal/rei_stm.html" target="_blank" rel="noopener">Hütte REI-STM ↗</a></th>
-            <td class="stimmen"><button type="button" class="fav-knopf">👍</button><span class="anzahl">0</span><div class="wer"></div></td><td>Sa 07.–14.08.</td><td class="k ok">✓</td><td>≈ 1.725 € + Strom</td><td class="zahl">≈ 144 €</td>
-            <td class="zahl">10 + 2</td><td class="zahl">4</td><td class="zahl sigma s4">4/6</td><td class="stand">frei laut Kalender · noch nicht angefragt</td></tr>
-          <tr data-id="huette-jos-sbg"><th scope="row"><a href="https://www.huettenpartner.com/huetten/abtenau/jos_sbg.html" target="_blank" rel="noopener">Hütte JOS-SBG ↗</a></th>
-            <td class="stimmen"><button type="button" class="fav-knopf">👍</button><span class="anzahl">0</span><div class="wer"></div></td><td>Sa 07.–14.08.</td><td class="k ok">✓</td><td>≈ 1.650 € + Strom</td><td class="zahl">≈ 138 €</td>
-            <td class="zahl">10 + 2</td><td class="zahl">4</td><td class="zahl sigma s4">4/6</td><td class="stand">frei laut Kalender · Preis 12 P. anfragen</td></tr>
-          <tr data-id="kalserhuette"><th scope="row"><a href="https://www.urlaubambauernhof.at/de/hoefe/kalserhuette" target="_blank" rel="noopener">Kalserhütte ↗</a></th>
-            <td class="stimmen"><button type="button" class="fav-knopf">👍</button><span class="anzahl">0</span><div class="wer"></div></td><td>?</td><td class="k offen">?</td><td>ab 1.120 € + NK</td><td class="zahl">ab ≈ 93 €</td>
-            <td class="zahl">10</td><td class="zahl">4</td><td class="zahl sigma s2">2/6</td><td class="stand">Anfrage läuft</td></tr>
-          <tr data-id="larer-huette"><th scope="row"><a href="https://www.larerhuette.at/" target="_blank" rel="noopener">Larer Hütte ↗</a></th>
-            <td class="stimmen"><button type="button" class="fav-knopf">👍</button><span class="anzahl">0</span><div class="wer"></div></td><td>?</td><td class="k offen">?</td><td>ab 700 € + NK</td><td class="zahl">ab ≈ 58 €</td>
-            <td class="zahl">10</td><td class="zahl">4</td><td class="zahl sigma s3">3/6</td><td class="stand">Anfrage läuft</td></tr>
-        </tbody>
-      </table>
-      </div>
-      <p class="wahl-fuss">Preise inkl. Ortstaxe und Endreinigung, soweit bekannt; „+ Strom“ = nach Verbrauch. Kriterien siehe
-        <a href="../huettenvergleich.html">Hütten-Vergleich</a>. Details zu jeder Hütte in den Karten darunter.</p>
+  <section aria-label="Abstimmung">
+    <div class="karte" style="text-align:center">
+      <p style="margin-bottom:10px"><strong>Wo geht's hin – und wann?</strong> Hütten-Favorit und Termine stimmen wir gemeinsam ab.</p>
+      <a class="btn" href="abstimmung.html">🗳️ Zur Abstimmung</a>
     </div>
   </section>
 
@@ -425,11 +361,11 @@
           <a class="huette-knopf" href="https://www.airbnb.de/rooms/1175192828385082031" target="_blank" rel="noopener">📋 Zum Inserat</a>
         </div>
       </div>
-      <div class="huette status-nein">
+      <div class="huette status-offen">
         <h3>Obere Roner Kasa</h3><div class="rolle">Suntinger · Mörtschach, Hohe Tauern</div>
-        <span class="badge nein">August belegt · frei erst ab 28.08.</span>
+        <span class="badge offen">Frei: 28.08. – 18.09.</span>
         <p><strong>Antwort von Dani:</strong> 2027 nur noch <strong>28.08. – 18.09.</strong> frei – im
-        August also nix. „Vielleicht klappt es ja im nächsten Jahr 🙃“ → für 2028 früh anfragen.
+        August also nix – aber als <strong>Spätsommer-Option</strong> (Ende August/September) wieder im Rennen. Preis noch anfragen.
         Wird auch über kaernten-ferienwohnungen.com angeboten.
         Alter Bekannter: <strong>7× waren wir schon dort</strong> (2005–2008, 2010, 2018, 2020) – die Nummer zwei der Bestenliste. Für 2026 war sie belegt.</p>
         <div class="huette-knoepfe">
@@ -511,7 +447,7 @@
       <ul class="liste" data-live="todos">
         <li><input type="checkbox" id="td1"><label for="td1"><strong>Termin abstimmen</strong> – Wunsch 07.–14.08., je nach Hütte auch früher/später</label></li>
         <li><input type="checkbox" id="td2"><label for="td2"><strong>Truppe steht</strong> – 12 Leut', bei 10-Betten-Hütten 2 Zusatzbetten klären</label></li>
-        <li><input type="checkbox" id="td3"><label for="td3"><strong>Hütten-Favorit abstimmen</strong> – Angebote da: Hofer 1.980 € (Fr–Fr), Preimes 2.005 € direkt (12 P. ≈ 2.348 €, 12 Betten); Huberalm (6/6) in der Wunschwoche frei, Preis anfragen; REI-STM Lachtal 1.490 € in der Wunschwoche frei (nur 4 Zimmer); JOS-SBG Postalm ab 1.250 € (10 P. + 2 Zusatzbetten) ebenfalls frei; Roner erst ab 28.08. frei, Kreuzwirt 2027 ausgebucht; Kalser &amp; Larer angefragt (je ca. 10 Plätze)</label></li>
+        <li><input type="checkbox" id="td3"><label for="td3"><strong>Hütten-Favorit abstimmen</strong> – Angebote da: Hofer 1.980 € (Fr–Fr), Preimes 2.005 € direkt (12 P. ≈ 2.348 €, 12 Betten); Huberalm (6/6) in der Wunschwoche frei, Preis anfragen; REI-STM Lachtal 1.490 € in der Wunschwoche frei (nur 4 Zimmer); JOS-SBG Postalm ab 1.250 € (10 P. + 2 Zusatzbetten) ebenfalls frei; Roner ab 28.08. frei (Spätsommer-Option), Kreuzwirt 2027 ausgebucht; Kalser &amp; Larer angefragt (je ca. 10 Plätze)</label></li>
         <li><input type="checkbox" id="td4"><label for="td4"><strong>Alle vier anfragen</strong> – Verfügbarkeit und Preise einholen</label></li>
         <li><input type="checkbox" id="td5"><label for="td5"><strong>Buchen &amp; schriftlich bestätigen lassen</strong> (Lehre aus 2026!)</label></li>
         <li><input type="checkbox" id="td6"><label for="td6"><strong>Anzahlung</strong> klären und überweisen</label></li>
@@ -706,59 +642,6 @@
     tLaden();
     setInterval(tLaden, 5000);
   }
-})();
-</script>
-<script>
-/* ---------- Favoriten-Wahl (geteilt über API, doc=huetten2027, stimmen.<name> = hütten-id) ---------- */
-(function(){
-  var API = '../api.php?doc=huetten2027';
-  var ich = document.getElementById('wahl-ich'), syncEl = document.getElementById('wahl-sync');
-  var rows = document.querySelectorAll('table.wahl tbody tr'), stand = '';
-  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-  try { ich.value = localStorage.getItem('alm-ich') || ''; } catch(e) {}
-  var stimmen = {};
-  function render(){
-    var zahl = {}, wer = {}, max = 0;
-    Object.keys(stimmen).forEach(function(n){ var id = stimmen[n]; zahl[id] = (zahl[id]||0)+1; (wer[id] = wer[id]||[]).push(n); });
-    Object.keys(zahl).forEach(function(id){ if (zahl[id] > max) max = zahl[id]; });
-    rows.forEach(function(tr){
-      var id = tr.dataset.id, z = zahl[id] || 0;
-      tr.querySelector('.anzahl').textContent = z;
-      tr.querySelector('.wer').innerHTML = (wer[id] || []).map(esc).join(', ');
-      tr.classList.toggle('meins', !!ich.value && stimmen[ich.value] === id);
-      tr.classList.toggle('fuehrt', max > 0 && z === max);
-      tr.querySelector('.fav-knopf').title = ich.value ? (stimmen[ich.value] === id ? 'Stimme zurücknehmen' : 'Mei Favorit!') : 'Erst oben auswählen, wer du bist';
-    });
-  }
-  function anwenden(json){
-    var neu = JSON.stringify((json.data || {}).stimmen || {});
-    if (neu !== stand) { stand = neu; stimmen = JSON.parse(neu); render(); }
-    var t = new Date();
-    syncEl.className = 'sync-status';
-    syncEl.innerHTML = '<span class="punkt"></span>live · Stand ' + ('0'+t.getHours()).slice(-2)+':'+('0'+t.getMinutes()).slice(-2)+':'+('0'+t.getSeconds()).slice(-2);
-  }
-  function fehler(text){ syncEl.className = 'sync-status offline'; syncEl.innerHTML = '<span class="punkt"></span>' + esc(text); }
-  function lade(){ fetch(API).then(function(r){ return r.json(); }).then(anwenden).catch(function(){ fehler('offline – versuche erneut …'); }); }
-  function sende(body){
-    fetch(API, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)})
-      .then(function(r){ return r.json(); }).then(anwenden).catch(function(){ fehler('Speichern fehlgeschlagen'); lade(); });
-  }
-  ich.addEventListener('change', function(){
-    try { localStorage.setItem('alm-ich', ich.value); } catch(e) {}
-    render();
-  });
-  rows.forEach(function(tr){
-    tr.querySelector('.fav-knopf').addEventListener('click', function(){
-      if (!ich.value) { alert('Sag zerst, wer du bist – oben im Auswahlfeld.'); ich.focus(); return; }
-      var pfad = 'stimmen.' + ich.value;
-      if (stimmen[ich.value] === tr.dataset.id) sende({unset: [pfad]});
-      else { var s = {}; s[pfad] = tr.dataset.id; sende({set: s}); }
-    });
-  });
-  render();
-  lade();
-  setInterval(lade, 4000);
-  document.addEventListener('visibilitychange', function(){ if (!document.hidden) lade(); });
 })();
 </script>
 <script src="../alm-nav.js" defer></script>
