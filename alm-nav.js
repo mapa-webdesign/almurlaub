@@ -48,7 +48,6 @@
      Bei Änderungen bitte beides pflegen. */
   var SUBSEITEN = [
     ['index.html',       'Übersicht'],
-    ['abstimmung.html',  '🗳️ Abstimmung', ['2027']],   /* nur in den genannten Jahren */
     ['einkauf.html',     '🛒 Einkaufsliste'],
     ['abrechnung.html',  '💰 Abrechnung'],
     ['fotos.html',       '📸 Fotos'],
