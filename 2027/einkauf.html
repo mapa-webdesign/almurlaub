@@ -192,7 +192,7 @@
   var personenSel=document.getElementById('personen');
   for(var p=4;p<=24;p++){var o=document.createElement('option');o.value=String(p);o.textContent=String(p);personenSel.appendChild(o);}
 
-  function esc(s){var d=document.createElement('div');d.textContent=(s==null?'':s);return d.innerHTML;}
+  function esc(s){var d=document.createElement('div');d.textContent=(s==null?'':s);return d.innerHTML.replace(/"/g,'&quot;');}
   function personen(){return parseInt(state.personen,10)||11;}
   function zustand(k){return (state.items||{})[k]||{};}
 

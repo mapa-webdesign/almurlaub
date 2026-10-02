@@ -90,7 +90,7 @@
   var editingGuard = false;
 
   function num(v){ var n=parseFloat(String(v==null?'':v).replace(',','.')); return isNaN(n)?0:n; }
-  function esc(s){ var d=document.createElement('div'); d.textContent=(s==null?'':s); return d.innerHTML; }
+  function esc(s){ var d=document.createElement('div'); d.textContent=(s==null?'':s); return d.innerHTML.replace(/"/g,'&quot;'); }
   function fmt(n){ return (Math.round(n*10)/10).toLocaleString('de-DE'); }
 
   function personen(){

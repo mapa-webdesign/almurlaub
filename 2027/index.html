@@ -279,20 +279,20 @@
   <!-- Countdown -->
   <div class="schild-halter">
     <div class="schild">
-      <h2>Sa 4. – Sa 11. September 2027</h2>
+      <h2>Sa 14. – Sa 21. August 2027</h2>
       <div class="cd" id="countdown">
         <div class="cd-box"><div class="cd-zahl" id="cd-tage">–</div><div class="cd-label">Tage</div></div>
         <div class="cd-box"><div class="cd-zahl" id="cd-std">–</div><div class="cd-label">Stunden</div></div>
         <div class="cd-box"><div class="cd-zahl" id="cd-min">–</div><div class="cd-label">Minuten</div></div>
         <div class="cd-box"><div class="cd-zahl" id="cd-sek">–</div><div class="cd-label">Sekunden</div></div>
       </div>
-      <div class="cd-hinweis">📌 KW 36 ist anvisiert – bitte kurz Bescheid gebn, ob de Woch für olle basst!</div>
+      <div class="cd-hinweis">📌 Wieder in da zwoatn Augustwoch – so wia's se ghört!</div>
     </div>
   </div>
 
   <!-- Eckdaten -->
   <div class="eckdaten">
-    <div class="eck"><div class="icon">📅</div><div class="wert">04. – 11.09.2027</div><div class="label">KW 36 (anvisiert)</div></div>
+    <div class="eck"><div class="icon">📅</div><div class="wert">14. – 21.08.2027</div><div class="label">2. Augustwoche</div></div>
     <div class="eck"><div class="icon">🌙</div><div class="wert">7 Nächte</div><div class="label">Samstag bis Samstag</div></div>
     <div class="eck"><div class="icon">🏡</div><div class="wert">4 Kandidaten</div><div class="label">Hütte in Auswahl</div></div>
     <div class="eck"><div class="icon">👨‍👩‍👧‍👦</div><div class="wert">offen</div><div class="label">Zusagen ausstehend</div></div>
@@ -342,7 +342,7 @@
     <div class="sek-titel"><span class="em">📝</span><h2>Nächste Schritte</h2><div class="linie"></div></div>
     <div class="karte">
       <ul class="liste" data-live="todos">
-        <li><input type="checkbox" id="td1"><label for="td1"><strong>Rückmeldung zur Woche</strong> – passt KW 36 (4.–11.09.) für alle?</label></li>
+        <li><input type="checkbox" id="td1"><label for="td1"><strong>Termin weitersagen</strong> – 14.–21.08. (2. Augustwoche) steht</label></li>
         <li><input type="checkbox" id="td2"><label for="td2"><strong>Truppe zusammenzählen</strong> – wer ist 2027 dabei?</label></li>
         <li><input type="checkbox" id="td3"><label for="td3"><strong>Hütten-Favorit abstimmen</strong> (Preimes, Roner, Kreuzwirt, Hofer)</label></li>
         <li><input type="checkbox" id="td4"><label for="td4"><strong>Alle vier anfragen</strong> – Verfügbarkeit und Preise einholen</label></li>
@@ -396,7 +396,7 @@
 <script>
 (function(){
   /* ---------- Countdown ---------- */
-  var ziel = new Date(2027, 8, 4, 0, 0, 0); // Sa 04.09.2027 – anvisiert
+  var ziel = new Date(2027, 7, 14, 0, 0, 0); // Sa 14.08.2027 (Monat 0-basiert: 7 = August)
   var elT = document.getElementById('cd-tage'),
       elS = document.getElementById('cd-std'),
       elM = document.getElementById('cd-min'),

@@ -35,6 +35,34 @@ body{
   display:inline-flex;align-items:center;gap:7px;
 }
 .alm-nav .logo img{width:30px;height:30px;flex:none}
+
+/* ---------- Abrechnung: Sichern & Teilen ---------- */
+.export-leiste{display:flex;flex-wrap:wrap;gap:10px}
+.export-leiste label.btn{display:inline-block}
+.export-hinweis{font-size:.8rem;color:var(--holz);margin-top:12px;font-style:italic}
+.druck-kopf{display:none}
+
+/* ---------- Druck / PDF (alle Seiten) ---------- */
+@media print{
+  @page{margin:14mm}
+  body{background:#fff !important;color:#000}
+  .alm-nav,.jahr-nav,.nav-burger,.skip-link,footer{display:none !important}
+  /* nur Seiten mit Druckkopf (Abrechnung): Bedienelemente weg */
+  body:has(.druck-kopf) :is(.seitenkopf,.neu-zeile,.loeschen,.sync-status,.wer-leiste,
+    .export-bereich,.hinweis-band){display:none !important}
+  .druck-kopf{display:block;font-family:'Caveat',cursive;font-size:1.9rem;font-weight:700;
+    color:var(--holz-dunkel);border-bottom:2px solid var(--schwammerl);margin-bottom:6px}
+  .druck-kopf span{font-family:'Bitter',Georgia,serif;font-size:.85rem;font-weight:400;color:var(--holz)}
+  .wrap{max-width:none;padding:0}
+  section{margin-top:18px;break-inside:avoid}
+  .sek-titel,.sek-titel h2{color:var(--holz-dunkel) !important;margin-bottom:6px}
+  .sek-titel .linie{background:var(--holz-grau)}
+  .karte,.summe{box-shadow:none !important;background:#fff !important;border:1px solid #ccc}
+  .tabelle input{border:none !important;background:transparent !important;padding:0;box-shadow:none;
+    -webkit-appearance:none;appearance:none;color:#000;font:inherit}
+  .tab-scroll{overflow:visible}
+  .plus,.minus{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
 .alm-nav a.nav-link{
   color:var(--creme);text-decoration:none;font-size:.86rem;padding:14px 12px 12px;
   white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;

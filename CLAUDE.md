@@ -1,7 +1,7 @@
 # CLAUDE.md — Almurlaub Website
 
 > Projekt-Gedächtnis für **Claude Code**. Liegt im Repository-Root.
-> Stand: **22.09.2026** · Sprache im Projekt: Deutsch (bairisch gefärbt)
+> Stand: **02.10.2026** · Sprache im Projekt: Deutsch (bairisch gefärbt)
 
 ---
 
@@ -14,7 +14,11 @@ Deploy-Token auf dem öffentlich erreichbaren Webspace.
 - Parole und Cookie-Wert stehen ausschließlich in `config.php` (gitignored).
 - Der Cookie-Wert steht zwangsläufig auch in der `.htaccess`, weil Apache
   `config.php` nicht lesen kann → **das Repository muss privat bleiben.**
-- Die `.htaccess` sperrt zusätzlich `.md`, `.json`, `.log`, `.bak` vom
+- Martins alte `Projekt-Info.md` (lokal, nicht im Repo) enthält das alte
+  FTP-Passwort, die alte Parole und den alten Cookie – vermutlich die
+  Datei, die im September geleakt ist. **Nie ins Repo übernehmen.**
+- Die `.htaccess` sperrt zusätzlich `.md`, `.json`, `.log`, `.bak`, `.ini`,
+  `.git/`, `unterlagen/` vom
   direkten Abruf. Diese Datei hier wäre also selbst dann nicht abrufbar.
 
 ---
@@ -35,22 +39,21 @@ geteilte Einkaufsliste, Abrechnung, Bierrechner, Fotogalerie.
 
 ---
 
-## 🔴 Offene Aufgaben (Stand 25.09.2026)
+## 🔴 Offene Aufgaben (Stand 02.10.2026)
 
 **Erledigt:** GitHub-Repo (privat) · Hostinger-Subdomain + Git-Deploy mit
 Webhook · DNS bei **Cloudflare** (`A almurlaub → 88.222.222.193`, *DNS only*)
 · Let's-Encrypt-SSL + HTTPS-Umleitung · `config.php` auf dem Server ·
-Login mit Parole geprüft · `.git/` und `.md` liefern 403.
+Login geprüft · `daten/` beschreibbar · Foto-Upload getestet · Logo +
+Favicon · alle 22 Gestaltungs-/Hütten-Fotos · Backup-Skript geschrieben.
 
-1. **Noch prüfen:** Einkaufsliste 2027 (Haken setzen, zweites Gerät
-   gegenchecken → bestätigt, dass `daten/` beschreibbar ist), Foto-Upload.
-2. ~~**Gestaltungsfotos**~~ – alle 22 wiederhergestellt (Okt. 2026). Neue
-   Fotos vorher auf 1100 px verkleinern und EXIF/GPS entfernen (Pillow:
-   `ImageOps.exif_transpose`, ohne `exif=` speichern). `fotos/huetten/` ist
-   per `!fotos/huetten/` in der `.gitignore` freigegeben.
-3. **Regelmäßige Sicherung:** Skript liegt in `werkzeuge/backup/`
-   (sonntags 20 Uhr, launchd, Cookie im Schlüsselbund). Auf Martins Mac
-   einmalig `./install.sh` ausführen – noch offen.
+**Bei Martin offen:**
+1. **Sicherheit:** FTP-Passwort bei domainfactory ändern (falls Zugang noch
+   existiert), FTP-Daten aus der Notion-Seite „Urlaub auf der Alm“ löschen,
+   Parole in `config.php` wechseln, falls noch die alte von 2026.
+2. **Backup einrichten:** `git pull`, dann `werkzeuge/backup/install.sh`.
+3. **Abrechnung 2026 nachtragen** (falls gewünscht) – Live-Daten sind
+   verloren, `daten-abrechnung2026.json` enthält nur die 5 leeren Parteien.
 
 ### Inhaltlich noch offen
 - **Truppe 2027** steht nicht fest (2026 waren es 11 Leut').
@@ -65,8 +68,10 @@ Login mit Parole geprüft · `.git/` und `.md` liefern 403.
 
 | Weg | Ersatz |
 |---|---|
-| Alle Fotos (`fotos/`) | nicht wiederherstellbar – Galerien starten leer |
-| Live-Daten 2026/2027 | nicht wiederherstellbar – Listen starten leer |
+| Gestaltungs- und Hütten-Fotos (`fotos/*.jpg`, `fotos/huetten/`) | **wiederhergestellt** aus Martins Fundus (Okt. 2026), jetzt im Repo |
+| Fotoalbum 2026 (`fotos/2026/`, Uploads der Truppe) | weg – nur durch erneutes Hochladen |
+| Bier-Etiketten (`fotos/biere/`) | weg – von keiner Seite verwendet |
+| Live-Daten 2026 (Einkauf, To-Dos, Abrechnung) | weg – Abrechnung 2026 ist leer |
 | `api.php` | **neu gebaut**, getestet |
 | `login.php`, `logout.php`, `.htaccess` | **neu gebaut**, getestet |
 | HTML-Seiten, CSS, JS | aus Sicherung vom 21.09.2026, vollständig |
@@ -85,10 +90,13 @@ Login mit Parole geprüft · `.git/` und `.md` liefern 403.
 ├─ export.php            Sicherung der Laufzeitdaten (ZIP bzw. tar.gz)
 ├─ alm.css               zentrales Stylesheet – ALLE Seiten
 ├─ alm-nav.js            Burger-Menü + Untermenü je Jahresbereich – ALLE Seiten
+├─ abrechnung-export.js  PDF/Drucken, CSV, JSON-Sicherung + Einspielen – Abrechnungsseiten
 ├─ .htaccess             Zugangsschutz, Sperren, Cache
+├─ logo.svg              Logo (Bierdeckel-Rund) – auch Favicon; favicon.ico, apple-touch-icon.png
+├─ fotos/                Gestaltungsfotos (*.jpg) + fotos/huetten/ – im Repo
 ├─ 2026/                 Archiv    ┐ index, einkauf, abrechnung,
 ├─ 2027/                 aktuell   ┘ fotos, bierrechner, upload.php
-├─ unterlagen/          Hüttenurlaub 2025 (Plan, Einkauf, Abrechnung), Rezepte – gesperrt
+├─ unterlagen/           Hüttenurlaub 2025 (Plan, Einkauf, Abrechnung), Rezepte – gesperrt
 ├─ werkzeuge/backup/     Wöchentliche Sicherung von export.php auf dem Mac
 ├─ config.example.php
 └─ .gitignore
@@ -96,6 +104,9 @@ Login mit Parole geprüft · `.git/` und `.md` liefern 403.
 
 **Nicht im Repository:** `config.php`, `daten/`, `fotos/<jahr>/` (Uploads) – werden
 vom Server geschrieben und von einem Deploy nie angefasst.
+
+**Ohne Login abrufbar** (Ausnahmen in der `.htaccess`): `login.php`,
+`logout.php`, `logo.svg`, `favicon.ico`, `apple-touch-icon.png`, `fotos/biere/`.
 
 ---
 
@@ -153,6 +164,11 @@ data = { parteien:{id:{name,naechte,anzahlung}}, ausgaben:{id:{…}} }
 satz = Σ Ausgaben / Σ Übernachtungen
 Bilanz = eigene Ausgaben + Anzahlung − (Übernachtungen × satz)
 ```
+**Sichern & Teilen** (`abrechnung-export.js`, Daten über `window.almAbrechnung`):
+PDF über den Druckdialog (Druck-CSS in `alm.css`, greift nur auf Seiten mit
+`.druck-kopf`), CSV für Excel (`;`, Dezimalkomma, BOM), JSON-Sicherung
+`{typ, jahr, exportiert, daten:{parteien, ausgaben}}`; Einspielen ersetzt
+`parteien` und `ausgaben` für alle (mit Rückfrage, warnt bei falschem Jahr).
 
 ---
 
@@ -178,8 +194,8 @@ Tonfall in Texten: freundlich, bairisch angehaucht („Wievui?", „Wos?",
 2. In den fünf Seiten `2027` → `2028`, **inklusive der API-Doc-Namen**
 3. Inhalte leeren: Countdown-Ziel (`var ziel`), Hütten, Truppe, To-Dos
 4. Menüpunkt „Alm 2028" in **allen** Seiten ergänzen (Pfade je Ordner beachten)
-5. `fotos/2028/` anlegen, `upload.php` mitkopieren – sie leitet das Jahr
-   über `basename(__DIR__)` selbst ab, muss also nicht angepasst werden
+5. `upload.php` mitkopieren – sie leitet das Jahr über `basename(__DIR__)`
+   selbst ab und legt `<fotos_dir>/2028/` beim ersten Upload selbst an
 
 ---
 
@@ -194,8 +210,9 @@ Mahrhütte 2× · Rest je 1×
 
 ## Urlaub 2027 (in Planung)
 
-**Termin:** Sa 04. – Sa 11.09.2027 (KW 36, 7 Nächte) – anvisiert, noch
-nicht bestätigt. Countdown läuft bereits.
+**Termin:** Sa 14. – Sa 21.08.2027 (2. Augustwoche, 7 Nächte) – wie
+gewohnt; die zwischenzeitlich anvisierte KW 36 (Sept.) ist vom Tisch.
+Countdown in `2027/index.html` (`var ziel`, Monat 0-basiert).
 
 **Hütten-Kandidaten** (alle noch unangefragt):
 Preimes Kasa (Airbnb) · Obere Roner Kasa (Suntinger) · Kreuzwirthütte
@@ -225,3 +242,15 @@ vier Fünfteln füllen.
 - **Viele Dateien gleichzeitig ändern:** Python-Skript mit String-Ersetzung
   ist zuverlässiger als viele Einzeledits – und vorher prüfen, ob das
   Suchmuster wirklich genau einmal vorkommt.
+- **Umlaute in Dateinamen vom Mac** sind NFD-kodiert (u + ¨). `glob`/`cp`
+  mit getipptem „ü“ finden sie nicht – `unicodedata.normalize('NFC', …)`
+  oder Platzhalter (`H*tte`) nehmen.
+- **PHP nimmt nur 20 Dateien je Anfrage** (`max_file_uploads`) und verwirft
+  den Rest kommentarlos – `uebersprungen` bleibt 0. Eine `.user.ini` greift
+  auf Hostinger nicht (getestet). Deshalb schickt `fotos.html` die Fotos in
+  Paketen zu je 10 (`PAKET`).
+- **Handyfotos enthalten GPS-Koordinaten.** Vor dem Einchecken EXIF
+  entfernen; Original-Uploads auf GitHub-Branches danach löschen lassen.
+- **`esc()` in den Seiten-Skripten muss auch `"` maskieren**, sobald der
+  Wert in einem HTML-Attribut landet (`value="…"`) – sonst bricht ein Name
+  wie `Baule "Da"` das Eingabefeld (behoben Okt. 2026).

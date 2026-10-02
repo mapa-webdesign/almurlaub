@@ -128,31 +128,48 @@
     e.preventDefault();
     var dateiInput = document.getElementById('dateien');
     if (!dateiInput.files.length) return;
-    var fd = new FormData();
-    fd.append('von', document.getElementById('vonWem').value);
-    fd.append('aktion', 'upload');
-    Array.prototype.forEach.call(dateiInput.files, function(f){ fd.append('dateien[]', f); });
+    /* In Paketen zu je 10 Fotos schicken: PHP nimmt je Anfrage nur
+       max_file_uploads (Standard 20) Dateien an und verwirft den Rest
+       kommentarlos – auf Hostinger nicht per .user.ini änderbar. */
+    var PAKET = 10;
+    var alle = Array.prototype.slice.call(dateiInput.files);
+    var von = document.getElementById('vonWem').value;
+    var n = 0, uebersprungen = 0, i = 0;
 
-    status.textContent = 'Lädt hoch …';
     status.className = 'upload-status';
-    fetch(API, {method:'POST', body: fd}).then(function(r){ return r.json(); }).then(function(d){
-      if (d.ok) {
-        var n = (d.hochgeladen || []).length;
-        var uebersprungen = d.uebersprungen || 0;
+    function naechstesPaket(){
+      if (i >= alle.length) {
         var txt = n ? (n + (n === 1 ? ' Foto' : ' Fotos') + ' hochgeladen! 🎉') : 'Nichts hochgeladen.';
         if (uebersprungen) txt += ' (' + uebersprungen + ' übersprungen – Format oder Größe passte nicht)';
         status.textContent = txt;
         status.className = 'upload-status ' + (n ? 'erfolg' : 'fehler');
         dateiInput.value = '';
-        render((d.data || {}).fotos || []);
-      } else {
-        status.textContent = 'Fehler: ' + (d.error || 'unbekannt');
-        status.className = 'upload-status fehler';
+        return;
       }
-    }).catch(function(){
-      status.textContent = 'Fehler beim Hochladen – Verbindung prüfen.';
-      status.className = 'upload-status fehler';
-    });
+      status.textContent = alle.length > PAKET
+        ? 'Lädt hoch … ' + i + ' von ' + alle.length
+        : 'Lädt hoch …';
+      var fd = new FormData();
+      fd.append('von', von);
+      fd.append('aktion', 'upload');
+      alle.slice(i, i + PAKET).forEach(function(f){ fd.append('dateien[]', f); });
+      i += PAKET;
+      fetch(API, {method:'POST', body: fd}).then(function(r){ return r.json(); }).then(function(d){
+        if (!d.ok) {
+          status.textContent = 'Fehler: ' + (d.error || 'unbekannt') + (n ? ' (' + n + ' Fotos sind schon oben)' : '');
+          status.className = 'upload-status fehler';
+          return;
+        }
+        n += (d.hochgeladen || []).length;
+        uebersprungen += d.uebersprungen || 0;
+        render((d.data || {}).fotos || []);
+        naechstesPaket();
+      }).catch(function(){
+        status.textContent = 'Fehler beim Hochladen – Verbindung prüfen.' + (n ? ' (' + n + ' Fotos sind schon oben)' : '');
+        status.className = 'upload-status fehler';
+      });
+    }
+    naechstesPaket();
   });
 
   /* ---------- Löschen ---------- */
