@@ -83,6 +83,8 @@ Favicon · alle 22 Gestaltungs-/Hütten-Fotos · Backup-Skript geschrieben.
 ├─ index.html            Historie: Hütten seit 1999, Bestenliste, Sprüche-Wand
 ├─ packliste.html        Packliste (Haken nur lokal im Browser, kein Sync)
 ├─ huettensuche.html     Hütten-Status der laufenden Suche
+├─ huettenvergleich.html Alle Hütten gegen die Suchkriterien (Lage, ✓/✗/?) – erzeugt von
+│                        werkzeuge/huettenvergleich.py (Daten dort pflegen, dann ausführen)
 ├─ login.php             Bierparole-Login (Daten aus config.php)
 ├─ logout.php            Abmelden
 ├─ api.php               Live-Datenspeicher der geteilten Listen
@@ -222,7 +224,10 @@ Pappe's zusammen, Robert + Bettina zusammen, die übrigen 6 beliebig gemischt.
 **Suchkriterien** (Martin, Okt. 2026 – auch in `huettensuche.html`):
 Platz für 12, min. 5 Schlafzimmer · Almhütte in Alleinlage ·
 Lagerfeuerstelle · Brunnen („Grand“) · fließend Wasser mit WC ·
-warme Dusche (Holzofen, Gas o. Ä.).
+warme Dusche (Holzofen, Gas o. Ä.). Vergleich aller Hütten:
+`huettenvergleich.html` – Stand 02.10.: **keine erfüllt nachweislich alle 6**;
+5/6: Huberalm (Dusche ?, Feuerstelle laut Martin ✓), Hofer (12 P. nur mit
+Lager), Preimes (nur 10 P.), Thomannbauerhütte (Feuerstelle ?).
 
 **Wunschtermin:** Sa 07. – Sa 14.08.2027 (7 Nächte, KW 31/32; zuvor kurz
 14.–21.08. bzw. KW 36 im Gespräch – beides überholt).
