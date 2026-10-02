@@ -56,7 +56,7 @@ Favicon · alle 22 Gestaltungs-/Hütten-Fotos · Backup-Skript geschrieben.
 ### Inhaltlich noch offen
 - **Truppe 2027** steht nicht fest (2026 waren es 11 Leut').
 - **Hütte 2027** noch nicht entschieden – 2 Angebote da (Hofer, Preimes),
-  Roner Kasa laut Portal voll (Direktanfrage läuft), Kreuzwirt ausgebucht
+  Roner Kasa erst ab 28.08. frei, Kreuzwirt ausgebucht
   (2028 angefragt), Kalser- und Larer Hütte neu (je ca. 10 Plätze).
 - **Chili con Carne** in der Einkaufsliste 2027 ist als *Entwurf* markiert,
   Mengen aus der 2025er-Liste abgeleitet und ungeprüft.
@@ -231,8 +231,8 @@ setzen.
 - **Preimes Kasa** (Airbnb) – **Sa 14.–Sa 21.08. vom Gastgeber direkt
   bestätigt**, 10 Gäste: **2.150 €** (215 €/P.) laut Airbnb; Preis bei
   Direktbuchung angefragt (evtl. günstiger), Kurtaxe noch ungeklärt.
-- Obere Roner Kasa (Suntinger) – laut urlaubambauernhof.at **2027 ausgebucht**;
-  Martin fragt direkt bei Dani per WhatsApp. Wird auch als „Almhütte
+- Obere Roner Kasa (Suntinger) – **August 2027 belegt**; laut Dani (WhatsApp)
+  nur 28.08.–18.09.2027 frei → für 2028 früh anfragen. Wird auch als „Almhütte
   PSD-00611“ auf kaernten-ferienwohnungen.com angeboten (= Roner Kasa).
 - Hinweis für Suchen: **Hüttenpartner „DOR-SBG“ = Huberalm** (2024 dort),
   **„Almhütte PSD-00611“ = Obere Roner Kasa** – Portale nennen Hütten oft
