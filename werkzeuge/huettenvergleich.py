@@ -16,7 +16,7 @@ H = [
   ('k','Huberalm','https://www.huettenpartner.com/huetten/gasteinertal/dor_sbg.html','Dorfgastein','Sbg',1150,'47.2768,13.0659',14,5,'jjjjjj','auf Anfrage','–'),  # Feuerstelle + warme Dusche laut Martin
   ('k','Obere Roner Kasa','https://www.urlaubambauernhof.at/de/hoefe/ronerkasa','Mörtschach','Ktn',1450,'46.9205,12.8983',10,4,'n?jjjj','≈ 2.040 €','28.08.–18.09.'),
   ('k','Lorenzer Hütte','https://www.bergwelten.com/t/b/23018','Kleblach-Lind','Ktn',1700,'46.766,13.366',11,5,'njjjjj','980 €','–'),  # laut Martin: 140 €/Nacht; GPS = Ort im Drautal, nicht die Hütte
-  ('k','Hoisen Hütte','https://hoisenhuette.at/','Rennweg','Ktn',None,'',10,None,'??????','950 € (2025)','–'),
+  ('k','Hoisen Hütte','https://hoisenhuette.at/','Rennweg','Ktn',None,'',10,4,'n?????','950 € (2025)','–'),
   # --- Neue Funde ---
   ('n','Thomannbauerhütte','https://www.urlaubambauernhof.at/de/hoefe/thomannbauerhuette','Gmünd','Ktn',1500,'46.8971,13.5948',14,5,'jj?jjj','Anfrage','Anfrage'),
   ('n','Almhütte Kuhgraben','https://www.huetten.com/de/huette/almhuette-kuhgraben-rt30204.html','Bad St. Leonhard','Ktn',1250,'46.9528,14.7119',12,5,'jj??jj','2.690 €','Anfrage'),
