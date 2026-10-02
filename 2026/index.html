@@ -537,7 +537,13 @@
     var gal = document.querySelector('#galerie .galerie'), hinweis = document.getElementById('galerie-hinweis');
     if (!gal) return;
     function e(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-    fetch('upload.php').then(function(r){ return r.json(); }).then(function(d){
+    function holen(versuch){
+      return fetch('upload.php').then(function(r){ return r.json(); }).catch(function(err){
+        if (versuch >= 2) throw err;
+        return new Promise(function(ok){ setTimeout(ok, 1000); }).then(function(){ return holen(versuch + 1); });
+      });
+    }
+    holen(0).then(function(d){
       var f = (d && d.fotos || []).filter(function(x){ return x && x.datei; });
       if (!f.length) return;
       for (var i = f.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = f[i]; f[i] = f[j]; f[j] = t; }
