@@ -263,7 +263,7 @@ setzen.
   **Sa 07.–14.08.2027 frei**, **1.490 € für 12 P.** + Ortstaxe 2,80 €/P./Nacht + Strom
   0,40 €/kWh (≈ 1.725 € + Strom). 1.660 m, Alleinlage, Fischteich, Lagerfeuerplatz
   (Gästebewertung), Boiler. **Nur 4 Zimmer** (3 DZ + 4-Bett, 2 Zusatzbetten) → 4/6, Brunnen ?.
-- **Hütte JOS-SBG** (Postalm, Abtenau/Strobl, Sbg., Hüttenpartner) – laut Kalender
+- **Scharfetter Hütte** (Fam. Scharfetter, Postalm, Abtenau/Strobl, Sbg.; Hüttenpartner-Code **JOS-SBG**, GPS 47.635604,13.413717) – laut Kalender
   **Sa 07.–14.08.2027 frei**; Sommerpreis 1.250 € für 10 P. (Augustwoche + 12 P. anfragen),
   + Ortstaxe/Mobilität 3,50 €/P./Nacht, Gas, Holz, Strom, Maut. 1.170 m, Alleinlage
   (Nachbarn 200 m), Brunnen, Gas-Warmwasser. **Bis 10 P. + 2 Zusatzbetten, 4 Zimmer** → 4/6, Feuerstelle ?.
@@ -275,7 +275,7 @@ setzen.
   (Dani, WhatsApp) → Spätsommer-Option, in der Termin-Umfrage als 28.08.–04.09. und
   04.–11.09.; Preis noch anfragen. Wird auch als „Almhütte
   PSD-00611“ auf kaernten-ferienwohnungen.com angeboten (= Roner Kasa).
-- Hinweis für Suchen: **Hüttenpartner „DOR-SBG“ = Huberalm** (2024 dort),
+- Hinweis für Suchen: **Hüttenpartner „DOR-SBG“ = Huberalm** (2024 dort), **„JOS-SBG“ = Scharfetter Hütte**,
   **„Almhütte PSD-00611“ = Obere Roner Kasa** – Portale nennen Hütten oft
   nur per Code, vor dem Vorschlagen gegen die Historie prüfen.
 - **Kalserhütte** (Oberdrauburg, Drautal) – **Anfrage läuft** (Martin): bis 10 P., ab
