@@ -206,7 +206,9 @@ Lorenzer Hütte, Kärnten – **zum 12. Mal**, 25.07.–01.08.2026, 7 Nächte,
 Robert, Bettina, Franz, Andreas (Andi), Da Baule, Da Blaume, Da Ott.
 **Abrechnung:** 1.915,10 € Ausgaben, 46 Übernachtungen, 41,63 €/Übernachtung.
 Bilanz: Pappe's +105,92 · Ott +187,57 · Franz +88,57 · Baule −183,43 ·
-Blaume −198,63 (+ = bekommt zurück).
+Blaume −198,63 (+ = bekommt zurück). **Erledigt:** Baule → Ott,
+Blaume → Franz und Pappe's (rechnerisch bleiben 4,14 € Blaume → Ott offen).
+Vermerk als Abschnitt „Abgerechnet“ statisch in `2026/abrechnung.html`.
 
 **Bestenliste:** Lorenzer 12× · Obere Roner Kasa 7× · Hoisen 4× ·
 Mahrhütte 2× · Rest je 1×
