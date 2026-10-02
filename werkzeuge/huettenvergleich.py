@@ -30,7 +30,7 @@ H = [
   ('n','Galsterbergalm','https://www.urlaubambauernhof.at/de/hoefe/galsterbergalm','Pruggern','Stmk',None,'47.4177,13.8864',10,5,'nnjjjj','Anfrage','?'),
   ('n','Holzhütte Tuxertal','https://www.huettenland.com/huette/6/','Tux','T',1200,'47.1583,11.7681',14,4,'nnn?jj','Anfrage','frei'),
   # --- Schon dort / früher angefragt ---
-  ('b','Huberalm','https://www.huettenpartner.com/huetten/gasteinertal/dor_sbg.html','Dorfgastein','Sbg',1150,'47.2768,13.0659',14,5,'jjjjj?','–','–'),
+  ('b','Huberalm','https://www.huettenpartner.com/huetten/gasteinertal/dor_sbg.html','Dorfgastein','Sbg',1150,'47.2768,13.0659',14,5,'jjjjjj','–','–'),  # Feuerstelle + warme Dusche laut Martin
   ('b','Obere Roner Kasa','https://www.urlaubambauernhof.at/de/hoefe/ronerkasa','Mörtschach','Ktn',1450,'46.9205,12.8983',10,4,'n?jjjj','–','ab 28.08.'),
   ('b','Kreuzerhütte','https://www.urlaubambauernhof.at/de/hoefe/kreuzerhuette','Bad St. Leonhard','Ktn',1500,'46.9535,14.7982',10,5,'njnjjj','–','–'),
   ('b','Wallner Kasa','https://www.urlaubambauernhof.at/de/hoefe/wallnerkasa','Heiligenblut','Ktn',1600,'47.0481,12.8207',10,4,'njnjj?','–','–'),
