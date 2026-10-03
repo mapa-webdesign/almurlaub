@@ -280,9 +280,10 @@ setzen.
   160 €/Nacht + Nebenkosten; telefonisch +43 4710 2644 / +43 664 9054195
 - **Larer Hütte** (Lessach, Prebersee, Lungau) – **Anfrage läuft** (Martin): ca. 10 P.,
   ab 100 €/Nacht + Ortstaxe/Strom; annemarie.jesner@sbg.at
-- **Lorenzer Hütte** (Stammhaus, 12×) und **Hoisen Hütte** (Rennweg, 4×) – **Anfragen für 2027 laufen**
-  (Martin, Okt. 2026); Lorenzer 2026: 140 €/Nacht, 11 Betten/5 Zimmer; Hoisen 2025: 950 € mit Grillhütte,
-  10 Betten in 4 Zimmern + Lager im Nebengebäude.
+- **Lorenzer Hütte** (Stammhaus, 12×) – **2027 frei Sa 07.–14.08. (Wunschwoche!)**, Preis 2027
+  noch bestätigen (2026: 140 €/Nacht = 980 €); 11 Betten/5 Zimmer, 5/6 Kriterien.
+- Hoisen Hütte (Rennweg, 4×) – **Sommer 2027 und 2028 ausgebucht** (2025: 950 € mit Grillhütte,
+  10 Betten in 4 Zimmern + Lager im Nebengebäude).
 - Kreuzwirthütte – **2027 ausgebucht**; Reservierungsanfrage für **2028** läuft
   (2026 doppelt vergeben → Zusage unbedingt schriftlich)
 

@@ -15,8 +15,7 @@ H = [
   ('k','Scharfetter Hütte','https://www.huettenpartner.com/huetten/abtenau/jos_sbg.html','Postalm','Sbg',1170,'47.635604,13.413717',12,4,'nj?jjj','ab 1.250 €','07.–14.08.'),  # 10 P. + 2 Zusatzbetten; Preis Sommer für 10 P.
   ('k','Huberalm','https://www.huettenpartner.com/huetten/gasteinertal/dor_sbg.html','Dorfgastein','Sbg',1150,'47.2768,13.0659',14,5,'jjjjjj','auf Anfrage','–'),  # Feuerstelle + warme Dusche laut Martin
   ('k','Obere Roner Kasa','https://www.urlaubambauernhof.at/de/hoefe/ronerkasa','Mörtschach','Ktn',1450,'46.9205,12.8983',10,4,'n?jjjj','≈ 2.040 €','28.08.–18.09.'),
-  ('k','Lorenzer Hütte','https://www.bergwelten.com/t/b/23018','Kleblach-Lind','Ktn',1700,'46.766,13.366',11,5,'njjjjj','980 €','–'),  # laut Martin: 140 €/Nacht; GPS = Ort im Drautal, nicht die Hütte
-  ('k','Hoisen Hütte','https://hoisenhuette.at/','Rennweg','Ktn',None,'',10,4,'n?????','950 € (2025)','–'),
+  ('k','Lorenzer Hütte','https://www.bergwelten.com/t/b/23018','Kleblach-Lind','Ktn',1700,'46.766,13.366',11,5,'njjjjj','980 €','07.–14.08.'),  # laut Martin: 140 €/Nacht; GPS = Ort im Drautal, nicht die Hütte
   # --- Neue Funde ---
   ('n','Thomannbauerhütte','https://www.urlaubambauernhof.at/de/hoefe/thomannbauerhuette','Gmünd','Ktn',1500,'46.8971,13.5948',14,5,'jj?jjj','Anfrage','Anfrage'),
   ('n','Almhütte Kuhgraben','https://www.huetten.com/de/huette/almhuette-kuhgraben-rt30204.html','Bad St. Leonhard','Ktn',1250,'46.9528,14.7119',12,5,'jj??jj','2.690 €','Anfrage'),
@@ -42,6 +41,7 @@ H = [
   ('b','Kreuzwirthütte','https://www.urlaubambauernhof.at/de/hoefe/kreuzwirthuette','Radenthein','Ktn',1500,'46.8462,13.7252',9,3,'n??jjj','–','belegt'),
   ('b','Sonnalmhütte','https://www.urlaubambauernhof.at/hoefe/sonnalmhuette','Gmünd','Ktn',1500,'46.9614,13.5419',11,4,'n?n?jj','–','–'),
   ('b','Bodener Alm','https://www.huettenland.com/huette/1302/Bodner-Almhuette-im-Kristeinertal/','Kristeinertal','OT',1500,'46.8157,12.5580',6,4,'n?njj?','–','–'),
+  ('b','Hoisen Hütte','https://hoisenhuette.at/','Rennweg','Ktn',None,'',10,4,'n?????','950 € (2025)','ausgebucht'),
   ('b','Paulmahdhütte','https://www.paulmahdhuette.com','Rennweg','Ktn',None,'',None,None,'??????','–','–'),
   ('b','Rettensteinhütte','https://www.huettenzauber-tirol.at/huetten/rettensteinhuette','Aschau','T',None,'',None,None,'??????','–','–'),
 ]
