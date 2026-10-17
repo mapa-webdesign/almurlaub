@@ -1,7 +1,7 @@
 # CLAUDE.md — Almurlaub Website
 
 > Projekt-Gedächtnis für **Claude Code**. Liegt im Repository-Root.
-> Stand: **02.10.2026** · Sprache im Projekt: Deutsch (bairisch gefärbt)
+> Stand: **17.10.2026** · Sprache im Projekt: Deutsch (bairisch gefärbt)
 
 ---
 
@@ -54,9 +54,9 @@ Favicon · alle 22 Gestaltungs-/Hütten-Fotos · Backup-Skript geschrieben.
 2. **Backup einrichten:** `git pull`, dann `werkzeuge/backup/install.sh`.
 
 ### Inhaltlich noch offen
-- **Hütte 2027** noch nicht entschieden – 2 Angebote da (Hofer, Preimes),
-  Roner Kasa erst ab 28.08. frei, Kreuzwirt ausgebucht
-  (2028 angefragt), Kalser- und Larer Hütte angefragt (je ca. 10 Plätze).
+- **Hütte 2027 gebucht: Preimes Kasa, Sa 14.–Sa 21.08.2027** (Okt. 2026).
+  Offen: Anzahlung, schriftliche Bestätigung, den übrigen Anfragen absagen.
+  Kreuzwirt-Anfrage für **2028** läuft weiter.
 - **Chili con Carne** in der Einkaufsliste 2027 ist als *Entwurf* markiert,
   Mengen aus der 2025er-Liste abgeleitet und ungeprüft.
 
@@ -222,7 +222,7 @@ Vermerk als Abschnitt „Abgerechnet“ statisch in `2026/abrechnung.html`.
 **Bestenliste:** Lorenzer 12× · Obere Roner Kasa 7× · Hoisen 4× ·
 Mahrhütte 2× · Rest je 1×
 
-## Urlaub 2027 (in Planung)
+## Urlaub 2027 (gebucht: Preimes Kasa, 14.–21.08.)
 
 **Truppe: 12 Leut'** – Pappenberger (Martl, Manu, Max, Alois), Robert &
 Bettina, Billinger (Franz, Andreas, Maddin), Baule, Blaume, Ott. Schlafgruppen: die 4
@@ -237,16 +237,19 @@ warme Dusche (Holzofen, Gas o. Ä.). Vergleich aller Hütten:
 Martin; 2027 in der Wunschwoche frei) und **Preimes Kasa** (12 Betten laut Monika).
 5/6: Lorenzer (11 P.), Hofer (12 P. nur mit Lager), Thomannbauerhütte (Feuerstelle ?).
 
-**Wunschtermin:** Sa 07. – Sa 14.08.2027 (7 Nächte, KW 31/32; zuvor kurz
+**Gebucht (17.10.2026): Preimes Kasa, Mörtschach (Ktn), Sa 14. – Sa 21.08.2027**,
+12 Betten, Direktangebot für 12 P. ≈ 2.348 €. Countdown (`var ziel`) steht auf 14.08.2027.
+Die Kandidatenliste unten ist damit nur noch Archiv.
+
+**Ursprünglicher Wunschtermin:** Sa 07. – Sa 14.08.2027 (7 Nächte, KW 31/32; zuvor kurz
 14.–21.08. bzw. KW 36 im Gespräch – beides überholt).
 **Flexibel:** Nicht jede Hütte ist genau in der Woche frei. Ist sie es
 nicht, werden andere Zeiträume (auch Fr–Fr o. Ä.) und andere Hütten
 geprüft. Bei jeder Hütte deshalb den tatsächlich angebotenen Zeitraum
 eintragen, nicht den Wunschtermin. Countdown in `2027/index.html`
-(`var ziel`, Monat 0-basiert) erst bei Buchung auf den echten Anreisetag
-setzen.
+(`var ziel`, Monat 0-basiert) steht auf dem gebuchten Anreisetag.
 
-**Hütten-Kandidaten** (Stand 02.10.2026):
+**Hütten-Kandidaten** (Stand 02.10.2026, vor der Buchung):
 - **Huberalm** (Dorfgastein, Hüttenpartner **DOR-SBG**) – einzige mit **6/6**;
   laut Hüttenpartner-Kalender **Sa 07.–Sa 14.08.2027 frei** (geprüft 02.10.2026).
   Bis 14 P., 5 Zimmer, 1 DU/WC. Mietpreis nur auf Anfrage; vor Ort Endreinigung 100 €,
@@ -264,8 +267,7 @@ setzen.
   **Sa 07.–14.08.2027 frei**; Sommerpreis 1.250 € für 10 P. (Augustwoche + 12 P. anfragen),
   + Ortstaxe/Mobilität 3,50 €/P./Nacht, Gas, Holz, Strom, Maut. 1.170 m, Alleinlage
   (Nachbarn 200 m), Brunnen, Gas-Warmwasser. **Bis 10 P. + 2 Zusatzbetten, 4 Zimmer** → 4/6, Feuerstelle ?.
-- **Preimes Kasa** (Airbnb) – **Sa 14.–Sa 21.08. vom Gastgeber direkt
-  bestätigt**; Wunschwoche 07.–14.08. nicht mehr frei, **Direktangebot 2.005 €** für 10 P.: 4 Pers. 100 €/Tag + 6 Pers.
+- **Preimes Kasa** (Airbnb) – ✅ **GEBUCHT Sa 14.–Sa 21.08.2027**; Wunschwoche 07.–14.08. nicht mehr frei, **Direktangebot 2.005 €** für 10 P.: 4 Pers. 100 €/Tag + 6 Pers.
   20 €/P./Tag + Müll 50 + Endreinigung 100 + Nächtigungstaxe 4,50 €/P./Tag
   **12 Betten** (Monika, WhatsApp) → für 12 P. ≈ 2.348 €. Airbnb wäre 2.150 € + Taxe.
 - **Obere Roner Kasa** (Suntinger) – August belegt, aber **28.08.–18.09.2027 frei**
