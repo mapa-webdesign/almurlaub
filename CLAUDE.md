@@ -286,6 +286,9 @@ eintragen, nicht den Wunschtermin. Countdown in `2027/index.html`
   noch bestätigen (2026: 140 €/Nacht = 980 €); 11 Betten/5 Zimmer, 5/6 Kriterien.
 - Hoisen Hütte (Rennweg, 4×) – **Sommer 2027 und 2028 ausgebucht** (2025: 950 € mit Grillhütte,
   10 Betten in 4 Zimmern + Lager im Nebengebäude).
+- **Laderalm** (Fam. Rißlegger, Mörtschach, 1.950 m; urlaubambauernhof.at/de/hoefe/almhuette-laderalm) –
+  neue Option (23.10.2026), noch nicht angefragt: max. 10 P., Alleinlage, Brunnen, Gas-Dusche, WC → 4/6
+  (Feuerstelle ?); daneben **Lader Hochkasa** (2.000 m, Grillplatz) – zusammen evtl. für 12.
 - Kreuzwirthütte – **2027 ausgebucht**; Reservierungsanfrage für **2028** läuft
   (2026 doppelt vergeben → Zusage unbedingt schriftlich)
 
