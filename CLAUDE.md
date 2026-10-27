@@ -239,6 +239,8 @@ Martin; 2027 in der Wunschwoche frei) und **Preimes Kasa** (12 Betten laut Monik
 
 **Gebucht (17.10.2026): Preimes Kasa, Mörtschach (Ktn), Sa 14. – Sa 21.08.2027**,
 12 Betten, Direktangebot für 12 P. ≈ 2.348 €. Countdown (`var ziel`) steht auf 14.08.2027.
+**Anzahlung 300 € überwiesen** (Martin, 27.10.2026); Rest ≈ 2.048 € noch offen. In der Abrechnung 2027
+gehört sie als Anzahlung zur Partei „Pappenberger“.
 Die Kandidatenliste unten ist damit nur noch Archiv.
 
 **Ursprünglicher Wunschtermin:** Sa 07. – Sa 14.08.2027 (7 Nächte, KW 31/32; zuvor kurz
